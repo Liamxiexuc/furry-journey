@@ -1,15 +1,18 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
+import React, {Fragment} from 'react';
+import { Redirect, Route, Switch } from 'react-router-dom';
 
-import Menu from '../manager/item/Menu';
-import Order from '../manager/order/Order';
+import Menu from '../manager/items/Menu';
+import Orders from '../manager/orders/Orders';
 
 const Routes = () => {
     return (
-        <React.Fragment>
-            <Route path="/manger/item" component={ Menu } />
-            <Route path="/manger/order" component={ Order } />
-        </React.Fragment>
+        <Fragment>
+            <Switch>
+                <Redirect exact from="/" to="/manager/items" />
+                <Route exact path="/manager/items" component={ Menu } />
+                <Route exact path="/manager/orders" component={ Orders } />
+            </Switch>
+        </Fragment>
     )
 }
 
