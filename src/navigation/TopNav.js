@@ -1,12 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 
 const TopNav = () => {
     return (
         <div>
-            <Link to="/manager/menu">Menu</Link>
-            <Link to="/manager/orders">Orders</Link>
+            <NavLink to="/manager/menu" activeClassName="top-nav--active" >Menu</NavLink>
+            <NavLink to="/manager/orders" activeClassName="top-nav--active" >Orders</NavLink>
         </div>
     )
 
