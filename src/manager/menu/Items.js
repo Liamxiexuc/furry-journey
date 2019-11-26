@@ -1,6 +1,65 @@
 import React from 'react';
 import ItemCard from './components/ItemCard';
 import './styles/item.scss';
+import { fetchItems } from '../../utils/api/item';
+
+class Items extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            items: [],
+            isLoading: false,
+            error: null,
+            pagination: null,
+            
+        };
+    }
+
+    componentDidMount() {
+        this.setState({ isLoading: true}, () => {
+            fetchItems().then(itemData => {
+                this.setState({
+                    isLoading: false,
+                    items: itemData.items,
+                    pagination: itemData.pagination,
+                });
+            }).catch(error => this.setState({error, isLoading: true}))
+            
+        });
+    }
+
+    render() {
+        return (
+            <React.Fragment>
+                <ErrorMessage />
+                <Header>
+
+                </Header>
+                <Container>
+                    <Button as={Link} to={`${ITEM_BASE_URL}/new`} primary>
+
+                    </Button>
+                    <Segment>
+                        <FlexContainer>
+                            {
+                                this.state.items.map(item => (
+                                    <ItemCard 
+                                        itemName = {item.name}
+                                        itemDescritpion={item.description}
+                                    />
+                                ))
+                            }
+                        </FlexContainer>
+                    </Segment>
+                    
+                </Container>
+                 
+            </React.Fragment>
+        )
+    }
+}
+
 
 const Items = () => {
     return (
