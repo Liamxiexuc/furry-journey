@@ -1,5 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+
 import ItemCard from './components/ItemCard';
+
+import { ITEM_BASE_URL } from '../../route/URLMap';
 import './styles/item.scss';
 import { fetchItems } from '../../utils/api/item';
 
@@ -17,16 +22,20 @@ class Items extends React.Component {
     }
 
     componentDidMount() {
-        this.setState({ isLoading: true}, () => {
-            fetchItems().then(itemData => {
-                this.setState({
-                    isLoading: false,
-                    items: itemData.items,
-                    pagination: itemData.pagination,
-                });
-            }).catch(error => this.setState({error, isLoading: true}))
+        this.loadItems();
+        // this.setState({ isLoading: true, items: []}, () => {
+        //     fetchItems(pageNum, pageSize)
+        //         .then(this.updateItemData)
+        //         .catch(error => this.setState({ error }));
+            //         itemData => {
+            //     this.setState({
+            //         isLoading: false,
+            //         items: itemData.items,
+            //         pagination: itemData.pagination,
+            //     });
+            // }).catch(error => this.setState({error, isLoading: true}))
             
-        });
+        
     }
 
     loadItems = (pageNum, pageSize) => {
@@ -37,12 +46,26 @@ class Items extends React.Component {
         });
     }
 
+    updateItemData = itemData => {
+        this.setState({
+            items: itemData.items,
+            isLoading: false,
+            pagination: itemData.pagination,
+        })
+    }
+
+    handlePageChange = (event, data) => {
+        this.loadItems(data.activePage);
+    }
+
     
 
     render() {
+        const currentPath = this.props.location.pathname;
+
         return (
             <React.Fragment>
-                <ErrorMessage />
+                {/* <ErrorMessage />
                 <Header>
 
                 </Header>
@@ -63,8 +86,25 @@ class Items extends React.Component {
                         </FlexContainer>
                     </Segment>
                     
-                </Container>
-                 
+                </Container> */}
+                <div className="container">
+                    <div className="header">
+
+                    </div>
+                    <div className="body">
+                        {this.state.items.map(item => (
+                            <ItemCard 
+                                
+                            
+                            />
+                        ))
+
+                        }
+                    </div>
+
+                </div>
+
+
             </React.Fragment>
         )
     }

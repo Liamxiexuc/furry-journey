@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 
 
 const ItemCard = props => {
+    const item = props.item;
     return (
         // <Card as={Link} to={props.to} className="item-card">
         //     <Image src={props.itemImage} wrapped />
