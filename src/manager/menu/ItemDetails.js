@@ -1,3 +1,4 @@
+import React from 'react';
 import { fetchItems, fetchItemsById } from "../../utils/api/item";
 import ItemInfo from '../components/ItemInfo';
 
@@ -57,7 +58,7 @@ class ItemDetails extends React.Component {
                         ItemDetails
                     </div>  
                     <ItemInfo 
-                        
+
                     
                     />
                 </div>
@@ -65,3 +66,5 @@ class ItemDetails extends React.Component {
         )
     }
 }
+
+export default ItemDetails;

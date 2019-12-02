@@ -4,6 +4,9 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import Orders from '../manager/orders/Orders';
 import OrderCard from '../manager/orders/components/OrderCard'
 import Items from '../manager/menu/Items';
+import ItemNew from '../manager/menu/ItemNew';
+import ItemDetails from '../manager/menu/ItemDetails';
+import ItemEdit from '../manager/menu/ItemEdit';
 
 import {
     ITEM_BASE_URL,

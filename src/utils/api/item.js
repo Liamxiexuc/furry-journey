@@ -1,4 +1,5 @@
-import { get } from "./axios"
+import queryString from 'querystring'
+import { del, get, put, post } from "./axios"
 
 const API_ITEM_URL = '/items';
 
@@ -15,8 +16,11 @@ export const fetchItemsById = itemId => {
     }));
 };
 
-export const deleteItemById = itemId => {
-    return del(`${API_ITEM_URL}/${itemId}`);
-}; 
+export const createItem = item => {
+    return post(API_ITEM_URL, item).then(res => res.data.data);
+}
 
-export const createItem 
+export const deleteItemById = id => {
+    const url = getApiItemUrlWithId(id);
+    return del(url);
+};

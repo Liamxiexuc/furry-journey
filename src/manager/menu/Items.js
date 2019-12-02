@@ -11,7 +11,7 @@ class Items extends React.Component {
             items: [],
             isLoading: false,
             error: null,
-            pagination: null,
+            pagination: {},
             
         };
     }
@@ -28,6 +28,16 @@ class Items extends React.Component {
             
         });
     }
+
+    loadItems = (pageNum, pageSize) => {
+        this.setState({ isLoading: true, items: []}, ()=> {
+            fetchItems(pageNum, pageSize)
+                .then(this.updateItemData)
+                .catch(error => this.setState({error}));
+        });
+    }
+
+    
 
     render() {
         return (

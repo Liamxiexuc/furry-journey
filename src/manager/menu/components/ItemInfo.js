@@ -1,55 +1,128 @@
-import React from 'react';
+import React, { useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
+import { withRouter } from 'react-router';
 
-import ItemCard from '../components/ItemCard';
+import { ITEM_BASE_URL } from '../../../routes/URLMap';
 
-class Items extends React.Component {
-    constructor(props) {
-        super(props);
+import { deleteItemById } from '../../../utils/api/item';
 
-        this.state = {
-            items: [],
-            error: null,
-            isLoading: false,
-            pagination: {},
-        };
-    }
+const ItemInfo = props => {
+    const [isDeleting, setIsDeleting] = useState(false);
+    const {
+        items = [],
+        itemId,
+        productName,
+        price,
+        productType,
+        productInfo,
+        photo,
+        category,
+        isLoading,
+        reloadPage,
+        setErrorState,
+        location: {pathname: currentPath}
+    } = props;
 
-    componentDidMount() {
-        this.loadItems();
-    }
+    useEffect(()=> {
+        if(isDeleting) {
+            deleteItemById(itemId)
+                .then(() => {
+                    history.push( ITEM_BASE_URL );
+                })
+                .catch(setErrorState);
+            }
+    }, [isDeleting]);
 
-    loadItems = (pageNum, pageSize) => {
-        this.setState( { isLoading: true, items: [] }, () => {
-            fetchItems(pageNum, pageSize)
-                .then(this.updateItemData)
-                .catch(error => this.setState( {error}));
-        });
-    }
+    const deleteItem = () => {
+        if (window.confirm(`Do you want to delete item ${itemId}?`)) {
+            setIsDeleting(true)
+        }
+    };
 
-    updateItemData = itemData => {
-        this.setState( {
-            items: itemData.item,
-            isLoading: false,
-            pagination: itemData.pagination,
-        })
-    }
+    return (
+        <div className="container">
+            <div className="header">
+                <img src={} />
+                {productName}
+            </div>
+            <div className="body" isLoading={isLoading}>
+                <div className="price">
+                    {price}
+                </div>
+                <div className="productType">
+                    {productType}
+                </div>
+                <div className="productInfo">
+                    {productInfo}
+                </div>
+                <div className="photo">
+                    {photo}
+                </div>
+                <div className="category">
+                    {category}
+                </div>
+            </div>
+            <div className="button-group">
+                <Link to={`${currentPath}/edit`}> 
+                    Edit
+                </Link>
+                <button loading={isDeleting} onClick={deleteItem} >
+                    Delete
+                </button>
+            </div>
 
-    handlePageChange = (event, data) => {
-        this.loadItems(data.activePage);
-    }
+        </div>
+    );
+};
 
-    render() {
-        const currentPath = this.props.location.pathname;
+export default withRouter(ItemInfo);
 
-        return (
-            <React.Fragment>
-                <ErrorMessage />
-                <Headers>
+// class Items extends React.Component {
+//     constructor(props) {
+//         super(props);
+
+//         this.state = {
+//             items: [],
+//             error: null,
+//             isLoading: false,
+//             pagination: {},
+//         };
+//     }
+
+    // componentDidMount() {
+    //     this.loadItems();
+    // }
+
+    // loadItems = (pageNum, pageSize) => {
+    //     this.setState( { isLoading: true, items: [] }, () => {
+    //         fetchItems(pageNum, pageSize)
+    //             .then(this.updateItemData)
+    //             .catch(error => this.setState( {error}));
+    //     });
+    // }
+
+    // updateItemData = itemData => {
+    //     this.setState( {
+    //         items: itemData.item,
+    //         isLoading: false,
+    //         pagination: itemData.pagination,
+    //     })
+    // }
+
+    // handlePageChange = (event, data) => {
+    //     this.loadItems(data.activePage);
+    // // }
+
+    // render() {
+    //     const currentPath = this.props.location.pathname;
+
+    //     return (
+    //         <React.Fragment>
+    //             <ErrorMessage />
+    //             <Headers>
                     
-                </Headers>
+    //             </Headers>
 
-            </React.Fragment>
-        )
-    }
-}
+    //         </React.Fragment>
+    //     )
+    // }

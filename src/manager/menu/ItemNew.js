@@ -1,3 +1,4 @@
+import React from 'react';
 import { createItem } from "../../utils/api/item";
 
 
@@ -31,3 +32,5 @@ class ItemNew extends React.Component {
         })
     }
 }
+
+export default ItemNew;
