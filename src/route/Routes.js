@@ -2,7 +2,10 @@ import React, {Fragment} from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 import Orders from '../manager/orders/Orders';
-import OrderCard from '../manager/orders/components/OrderCard'
+import OrderNew from '../manager/orders/OrderDetails';
+import OrderEdit from '../manager/orders/OrderEdit';
+import Orders from '../manager/orders/Orders';
+
 import Items from '../manager/menu/Items';
 import ItemNew from '../manager/menu/ItemNew';
 import ItemDetails from '../manager/menu/ItemDetails';
@@ -19,15 +22,17 @@ const Routes = () => {
     return (
         <Fragment>
             <Switch>
-                <Redirect exact from="/" to="/manager/menu" />
-                <Route exact path="/manager/menu" component={ Items } />
-                <Route exact path="/manager/menu/new" component={ ItemNew } />
-                <Route exact path="/manager/menu/:id" component={ ItemDetails } />
-                <Route exact path="/manager/menu/:id/edit" component={ ItemEdit } />
+                <Redirect exact from="/" to={ ITEM_BASE_URL } />
+                <ProtectedRoute exact path={ ITEM_BASE_URL } component={ Items } />
+                <ProtectedRoute exact path={`${ ITEM_BASE_URL }/new`} component={ ItemNew } />
+                <ProtectedRoute exact path={`${ ITEM_BASE_URL }/:id`} component={ ItemDetails } />
+                <ProtectedRoute exact path={`${ ITEM_BASE_URL }/:id/edit`} component={ ItemEdit } />
 
 
-                <Route exact path="/manager/orders" component={ Orders } />
-                <Route exact path="/manager/orders/:id" component={ OrderCard } />
+                <ProtectedRoute exact path={ ORDER_BASE_URL } component={ Orders } />
+                <ProtectedRoute exact path={`${ ORDER_BASE_URL }/new`} component={ OrderNew }/>
+                <ProtectedRoute exact path={`${ ORDER_BASE_URL }/:id`} component={ OrderDetails } />
+                <ProtectedRoute exact path={`${ ORDER_BASE_URL }/:id/edit`} component={ OrderEdit } />
            
             </Switch>
         </Fragment>

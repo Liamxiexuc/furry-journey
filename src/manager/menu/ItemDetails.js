@@ -8,7 +8,9 @@ class ItemDetails extends React.Component {
 
         this.state = {
             isLoading: false,
-            item: {},
+            isEditing: false,
+            error: null,
+            item: null,
             error: null,  
         };
     }
@@ -52,15 +54,12 @@ class ItemDetails extends React.Component {
     render() {
         return(
             <React.Fragment>
-                <ErrorMessage error={this.state.error}/>
+                
                 <div className="container">
                     <div className="header">
                         ItemDetails
                     </div>  
-                    <ItemInfo 
 
-                    
-                    />
                 </div>
             </React.Fragment>
         )

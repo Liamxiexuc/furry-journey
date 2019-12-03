@@ -5,29 +5,29 @@ const OrderCard = props => {
         <div className="order-card">
             <div className="order-card--header">
                 <div className="order-receiver-name">
-                    Client
+                    Client Name: {props.receiverName}
                 </div>
                 <div className="order-receiver-phone">
-                    040 000 0000
+                    Phone Number: {props.receiverPhone}
                 </div>
                 <div className="order-receiver-address">
-                    1 Brisbane Street, Brisbane, 4000, QLD
+                    Address: {props.receiverAddress}
                 </div>
             </div>
             <div className="order-card--body">
                 <div className="order-status">
-                    completed
+                    Order Status: {props.orderStatus}
                 </div>
                 <div className="order-total-price">
-                    14
+                    Total Price: {props.totalPrice}
                 </div>
                 <div className="order-pay-status">
-                    completed
+                    Pay Status: {props.payStatus}
                 </div>
             </div>
             <div className="order-card-footer">
                 <div className="order-comment">
-                    be quick
+                    Comment: {props.orderComment}
                 </div>
             </div>
         </div>
