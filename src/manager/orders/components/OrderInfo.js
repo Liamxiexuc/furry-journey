@@ -38,6 +38,30 @@ const OrderInfo = props => {
         }
     }, [isDeleting]);
 
-    
+    const deleteOrder = () => {
+        if(window.confirm(`Do you want to delete order ${orderId}`)) {
+            setIsDeleting(true)
+        }
+    };
+
+    return (
+        <div className="container">
+            <div className="header">
+                {orderedItems}
+            </div>
+            <div className="body">
+                <div className="order-status"></div>
+                <div className="order-Total-Price"></div>
+                <div className="pay-Status"></div>
+                <div className="receiver-address"></div>
+                <div className="receiver-name"></div>
+                <div className="receiver-phone"></div>
+                <div className="receiver-comment"></div>
+            </div>
+
+        </div>
+    )
+
+
 
 }
