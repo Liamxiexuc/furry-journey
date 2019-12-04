@@ -14,8 +14,30 @@ const OrderInfo = props => {
     const [ isDeleting, setIsDeleting ] = useState(false);
 
     const {
+        orderedItems = [],
+        orderId,
+        orderStatus,
+        orderTotalPrice,
+        payStatus,
+        receiverName,
+        receiverAddress,
+        receiverPhone,
+        isLoading,
+        location: {pathname: currentPath},
+        reloadPage,
+        setErrorState    
+    } = props;
 
-        
-    }
+    useEffect(() => {
+        if(isDeleting) {
+            deleteOrderById(orderId)
+                .then(() => {
+                    history.push(ORDER_BASE_URL);
+                })
+                .catch(setErrorState);
+        }
+    }, [isDeleting]);
+
+    
 
 }
