@@ -89,6 +89,7 @@ const OrderInfo = props => {
                     <span>Order Dish: </span>
                     {orderedItems.map(item => <Label key={item._id}>{item.productName}</Label>})}
                 </div>
+                
                 <Button as={Link} to={`${currentPath}/edit`}>
                     Edit
                 </Button>
