@@ -1,38 +1,69 @@
 import React from 'react';
+import { Card, Image } from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 
 const OrderCard = props => {
     
     return (
-        <div className="order-card">
-            <div className="order-card--header">
-                <div className="order-receiver-name">
+        <Card as={Link} to={props.to} className={order-card}>
+            <Image src={props.orderImage} />
+            <Card.Content>
+                <Card.Header>
                     Client Name: {props.receiverName}
-                </div>
-                <div className="order-receiver-phone">
+                </Card.Header>
+                <Card.Header>
+                    Order Number: {props.id}
+                </Card.Header>
+                <Card.Description>
                     Phone Number: {props.receiverPhone}
-                </div>
-                <div className="order-receiver-address">
+                </Card.Description>
+                <Card.Description>
                     Address: {props.receiverAddress}
-                </div>
-            </div>
-            <div className="order-card--body">
-                <div className="order-status">
+                </Card.Description>
+                <Card.Description>
                     Order Status: {props.orderStatus}
-                </div>
-                <div className="order-total-price">
+                </Card.Description>
+                <Card.Description>
                     Total Price: {props.totalPrice}
-                </div>
-                <div className="order-pay-status">
+                </Card.Description>
+                <Card.Description>
                     Pay Status: {props.payStatus}
-                </div>
-            </div>
-            <div className="order-card-footer">
-                <div className="order-comment">
+                </Card.Description>
+                <Card.Description>
                     Comment: {props.orderComment}
-                </div>
-            </div>
-        </div>
+                </Card.Description>
+            </Card.Content>
+        </Card>
+
+        // <div className="order-card">
+        //     <div className="order-card--header">
+        //         <div className="order-receiver-name">
+        //             Client Name: {props.receiverName}
+        //         </div>
+        //         <div className="order-receiver-phone">
+        //             Phone Number: {props.receiverPhone}
+        //         </div>
+        //         <div className="order-receiver-address">
+        //             Address: {props.receiverAddress}
+        //         </div>
+        //     </div>
+        //     <div className="order-card--body">
+        //         <div className="order-status">
+        //             Order Status: {props.orderStatus}
+        //         </div>
+        //         <div className="order-total-price">
+        //             Total Price: {props.totalPrice}
+        //         </div>
+        //         <div className="order-pay-status">
+        //             Pay Status: {props.payStatus}
+        //         </div>
+        //     </div>
+        //     <div className="order-card-footer">
+        //         <div className="order-comment">
+        //             Comment: {props.orderComment}
+        //         </div>
+        //     </div>
+        // </div>
     )    
 };
 
