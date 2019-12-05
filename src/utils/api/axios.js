@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getToken } from '../auth';
 
-axios.defaults.baseURL = '';
+axios.defaults.baseURL = 'http://pizzanodejs-env.tcerqmicmi.ap-southeast-2.elasticbeanstalk.com/api';
 
 const appendAuthToken = config => {
     const jwtToken = getToken();
