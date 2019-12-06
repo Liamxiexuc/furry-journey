@@ -1,10 +1,10 @@
 import React from 'react';
 import { Segment } from 'semantic-ui-react';
 
-import OrderForm from './components/CourseForm';
+import OrderForm from '../orders/components/OrderForm';
 import ErrorMessage from '../UI/errorMessage/ErrorMessage';
 import Header from '../UI/header/Header';
-import { Order_BASE_URL } from '../routes/URLMap';
+import { ORDER_BASE_URL } from '../routes/URLMap';
 import { createOrder } from '../utils/api/order';
 
 class OrderNew extends React.Component {
@@ -23,7 +23,7 @@ class OrderNew extends React.Component {
             comment: '',
             dishes: '',
             error: null,
-            image: '',
+            photo: '',
             isCreating: false,
           
         };
@@ -51,16 +51,22 @@ class OrderNew extends React.Component {
             <React.Fragment>
                 <ErrorMessage error={this.state.error} />
                 <Header as="h2" textAlign="center">
-                    Create Course
+                    Create Order
                 </Header>
                 <Segment basic loading={this.state.isCreating}>
-                    <CourseForm
-                        code={this.state.code}
-                        description={this.state.description}
+                    <OrderForm
+                        id={this.state.id}
+                        orderStatus={this.state.orderStatus}
+                        orderTotalPrice={this.state.orderTotalPrice}
+                        payStatus={this.state.payStatus}
+                        receiverAddress={this.state.receiverAddress}
+                        receiverName={this.state.receiverName}
+                        receiverPhone={this.state.receiverPhone}
+                        comment={this.state.comment}
+                        photo={this.state.photo}
                         handleChange={this.handleChange}
                         handleSubmit={this.handleCreate}
                         image={this.state.image}
-                        name={this.state.name}
                         submitButtonText="Create"
                     />
                 </Segment>
@@ -69,4 +75,4 @@ class OrderNew extends React.Component {
     }
 };
 
-export default CourseNew;
+export default OrderNew;

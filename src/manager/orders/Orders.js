@@ -54,7 +54,7 @@ class Orders extends React.Component {
                 </Header>
                 <Container>
                     <Button as={Link} to={`${currentPath}/new`} >
-                        Create New Course
+                        Create New Order
                     </Button>
                     <Segment loading={this.state.isLoading}>
                         <FlexContainer >
