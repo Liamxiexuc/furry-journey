@@ -8,7 +8,7 @@ import UserManagement from './UserManagement';
 
 import { ORDER_BASE_URL } from '../../../route/URLMap';
 
-import { deleteOrderById } from '../../../utils/api/item';
+import { deleteOrderById } from '../../../utils/api/order';
 import { Container, Segment, Label, Button } from 'semantic-ui-react';
 
 const OrderInfo = props => {
@@ -87,7 +87,7 @@ const OrderInfo = props => {
                 </p>
                 <div>
                     <span>Order Dish: </span>
-                    {orderedItems.map(item => <Label key={item._id}>{item.productName}</Label>})}
+                    {orderedItems.map(item => <Label key={item._id}>{item.productName}</Label>)}
                 </div>
                 
                 <Button as={Link} to={`${currentPath}/edit`}>

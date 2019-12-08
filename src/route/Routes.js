@@ -1,7 +1,6 @@
 import React, {Fragment} from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
-import Orders from '../manager/orders/Orders';
 import OrderNew from '../manager/orders/OrderDetails';
 import OrderEdit from '../manager/orders/OrderEdit';
 import Orders from '../manager/orders/Orders';

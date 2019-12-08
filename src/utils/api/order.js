@@ -14,7 +14,7 @@ export const fetchOrders = (pageNum = 1, pageSize = 10, query) => {
     const url = `${API_ORDER_URL}?${stringfield}`;
 
     return get(url).then(res => ({
-        items: res.data.data.map(items => ({ ...item,  })),
+        orders: res.data.data.map(order => ({ ...order,  })),
         pagination: res.data.pagination,
     }));
 };
@@ -37,5 +37,15 @@ export const createOrder = order => {
 export const deleteOrderById = id => {
     const url = getApiItemUrlWithId(id);
     return del(url);
+};
+
+export const addItemToOrder = (itemId, orderId) => {
+    const url = `${API_ORDER_URL}/${itemId}/orders/${orderId}`;
+    return post(url).then(res => res.data);
+};
+
+export const removeItemToOrder = (itemId, orderId) => {
+    const url = `${API_ORDER_URL}/${itemId}/orders/${orderId}`;
+    return del(url).then(res => res.data);
 };
 
