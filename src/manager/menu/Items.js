@@ -1,8 +1,10 @@
 import React from 'react';
+import {Container, Segment, Pagination, Button} from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 
 import ItemCard from './components/ItemCard';
+ 
 
 import { ITEM_BASE_URL } from '../../route/URLMap';
 import './styles/item.scss';
@@ -65,59 +67,45 @@ class Items extends React.Component {
 
         return (
             <React.Fragment>
-                {/* <ErrorMessage />
-                <Header>
-
+                <ErrorMessage error={this.state.error} />
+                <Header as="h2">
+                    Items
                 </Header>
-                <Container>
-                    <Button as={Link} to={`${ITEM_BASE_URL}/new`} primary>
-
+                <Container >
+                    <Button as={Link} to={`${currentPath}/new`} >
+                        Create New Item
                     </Button>
-                    <Segment>
-                        <FlexContainer>
-                            {
-                                this.state.items.map(item => (
-                                    <ItemCard 
-                                        itemName = {item.name}
-                                        itemDescritpion={item.description}
-                                    />
-                                ))
-                            }
+                    <Segment basic loading={this.state.isLoading} >
+                        <FlexContainer justifyContentValue = "space-between">
+                            {this.state.items.map(item => (
+                                <ItemCard 
+                                    productionName={item.productionName}
+                                    price={item.price}
+                                    productType={item.productType}
+                                    productInfo={item.productInfo}
+                                    category={item.category}
+                                    key={item.id}
+                                    to={`${ITEM_BASE_URL}/${item.id}`}
+                                />
+                            ))}
                         </FlexContainer>
                     </Segment>
-                    
-                </Container> */}
-                <div className="container">
-                    <div className="header">
-
-                    </div>
-                    <div className="body">
-                        {this.state.items.map(item => (
-                            <ItemCard 
-                                
-                            
-                            />
-                        ))
-
-                        }
-                    </div>
-
-                </div>
-
-
+                    {
+                        this.state.pagination.page && (
+                            <FlexContainer >
+                                <Pagination 
+                                    activePage={this.state.pagination.page}
+                                    disabled={this.state.isLoading}
+                                    onPageChange={this.handlePageChange}
+                                    totalPages={this.state.pagination.pages}
+                                />
+                            </FlexContainer>
+                        )
+                    }
+                </Container>    
             </React.Fragment>
-        )
+        );
     }
-}
-
-
-const Items = () => {
-    return (
-        <div>
-           <ItemCard /> 
-           <ItemCard /> 
-        </div>
-    )   
 };
 
 export default Items;
