@@ -21,6 +21,7 @@ class Items extends React.Component {
             pagination: {},
             
         };
+        
     }
 
     componentDidMount() {
@@ -37,7 +38,7 @@ class Items extends React.Component {
             //     });
             // }).catch(error => this.setState({error, isLoading: true}))
             
-        
+            console.log(items);
     }
 
     loadItems = (pageNum, pageSize) => {
@@ -46,6 +47,7 @@ class Items extends React.Component {
                 .then(this.updateItemData)
                 .catch(error => this.setState({error}));
         });
+        
     }
 
     updateItemData = itemData => {
@@ -54,6 +56,7 @@ class Items extends React.Component {
             isLoading: false,
             pagination: itemData.pagination,
         })
+        
     }
 
     handlePageChange = (event, data) => {

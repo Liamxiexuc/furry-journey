@@ -1,6 +1,7 @@
 import React, {Fragment} from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
+
 import OrderNew from '../manager/orders/OrderDetails';
 import OrderEdit from '../manager/orders/OrderEdit';
 import Orders from '../manager/orders/Orders';
@@ -10,10 +11,11 @@ import ItemNew from '../manager/menu/ItemNew';
 import ItemDetails from '../manager/menu/ItemDetails';
 import ItemEdit from '../manager/menu/ItemEdit';
 
+import ProtectedRoute from './components/ProtectedRoute';
+
 import {
     ITEM_BASE_URL,
     ORDER_BASE_URL,
-    SHOP_BASE_URL,
     USER_BASE_URL
 } from './URLMap';
 
