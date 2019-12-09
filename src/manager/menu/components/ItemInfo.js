@@ -77,10 +77,30 @@ const ItemInfo = props => {
         <Container >
             <Image />
             <Header >
-
+                {itemId}
             </Header>
             <Segment loading={isLoading} >
-
+                <p>
+                    { productName }
+                </p>
+                <p>
+                    { price }
+                </p>
+                <p>
+                   {productType} 
+                </p>
+                <p>
+                    {productInfo}
+                </p>
+                <p>
+                    {photo}
+                </p>
+                <p>
+                    { category}
+                </p>
+                <Button >
+                    Edit
+                </Button>
             </Segment>
         </Container>
     );

@@ -6,8 +6,12 @@ import './styles/topNav.scss';
 const TopNav = () => {
     return (
         <div>
-            <NavLink to="/manager/menu" activeClassName="top-nav--active" >Menu</NavLink>
-            <NavLink to="/manager/orders" activeClassName="top-nav--active" >Orders</NavLink>
+            <NavLink to="/" activeClassName="top-nav--active" > Menu </NavLink>
+            <NavLink to="/items" activeClassName="top-nav--active"> All Dishes </NavLink>
+            <NavLink to="/items/new" activeClassName="top-nav--active"> New Dish </NavLink>
+            
+            <NavLink to="/orders" activeClassName="top-nav--active" > All Orders </NavLink>
+            <NavLink to="/orders/new" activeClassName="top-nav--active" > New Order </NavLink>
         </div>
     )
 

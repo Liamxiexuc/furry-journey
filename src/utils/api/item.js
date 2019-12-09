@@ -5,11 +5,11 @@ const API_ITEM_URL = '/items';
 const mockImage = 'https://sdtimes.com/wp-content/uploads/2018/03/jW4dnFtA_400x400.jpg';
 const getApiItemUrlWithId = id => `${API_ITEM_URL}/${id}`;
 
-export const fetchItems = (pagNum = 1, pageSize = 10, query) => {
+export const fetchItems = (query) => {
     const stringfield = queryString.stringify({
-        pageSize,
+         
         query,
-        page: pagNum,
+        
     });
     const url = `${API_ITEM_URL}?${stringfield}`;
 

@@ -5,13 +5,13 @@ import { del, get, post, put} from './axios';
 const API_ORDER_URL = '/orders';
 const getApiOrderUrlWithId = id => `${API_ORDER_URL}/${id}`;
 
-export const fetchOrders = (pageNum = 1, pageSize = 10, query) => {
-    const stringfield = queryString.stringify({
-        pageSize,
-        query,
-        page: pageNum,
-    });
-    const url = `${API_ORDER_URL}?${stringfield}`;
+export const fetchOrders = (query) => {
+    // const stringfield = queryString.stringify({
+        
+    //     query,
+      
+    // });
+    const url = `${API_ORDER_URL}`;
 
     return get(url).then(res => ({
         orders: res.data.data.map(order => ({ ...order,  })),

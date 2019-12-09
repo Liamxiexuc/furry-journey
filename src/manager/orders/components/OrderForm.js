@@ -7,7 +7,7 @@ const OrderForm = props => {
             <Form>
                 <Form.Group>
                     <Form.Field     
-                        label='Order Here'     
+                        label='Order Form'     
                     />
                     <Form.Field 
                         control='input'
