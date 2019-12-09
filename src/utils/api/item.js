@@ -19,11 +19,16 @@ export const fetchItems = (pagNum = 1, pageSize = 10, query) => {
     }));
 };
 
-export const fetchItemsById = itemId => {
+export const fetchItemById = itemId => {
     return get(`${API_ITEM_URL}/${itemId}}`).then(res => ({
         ...res.data.data,
 
     }));
+};
+
+export const saveItemById = (id, item) => {
+    const url = getApiItemUrlWithId(id);
+    return put(url, item);
 };
 
 export const createItem = item => {

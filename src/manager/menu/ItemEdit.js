@@ -1,8 +1,8 @@
 import React from 'react';
 import ItemForm from './components/ItemForm';
 //import ErrorMessage from '../UI/errorMessage/ErrorMessage';
-import { ITEM_BASE_URL } from '../route/URLMap';
-import {fetchItemById, saveItemById} from '../utils/api/item';
+import { ITEM_BASE_URL } from '../../route/URLMap';
+import {fetchItemById, saveItemById} from '../../utils/api/item';
 
 class ItemEdit extends React.Component {
     constructor(props) {
@@ -53,7 +53,7 @@ class ItemEdit extends React.Component {
         const id = this.props.match.params.id;
         this.setState({ isSaving: true}, () => {
             saveItemById(id, item)
-                .then(() => this.props.history.push(`${COURSE_BASE_URL}/${id}`))
+                .then(() => this.props.history.push(`${ITEM_BASE_URL}/${id}`))
                 .catch(error => this.setState({ error }));
         });
     }

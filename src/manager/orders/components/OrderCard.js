@@ -5,8 +5,8 @@ import {Link} from 'react-router-dom';
 const OrderCard = props => {
     
     return (
-        <Card as={Link} to={props.to} className={order-card}>
-            <Image src={props.orderImage} />
+        <Card as={Link} to={props.to} >
+            <Image  />
             <Card.Content>
                 <Card.Header>
                     Client Name: {props.receiverName}

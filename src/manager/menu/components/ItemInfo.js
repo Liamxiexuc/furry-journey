@@ -1,8 +1,9 @@
 import React, { useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import { withRouter } from 'react-router';
+import {Button, Container, Divider, Image, Label, Segment, Header} from 'semantic-ui-react';
+import { ITEM_BASE_URL } from '../../../route/URLMap';
 
-import { ITEM_BASE_URL } from '../../../routes/URLMap';
 
 import { deleteItemById } from '../../../utils/api/item';
 
@@ -19,6 +20,7 @@ const ItemInfo = props => {
         category,
         isLoading,
         reloadPage,
+        history,
         setErrorState,
         location: {pathname: currentPath}
     } = props;
@@ -40,38 +42,47 @@ const ItemInfo = props => {
     };
 
     return (
-        <div className="container">
-            <div className="header">
-                <img src={} />
-                {productName}
-            </div>
-            <div className="body" isLoading={isLoading}>
-                <div className="price">
-                    {price}
-                </div>
-                <div className="productType">
-                    {productType}
-                </div>
-                <div className="productInfo">
-                    {productInfo}
-                </div>
-                <div className="photo">
-                    {photo}
-                </div>
-                <div className="category">
-                    {category}
-                </div>
-            </div>
-            <div className="button-group">
-                <Link to={`${currentPath}/edit`}> 
-                    Edit
-                </Link>
-                <button loading={isDeleting} onClick={deleteItem} >
-                    Delete
-                </button>
-            </div>
+        // <div className="container">
+        //     <div className="header">
+        //         <img src={} />
+        //         {productName}
+        //     </div>
+        //     <div className="body" isLoading={isLoading}>
+        //         <div className="price">
+        //             {price}
+        //         </div>
+        //         <div className="productType">
+        //             {productType}
+        //         </div>
+        //         <div className="productInfo">
+        //             {productInfo}
+        //         </div>
+        //         <div className="photo">
+        //             {photo}
+        //         </div>
+        //         <div className="category">
+        //             {category}
+        //         </div>
+        //     </div>
+        //     <div className="button-group">
+        //         <Link to={`${currentPath}/edit`}> 
+        //             Edit
+        //         </Link>
+        //         <button loading={isDeleting} onClick={deleteItem} >
+        //             Delete
+        //         </button>
+        //     </div>
 
-        </div>
+        // </div>
+        <Container >
+            <Image />
+            <Header >
+
+            </Header>
+            <Segment loading={isLoading} >
+
+            </Segment>
+        </Container>
     );
 };
 

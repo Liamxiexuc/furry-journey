@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Segment, Pagination, Button} from 'semantic-ui-react';
+import {Container, Segment, Pagination, Button, Header} from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 
@@ -38,7 +38,7 @@ class Items extends React.Component {
             //     });
             // }).catch(error => this.setState({error, isLoading: true}))
             
-            console.log(items);
+           
     }
 
     loadItems = (pageNum, pageSize) => {
@@ -70,7 +70,7 @@ class Items extends React.Component {
 
         return (
             <React.Fragment>
-                <ErrorMessage error={this.state.error} />
+                {/* <ErrorMessage error={this.state.error} /> */}
                 <Header as="h2">
                     Items
                 </Header>
@@ -79,7 +79,7 @@ class Items extends React.Component {
                         Create New Item
                     </Button>
                     <Segment basic loading={this.state.isLoading} >
-                        <FlexContainer justifyContentValue = "space-between">
+                        {/* <FlexContainer justifyContentValue = "space-between"> */}
                             {this.state.items.map(item => (
                                 <ItemCard 
                                     productionName={item.productionName}
@@ -91,18 +91,18 @@ class Items extends React.Component {
                                     to={`${ITEM_BASE_URL}/${item.id}`}
                                 />
                             ))}
-                        </FlexContainer>
+                        {/* </FlexContainer> */}
                     </Segment>
                     {
                         this.state.pagination.page && (
-                            <FlexContainer >
+                            // <FlexContainer >
                                 <Pagination 
                                     activePage={this.state.pagination.page}
                                     disabled={this.state.isLoading}
                                     onPageChange={this.handlePageChange}
                                     totalPages={this.state.pagination.pages}
                                 />
-                            </FlexContainer>
+                            // </FlexContainer>
                         )
                     }
                 </Container>    

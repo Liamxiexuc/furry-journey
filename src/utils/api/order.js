@@ -31,11 +31,11 @@ export const saveOrderById = (id, order) => {
 }
 
 export const createOrder = order => {
-    return post(API_ITEM_URL, order).then(res => res.data.data);
+    return post(API_ORDER_URL, order).then(res => res.data.data);
 }
 
 export const deleteOrderById = id => {
-    const url = getApiItemUrlWithId(id);
+    const url = getApiOrderUrlWithId(id);
     return del(url);
 };
 

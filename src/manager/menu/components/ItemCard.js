@@ -8,22 +8,22 @@ const ItemCard = props => {
     
     return (
         <Card as={Link} to={props.to} className="item-card">
-            <Image src={props.photo} wrapped />
+            <Image  wrapped />
             <Card.Content>
                 <Card.Header>
-                    {props.productName}
+                    {/* {props.productName} */}
                 </Card.Header>
                 <Card.Description>
-                    {props.price}
+                    {/* {props.price} */}
                 </Card.Description>
                 <Card.Description>
-                    {productType}
+                    {/* {productType} */}
                 </Card.Description>
                 <Card.Description>
-                    {productInfo}
+                    {/* {productInfo} */}
                 </Card.Description>
                 <Card.Description>
-                    {category}
+                    {/* {category} */}
                 </Card.Description>
             </Card.Content>
         </Card>

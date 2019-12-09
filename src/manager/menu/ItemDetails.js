@@ -1,6 +1,6 @@
 import React from 'react';
-import { fetchItems, fetchItemsById } from "../../utils/api/item";
-import ItemInfo from '../components/ItemInfo';
+import { fetchItems, fetchItemById } from "../../utils/api/item";
+import ItemInfo from '../menu/components/ItemInfo';
 
 class ItemDetails extends React.Component {
     constructor (props) {
@@ -32,7 +32,7 @@ class ItemDetails extends React.Component {
     }
 
     loadItem = itemId => this.setState({ isLoading: true}, () => {
-        fetchItemsById(itemId)
+        fetchItemById(itemId)
             .then(item => this.setState({ item, isLoading: false}))
             .catch(this.setErrorState);
     });

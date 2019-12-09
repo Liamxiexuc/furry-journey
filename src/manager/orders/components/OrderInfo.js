@@ -1,15 +1,15 @@
 import React, {useEffect, useState } from 'react';
-
+import { Button, Container, Divider, Image, Label, Segment, Header } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 
-import ItemManagement from './ItemManagement';
-import UserManagement from './UserManagement';
+// import ItemManagement from './ItemManagement';
+// import UserManagement from './UserManagement';
 
 import { ORDER_BASE_URL } from '../../../route/URLMap';
 
 import { deleteOrderById } from '../../../utils/api/order';
-import { Container, Segment, Label, Button } from 'semantic-ui-react';
+
 
 const OrderInfo = props => {
     const [ isDeleting, setIsDeleting ] = useState(false);
@@ -19,6 +19,7 @@ const OrderInfo = props => {
         orderId,
         orderStatus,
         orderTotalPrice,
+        history,
         payStatus,
         receiverName,
         receiverAddress,
@@ -62,13 +63,13 @@ const OrderInfo = props => {
 
         // </div>
         <Container>
-            <Image src={image}/>
-            <Headers as="h3">
+            <Image  />
+            <Header as="h3">
                 {receiverName}
-            </Headers>
-            <Headers as="h3">
+            </Header>
+            <Header as="h3">
                 {orderId}
-            </Headers>
+            </Header>
             <Segment loading={isLoading}>
                 <p>
                     { orderStatus }

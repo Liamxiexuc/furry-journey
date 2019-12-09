@@ -2,7 +2,8 @@ import React, {Fragment} from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 
-import OrderNew from '../manager/orders/OrderDetails';
+import OrderDetails from '../manager/orders/OrderDetails';
+import OrderNew from '../manager/orders/OrderNew';
 import OrderEdit from '../manager/orders/OrderEdit';
 import Orders from '../manager/orders/Orders';
 
@@ -16,7 +17,8 @@ import ProtectedRoute from './components/ProtectedRoute';
 import {
     ITEM_BASE_URL,
     ORDER_BASE_URL,
-    USER_BASE_URL
+    USER_BASE_URL,
+    LOGIN_URL,
 } from './URLMap';
 
 const Routes = () => {
@@ -24,6 +26,7 @@ const Routes = () => {
         <Fragment>
             <Switch>
                 <Redirect exact from="/" to={ ITEM_BASE_URL } />
+                {/* <Route exact path={LOGIN_URL} component={Login} /> */}
                 <ProtectedRoute exact path={ ITEM_BASE_URL } component={ Items } />
                 <ProtectedRoute exact path={`${ ITEM_BASE_URL }/new`} component={ ItemNew } />
                 <ProtectedRoute exact path={`${ ITEM_BASE_URL }/:id`} component={ ItemDetails } />
