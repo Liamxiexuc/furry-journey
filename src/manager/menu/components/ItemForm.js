@@ -51,12 +51,16 @@ const ItemForm = props => {
                         onChange={props.handleChange}
                         value={props.category}
                     />
-
-
-
-                   
                 </Form.Group>
+                <Button 
+                    disabled={props.isButtonDisabled}
+                    onClick={props.handleSubmit}
+                    >
+                        {props.submitButtonText}
+                </Button>
             </Form>
         </Container>
-    )
-}
+    );
+};
+
+export default ItemForm;

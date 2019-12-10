@@ -25,20 +25,7 @@ class Items extends React.Component {
     }
 
     componentDidMount() {
-        this.loadItems();
-        // this.setState({ isLoading: true, items: []}, () => {
-        //     fetchItems(pageNum, pageSize)
-        //         .then(this.updateItemData)
-        //         .catch(error => this.setState({ error }));
-            //         itemData => {
-            //     this.setState({
-            //         isLoading: false,
-            //         items: itemData.items,
-            //         pagination: itemData.pagination,
-            //     });
-            // }).catch(error => this.setState({error, isLoading: true}))
-            
-           
+        this.loadItems();         
     }
 
     loadItems = (pageNum, pageSize) => {
@@ -72,11 +59,11 @@ class Items extends React.Component {
             <React.Fragment>
                 {/* <ErrorMessage error={this.state.error} /> */}
                 <Header as="h2">
-                    Items
+                    Dishes
                 </Header>
                 <Container >
                     <Button as={Link} to={`${currentPath}/new`} >
-                        Create New Item
+                        Create a New Dish
                     </Button>
                     <Segment basic loading={this.state.isLoading} >
                         {/* <FlexContainer justifyContentValue = "space-between"> */}

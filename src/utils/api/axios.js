@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getToken } from '../auth';
+import { getToken } from '../authentication';
 
 axios.defaults.baseURL = 'http://pizzanodejs-env.tcerqmicmi.ap-southeast-2.elasticbeanstalk.com/api';
 

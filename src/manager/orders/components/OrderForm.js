@@ -70,4 +70,4 @@ const OrderForm = props => {
     );
 };
 
-export default OrderForm
+export default OrderForm;

@@ -7,23 +7,26 @@ import { Link } from 'react-router-dom';
 const ItemCard = props => {
     
     return (
-        <Card as={Link} to={props.to} className="item-card">
+        <Card as={Link} to={props.to} >
             <Image  wrapped />
             <Card.Content>
                 <Card.Header>
-                    {/* {props.productName} */}
+                    Dishes    
                 </Card.Header>
                 <Card.Description>
-                    {/* {props.price} */}
+                    Dish Name: {props.productName}
                 </Card.Description>
                 <Card.Description>
-                    {/* {productType} */}
+                    Dish Price: {props.price}
                 </Card.Description>
                 <Card.Description>
-                    {/* {productInfo} */}
+                    Dish Type: {props.productType}
                 </Card.Description>
                 <Card.Description>
-                    {/* {category} */}
+                    Dish Information: {props.productInfo}
+                </Card.Description>
+                <Card.Description>
+                    Dish Category: {props.category}
                 </Card.Description>
             </Card.Content>
         </Card>

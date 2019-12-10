@@ -46,9 +46,6 @@ class OrderDetails extends React.Component {
                     receiverAddress={this.state.order.receiverAddress}
                     receiverName={this.state.order.receiverName}
                     receiverPhone={this.state.order.receiverPhone}
-
-
-
                
                     photo={this.state.order.photo}
                     isLoading={this.state.isLoading}

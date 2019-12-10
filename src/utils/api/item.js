@@ -1,21 +1,21 @@
 import queryString from 'querystring'
 import { del, get, put, post } from "./axios"
 
-const API_ITEM_URL = '/items';
+const API_ITEM_URL = '/dishes';
 const mockImage = 'https://sdtimes.com/wp-content/uploads/2018/03/jW4dnFtA_400x400.jpg';
 const getApiItemUrlWithId = id => `${API_ITEM_URL}/${id}`;
 
 export const fetchItems = (query) => {
-    const stringfield = queryString.stringify({
+    // const stringfield = queryString.stringify({
          
-        query,
+    //     query,
         
-    });
-    const url = `${API_ITEM_URL}?${stringfield}`;
+    // });
+    const url = `${API_ITEM_URL}`;
 
     return get(url).then(res => ({
         items: res.data.data.map(item => ({ ...item, image: mockImage })),
-        pagination: res.data.pagination,
+        // pagination: res.data.pagination,
     }));
 };
 

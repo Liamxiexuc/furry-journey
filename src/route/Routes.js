@@ -29,7 +29,8 @@ const Routes = () => {
                 {/* <Route exact path={LOGIN_URL} component={Login} /> */}
                 < Route exact path={ ITEM_BASE_URL } component={ Items } />
                 < Route exact path={`${ ITEM_BASE_URL }/new`} component={ ItemNew } />
-                < Route ex ProtectedRoute exact path={`${ ITEM_BASE_URL }/:id/edit`} component={ ItemEdit } />
+                < Route exact path={`${ ITEM_BASE_URL }/:id`} component={ ItemDetails } />
+                < Route exact path={`${ ITEM_BASE_URL }/:id/edit`} component={ ItemEdit } />
 
 
                 <Route exact path={ ORDER_BASE_URL } component={ Orders } />
