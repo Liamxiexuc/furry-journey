@@ -1,0 +1,11 @@
+.b-photo-container {
+  display: flex;
+  justify-content: center;
+  margin: 0, auto;
+  & > img {
+    flex-flow: row, nowrap;
+
+    width: 350px;
+    margin: 20px;
+  }
+}

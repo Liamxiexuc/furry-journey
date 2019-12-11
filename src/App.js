@@ -9,10 +9,12 @@ import { isAuthenticated } from './utils/authentication';
 function App() {
   return (
     <div className="App">
-      {isAuthenticated() && <TopNav />}
+      <TopNav />
       <Routes />
     </div>
   );
 }
 
 export default App;
+
+//      {isAuthenticated() && <TopNav />}

@@ -1,0 +1,13 @@
+.b-show-box {
+  background-color: lightgrey;
+  padding-top: 20px;
+
+
+  & > h1 {
+    font-family: fantasy;
+    font-size: xx-large;
+    padding: 10px;
+    margin-left: 55px;
+    margin-bottom: -10px;
+  }
+}

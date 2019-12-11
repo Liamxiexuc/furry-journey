@@ -1,5 +1,4 @@
 import React from "react";
-import { Route } from "react-router-dom";
 import ItemCard from "./components/ItemCard";
 import FlexContainer from "../../UI/flexContainer/FlexContainer";
 import { fetchItems } from "../../utils/api/item";

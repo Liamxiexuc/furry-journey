@@ -1,3 +1,8 @@
-.login-form {
+.b-form-container {
     margin-top: 10rem;
+    display: flex;
+    justify-content: center;
+}
+.login-form {
+    width: 500px;
 }

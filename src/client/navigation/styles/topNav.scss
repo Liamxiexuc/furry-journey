@@ -1,7 +1,7 @@
 .nav-bar {
   border-bottom: solid 1px rgba(0, 0, 0, 0.2);
   padding: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0rem;
   display: flex;
   height: 70px;
 }
@@ -39,5 +39,9 @@ ul {
 }
 
 .nav-logout.ui.button {
-  margin-left: auto;
+  margin-left: 270px;
+}
+
+.nav-login.ui.button {
+  margin-left: 230px;
 }
