@@ -3,6 +3,8 @@ import ItemForm from './components/ItemForm';
 //import ErrorMessage from '../UI/errorMessage/ErrorMessage';
 import { ITEM_BASE_URL } from '../../route/URLMap';
 import {fetchItemById, saveItemById} from '../../utils/api/item';
+import { Header, Segment } from 'semantic-ui-react';
+import { throwStatement } from '@babel/types';
 
 class ItemEdit extends React.Component {
     constructor(props) {
@@ -61,15 +63,24 @@ class ItemEdit extends React.Component {
     render() {
         return (
             <React.Fragment>
-                 
-                <div className="container">
-                    <div class="header">
-
-                    </div>
-                    <div >
-
-                    </div>
-                </div>
+                <ErrorMessage error={this.state.error} />
+                <Header >
+                    Edit Dish
+                </Header>
+                <Segment loading={this.state.isLoading || this.state.isSaving} >
+                    <ItemForm 
+                        id={this.state.id}
+                        productName={this.state.productName}
+                        price={this.state.price}
+                        productType={this.state.productType}
+                        productInfo={this.state.productInfo}
+                        photo={this.state.photo}
+                        category={this.state.category}
+                        handleChange={this.handleChange}
+                        handleSubmit={this.handleSave}
+                        submitButtonText="Save"
+                    />
+                </Segment>
             </React.Fragment>
         );
     }

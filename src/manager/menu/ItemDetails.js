@@ -1,6 +1,7 @@
 import React from 'react';
-import { fetchItems, fetchItemById } from "../../utils/api/item";
+import { fetchItemById } from "../../utils/api/item";
 import ItemInfo from '../menu/components/ItemInfo';
+import { Header } from 'semantic-ui-react';
 
 class ItemDetails extends React.Component {
     constructor (props) {
@@ -17,17 +18,7 @@ class ItemDetails extends React.Component {
 
     componentDidMount() {
         const itemId = this.props.match.params.id;
-        // this.setState({ isLoading: true}, () => {
-        //     fetchItemsById(itemId).then(item => this.setState({
-        //         item,
-        //         isLoading: false,
-        //     }))
-        //     .catch(error => this.setState({ 
-        //         error, 
-        //         isLoading: false,
-        //     }))
-            
-        // })
+
         this.loadItem(itemId);
     }
 
@@ -37,30 +28,29 @@ class ItemDetails extends React.Component {
             .catch(this.setErrorState);
     });
 
-    // deleteItem = () => {
-    //     if (window.confirm('Are you sure?')) {
-    //         const itemId = this.props.match.params.id;
-    //         this.setState({ isDeleting: true}, () => {
-    //             this.deleteItemById(itemId).then(() => {
-    //                 this.props.history.replace()
-    //             });
-    //         })
-    //     }
-        
-    // }
 
     setErrorState = error => this.setState({error});
 
     render() {
         return(
             <React.Fragment>
-                
-                <div className="container">
-                    <div className="header">
-                        ItemDetails
-                    </div>  
-
-                </div>
+                <ErrorMessage error={this.state.error} />
+                <Header >
+                    Dish Details
+                </Header>
+                <ItemInfo 
+                    itemId={this.state.item.id}
+                    productName={this.state.productName}
+                    price={this.state.price}
+                    productType={this.state.productType}
+                    productInfo={this.state.productInfo}
+                    photo={this.state.photo}
+                    category={this.state.category}
+                    isLoading={this.state.isLoading}
+                    photo={this.state.item.photo}
+                    reloadPage={this.loadItem}
+                    setErrorState={this.setErrorState}
+                />
             </React.Fragment>
         )
     }

@@ -47,7 +47,7 @@ class Users extends React.Component {
     }
 
     handlePageChange = (event, data) => {
-        this.loadItems(data.activePage);
+        this.loadUsers(data.activePage);
     }
 
     
