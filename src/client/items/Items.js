@@ -1,9 +1,8 @@
 import React from "react";
 import ItemCard from "./components/ItemCard";
-import FlexContainer from "../../UI/flexContainer/FlexContainer";
 import { fetchItems } from "../../utils/api/item";
 import { ErrorMessage } from "../../UI/errorMessage/ErrorMessage";
-import { Segment } from "semantic-ui-react";
+import { Segment, Placeholder } from "semantic-ui-react";
 
 import "./styles/items.scss";
 
@@ -36,23 +35,62 @@ class Items extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="menu-body-container">
         <ErrorMessage error={this.state.error} />
-        <Segment basic loading={this.state.isLoading}>
-          <FlexContainer justifyContentValue="space-between">
-            <p>This is Items page </p>
-            {this.state.items.map(item => (
-              <ItemCard
-                key={item.id}
-                itemName={item.name}
-                itemDescription={item.description}
-              />
-            ))}
-          </FlexContainer>
-        </Segment>
+        <div className="body-left">
+          <div className="body-left-block">
+            <h1>Favorites</h1>
+            <div className="body-item-container">
+              <ItemCard />
+              <ItemCard />
+              <ItemCard />
+            </div>
+          </div>
+          <div className="body-left-block">
+            <h1>Premium Pizzas</h1>
+            <div className="body-item-container">
+              <ItemCard />
+              <ItemCard />
+              <ItemCard />
+              <ItemCard />
+              <ItemCard />
+            </div>
+          </div>
+          <div className="body-left-block">
+            <h1>Drinks</h1>
+            <div className="body-item-container">
+              <ItemCard />
+              <ItemCard />
+            </div>
+          </div>
+          <div className="body-left-block">
+            <h1>Sides</h1>
+            <div className="body-item-container">
+              <ItemCard />
+              <ItemCard />
+              <ItemCard />
+              <ItemCard />
+            </div>
+          </div>
+        </div>
+        <div className="body-right">
+          <Placeholder style={{ height: 500, width: 270 }}>
+            <Placeholder.Image />
+          </Placeholder>
+        </div>
       </div>
     );
   }
 }
 
 export default Items;
+
+/*   {
+              this.state.items.map(item => (
+                <ItemCard
+                  
+                  itemName={item.name}
+                  itemDescription={item.description}
+                />
+              ));
+            } */

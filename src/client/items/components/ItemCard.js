@@ -1,16 +1,15 @@
 import React from "react";
 import { withRouter } from 'react-router-dom';
-import { Card, Icon } from "semantic-ui-react";
+import { Card, Icon, Button } from "semantic-ui-react";
 
 const ItemCard = props => {
    const { history } = props;
   // history.push('/home');
 
 const extra = (
-  <a>
-    <Icon name="thumbs up" />
-    16 Likes
-  </a>
+
+    <Button fluid color="red">Select</Button>
+
 );
 
   return (
@@ -18,8 +17,8 @@ const extra = (
       <Card
         image={"photo-pizzaA.jpg"}
         header="Pizza"
-        meta="Veg"
-        description="Elliot is a sound engineer living in Nashville who enjoys playing guitar and hanging with his cat."
+        meta="$13.89"
+        description="Elliot is a sound engineer living in Nashville."
         extra={extra}
       />
     </div>
