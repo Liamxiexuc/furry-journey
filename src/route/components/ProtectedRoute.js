@@ -2,7 +2,7 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 
-import { isLoggedIn } from '../../utils/auth';
+import { isLoggedIn } from '../../utils/authentication';
 import { LOGIN_URL } from '../URLMap';
 
 const ProtectedRoute = ({ component: ProtectedComponent, ...rest }) => {

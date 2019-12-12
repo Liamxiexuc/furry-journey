@@ -17,13 +17,15 @@ import UserNew from '../manager/user/UserNew';
 import UserDetails from '../manager/user/UserDetails';
 import UserEdit from '../manager/user/UserEdit';
 
-// import ProtectedRoute from './components/ProtectedRoute';
+import Login from '../manager/login/Login';
+
+import ProtectedRoute from './components/ProtectedRoute';
 
 import {
     ITEM_BASE_URL,
     ORDER_BASE_URL,
     USER_BASE_URL,
-
+    LOGIN_URL
 } from './URLMap';
 
 const Routes = () => {
@@ -31,7 +33,7 @@ const Routes = () => {
         <Fragment>
             <Switch>
                 <Redirect exact from="/" to={ ORDER_BASE_URL } />
-                {/* <Route exact path={LOGIN_URL} component={Login} /> */}
+                <ProtectedRoute exact path={LOGIN_URL} component={Login} />
                 < Route exact path={ ITEM_BASE_URL } component={ Items } />
                 < Route exact path={`${ ITEM_BASE_URL }/new`} component={ ItemNew } />
                 < Route exact path={`${ ITEM_BASE_URL }/:id`} component={ ItemDetails } />

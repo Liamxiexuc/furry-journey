@@ -6,7 +6,9 @@ import {
     ORDER_BASE_URL,
     ITEM_BASE_URL,
     USER_BASE_URL,
-} from '../route/URLMap'
+    LOGIN_URL,
+} from '../route/URLMap';
+import { isLoggedIn, removeToken } from '../utils/authentication';
 
 import './styles/topNav.scss';
 
@@ -21,6 +23,8 @@ const TopNav = () => {
             {/* <NavLink to="/orders/new" activeClassName="top-nav--active" > New Order </NavLink> */}
 
             <NavLink to={USER_BASE_URL} activeClassName="top-nav--active" > All Users </NavLink>
+        
+            <NavLink to={LOGIN_URL} activeClassName="top-nav--active" > Login </NavLink>
         </div>
     )
 
