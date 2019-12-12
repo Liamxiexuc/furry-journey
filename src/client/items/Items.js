@@ -2,8 +2,11 @@ import React from "react";
 import ItemCard from "./components/ItemCard";
 import { fetchItems } from "../../utils/api/item";
 import { ErrorMessage } from "../../UI/errorMessage/ErrorMessage";
-import { Segment, Placeholder } from "semantic-ui-react";
+import { Segment, Placeholder, Rail, Ref, Sticky } from "semantic-ui-react";
 
+import { ERROR_URL } from "../../routes/URLMap";
+import Menu from "./components/Menu";
+import Basket from "./components/Basket";
 import "./styles/items.scss";
 
 class Items extends React.Component {
@@ -20,63 +23,32 @@ class Items extends React.Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.setState({ isLoading: true }, () => {
       fetchItems()
         .then(itemData => {
+          console.log(itemData);
           this.setState({
-            isLoading: false
-            //items: itemData.items,
+            isLoading: false,
+            items: itemData.data
           });
         })
-        .catch(error => this.setState({ error, isLoading: false }));
+        .catch(error =>
+          this.setState({ error, isLoading: false }, error => {
+            this.props.history.push({ pathname: ERROR_URL, state: { error } });
+          })
+        );
     });
   }
 
   render() {
     return (
       <div className="menu-body-container">
-        <ErrorMessage error={this.state.error} />
-        <div className="body-left">
-          <div className="body-left-block">
-            <h1>Favorites</h1>
-            <div className="body-item-container">
-              <ItemCard />
-              <ItemCard />
-              <ItemCard />
-            </div>
-          </div>
-          <div className="body-left-block">
-            <h1>Premium Pizzas</h1>
-            <div className="body-item-container">
-              <ItemCard />
-              <ItemCard />
-              <ItemCard />
-              <ItemCard />
-              <ItemCard />
-            </div>
-          </div>
-          <div className="body-left-block">
-            <h1>Drinks</h1>
-            <div className="body-item-container">
-              <ItemCard />
-              <ItemCard />
-            </div>
-          </div>
-          <div className="body-left-block">
-            <h1>Sides</h1>
-            <div className="body-item-container">
-              <ItemCard />
-              <ItemCard />
-              <ItemCard />
-              <ItemCard />
-            </div>
-          </div>
-        </div>
+        <Menu items={this.state.items} />
         <div className="body-right">
-          <Placeholder style={{ height: 500, width: 270 }}>
-            <Placeholder.Image />
-          </Placeholder>
+          <div className="body-right-sticky">
+            <Basket items={this.state.items} />
+          </div>
         </div>
       </div>
     );

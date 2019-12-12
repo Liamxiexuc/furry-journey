@@ -1,8 +1,11 @@
 import React from "react";
 import { Message, Icon } from "semantic-ui-react";
 
-export const ErrorMessage = ({ error }) => (
-         <Message icon error hidden={!error} size="large">
+ const ErrorMessage = ({ props }) => {
+   const error = this.props.location.state.error;
+   
+  return (
+         <Message icon error  size="large">
            <Icon name="ambulance" />
            <Message.Content>
            <Message.Header>
@@ -11,6 +14,7 @@ export const ErrorMessage = ({ error }) => (
            {error && error.message}
            </Message.Content>
          </Message>
-       );
+         )
+ };
 
-//export default ErrorMessage;
+export default ErrorMessage;

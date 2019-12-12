@@ -3,7 +3,7 @@
 }
 
 .body-left {
-    border: 1px solid black;
+
     width: 70%;
     padding: 50px 120px;
     display: flex;
@@ -12,9 +12,20 @@
 
 
 .body-right {
-    border: 1px solid red;
+    
+    right: 0px;
+    top: 70px;
     width: 30%;
     padding-top: 60px;
+
+    &-sticky {
+        position: sticky;
+        position: -webkit-sticky;
+        display: flex;
+        top: 20px;
+        bottom: 20px;
+    }
+
 }
 
 .body-left-block > h1 {
@@ -28,12 +39,6 @@
     border-top: 1px dotted lightgray;
     padding-bottom: 20px;
 }
-
-
-
-
-
-
 
 
 

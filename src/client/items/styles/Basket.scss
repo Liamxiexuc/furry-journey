@@ -1,0 +1,54 @@
+.basket-container {
+    width: 270px;
+    height: 350px;
+
+    border: 1px solid cadetblue;
+    border-radius: 10px;
+}
+
+.basket-header {
+    padding: 10px 20px;
+    width: 270px;
+    font-size: large;
+    & > h2 {
+        font-family: Impact;
+    }
+    
+}
+
+.basket-body {
+
+    width: 270px;
+    padding: 10px;
+
+    & > p {
+        color: grey;
+        
+    }
+
+    &-item {
+        margin-top: 12px;
+        margin-bottom: 36px;
+        padding: 10px;
+    }
+
+    &-total {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 10px;
+        padding: 10px 0;
+        border-bottom: 1px dotted grey;
+    }
+}
+
+.basket-footer {
+
+    width: 270px;
+    padding: 10px;
+
+}
+
+.basket-checkout-container {
+    margin: 10px 0px;
+    padding: 10px 0px;
+}
