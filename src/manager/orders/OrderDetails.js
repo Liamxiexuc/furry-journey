@@ -33,7 +33,7 @@ class OrderDetails extends React.Component {
     render() {
         return (
             <React.Fragment>
-                {/* <ErrorMessage error={this.state.error} /> */}
+                <ErrorMessage error={this.state.error} />
                 <Header as="h2" textAlign="center">
                     Order Details
                 </Header>
