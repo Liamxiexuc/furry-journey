@@ -33,7 +33,7 @@ const Routes = () => {
         <Fragment>
             <Switch>
                 <Redirect exact from="/" to={ ORDER_BASE_URL } />
-                <ProtectedRoute exact path={LOGIN_URL} component={Login} />
+                < Route exact path={LOGIN_URL} component={Login} />
                 < Route exact path={ ITEM_BASE_URL } component={ Items } />
                 < Route exact path={`${ ITEM_BASE_URL }/new`} component={ ItemNew } />
                 < Route exact path={`${ ITEM_BASE_URL }/:id`} component={ ItemDetails } />
