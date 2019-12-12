@@ -1,9 +1,9 @@
 import React from 'react';
-import { Segment, Header } from 'semantic-ui-react';
+import { Segment} from 'semantic-ui-react';
 
 import OrderForm from '../orders/components/OrderForm';
-// import ErrorMessage from '../UI/errorMessage/ErrorMessage';
-// import Header from '../UI/header/Header';
+import ErrorMessage from '../../UI/errorMessage/ErrorMessage';
+import Header from '../../UI/header/Header';
 import { ORDER_BASE_URL } from '../../route/URLMap';
 import { createOrder } from '../../utils/api/order';
 
@@ -49,7 +49,7 @@ class OrderNew extends React.Component {
     render() {
         return (
             <React.Fragment>
-                {/* <ErrorMessage error={this.state.error} /> */}
+                <ErrorMessage error={this.state.error} />
                 <Header as="h2" textAlign="center">
                     Create Order
                 </Header>

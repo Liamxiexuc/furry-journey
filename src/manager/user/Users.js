@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom';
 
 
 import UserCard from './components/UserCard';
- 
+import ErrorMessage from '../../UI/errorMessage/ErrorMessage';
+import FlexContainer from '../../UI/flexContainer/FlexContainer';
 
 import { USER_BASE_URL } from '../../route/URLMap';
-import './styles/user.scss';
+// import './styles/user.scss';
 import { fetchUsers } from '../../utils/api/user';
 
 class Users extends React.Component {
@@ -57,7 +58,7 @@ class Users extends React.Component {
 
         return (
             <React.Fragment>
-                {/* <ErrorMessage error={this.state.error} /> */}
+                <ErrorMessage error={this.state.error} />
                 <Header as="h2">
                     Users
                 </Header>
@@ -66,8 +67,8 @@ class Users extends React.Component {
                         Create a New User
                     </Button>
                     <Segment basic loading={this.state.isLoading} >
-                        {/* <FlexContainer justifyContentValue = "space-between"> */}
-                            {this.state.users.map(item => (
+                        <FlexContainer justifyContentValue = "space-between">
+                            {this.state.users.map(user => (
                                 <UserCard 
                                 firstName={user.firstName}
                                 lastName={user.lastName}
@@ -78,18 +79,18 @@ class Users extends React.Component {
                                     to={`${USER_BASE_URL}/${user.id}`}
                                 />
                             ))}
-                        {/* </FlexContainer> */}
+                        </FlexContainer>
                     </Segment>
                     {
                         this.state.pagination.page && (
-                            // <FlexContainer >
+                            <FlexContainer >
                                 <Pagination 
                                     activePage={this.state.pagination.page}
                                     disabled={this.state.isLoading}
                                     onPageChange={this.handlePageChange}
                                     totalPages={this.state.pagination.pages}
                                 />
-                            // </FlexContainer>
+                            </FlexContainer>
                         )
                     }
                 </Container>    

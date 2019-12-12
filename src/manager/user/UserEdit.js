@@ -1,10 +1,12 @@
 import React from 'react';
-import UserForm from './components/ItemForm';
-//import ErrorMessage from '../UI/errorMessage/ErrorMessage';
+import {Segment} from 'semantic-ui-react';
+import UserForm from './components/UserForm';
+import ErrorMessage from '../../UI/errorMessage/ErrorMessage';
+import Header from '../../UI/header/Header';
 import { USER_BASE_URL } from '../../route/URLMap';
 import {fetchUserById, saveUserById} from '../../utils/api/user';
 
-class ItemEdit extends React.Component {
+class UserEdit extends React.Component {
     constructor(props) {
         super(props);
 
@@ -57,7 +59,7 @@ class ItemEdit extends React.Component {
         const user = {...this.state};
         const id = this.props.match.params.id;
         this.setState({ isSaving: true}, () => {
-            saveItemById(id, user)
+            saveUserById(id, user)
                 .then(() => this.props.history.push(`${USER_BASE_URL}/${id}`))
                 .catch(error => this.setState({ error }));
         });

@@ -3,19 +3,21 @@ import { Button, Container, Divider, Image, Label, Segment, Header } from 'seman
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 
-// import ItemManagement from './ItemManagement';
-// import UserManagement from './UserManagement';
+import ItemManagement from './ItemManagement';
+import UserManagement from './UserManagement';
 
 import { ORDER_BASE_URL } from '../../../route/URLMap';
 
 import { deleteOrderById } from '../../../utils/api/order';
 
 
+
 const OrderInfo = props => {
     const [ isDeleting, setIsDeleting ] = useState(false);
 
     const {
-        orderedItems = [],
+        selectedItems = [],
+        selectedUsers = [],
         orderId,
         orderStatus,
         orderTotalPrice,
@@ -47,21 +49,7 @@ const OrderInfo = props => {
     };
 
     return (
-        // <div className="container">
-        //     <div className="header">
-        //         {orderedItems}
-        //     </div>
-        //     <div className="body">
-        //         <div className="order-status"></div>
-        //         <div className="order-Total-Price"></div>
-        //         <div className="pay-Status"></div>
-        //         <div className="receiver-address"></div>
-        //         <div className="receiver-name"></div>
-        //         <div className="receiver-phone"></div>
-        //         <div className="receiver-comment"></div>
-        //     </div>
 
-        // </div>
         <Container>
             <Image  />
             <Header as="h3">
@@ -88,9 +76,19 @@ const OrderInfo = props => {
                 </p>
                 <div>
                     <span>Order Dish: </span>
-                    {orderedItems.map(item => <Label key={item._id}>{item.productName}</Label>)}
+                    {selectedItems.map(item => <Label key={item._id}>{item.productName}</Label>)}
                 </div>
-                
+                <ItemManagement 
+                    orderId={orderId}
+                    reloadPage={reloadPage}
+                    selectedItems={selectedItems}
+                />
+                <UserManagement 
+                    orderId={orderId}
+                    reloadPage={reloadPage}
+                    selectedUsers={selectedUsers}
+                />
+                <Divider />
                 <Button as={Link} to={`${currentPath}/edit`}>
                     Edit
                 </Button>

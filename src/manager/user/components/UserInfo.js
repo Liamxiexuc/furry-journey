@@ -2,10 +2,10 @@ import React, { useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import { withRouter } from 'react-router';
 import {Button, Container, Divider, Image, Label, Segment, Header} from 'semantic-ui-react';
-import { ITEM_BASE_URL } from '../../../route/URLMap';
+import { USER_BASE_URL } from '../../../route/URLMap';
 
 
-import { deleteItemById } from '../../../utils/api/item';
+import { deleteUserById } from '../../../utils/api/user';
 
 const UserInfo = props => {
     const [isDeleting, setIsDeleting] = useState(false);
@@ -30,7 +30,7 @@ const UserInfo = props => {
 
     useEffect(()=> {
         if(isDeleting) {
-            deleteItemById(userId)
+            deleteUserById(userId)
                 .then(() => {
                     history.push( USER_BASE_URL );
                 })
@@ -71,13 +71,20 @@ const UserInfo = props => {
                     { phone }
                 </p>
                 <p>
+                    { userType }
+                </p>
+                <p>
                     { birthDay }
                 </p>
                 <p>
                     { address }
                 </p>
-                <Button >
+                <Divider />
+                <Button as={Link} to={`${currentPath}/edit`}>
                     Edit
+                </Button>
+                <Button loading={isDeleting} onClick={deleteUser}>
+                    Delete
                 </Button>
             </Segment>
         </Container>

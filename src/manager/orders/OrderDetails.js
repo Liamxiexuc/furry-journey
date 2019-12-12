@@ -1,9 +1,9 @@
 import React from 'react';
-import { Segment, Header } from 'semantic-ui-react';
+import { Segment} from 'semantic-ui-react';
 
 import OrderInfo from '../orders/components/OrderInfo';
-// import ErrorMessage from '../UI/errorMessage/ErrorMessage';
-// import Header from '../UI/header/Header';
+import ErrorMessage from '../../UI/errorMessage/ErrorMessage';
+import Header from '../../UI/header/Header';
 import { fetchOrderById } from '../../utils/api/order';
 
 class OrderDetails extends React.Component {
@@ -38,7 +38,7 @@ class OrderDetails extends React.Component {
                     Order Details
                 </Header>
                 <OrderInfo
-                     
+                    selectedItems={this.state.order.item}
                     orderId={this.state.order.id}
                     orderStatus={this.state.order.orderStatus}
                     orderTotalPrice={this.state.order.orderTotalPrice}
@@ -52,7 +52,7 @@ class OrderDetails extends React.Component {
                     
                     reloadPage={this.loadOrder}
                     setErrorState={this.setErrorState}
-                    
+                    selectedUsers={this.state.order.users}
                 />
             </React.Fragment>
         );

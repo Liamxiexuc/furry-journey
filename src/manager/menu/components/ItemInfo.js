@@ -66,8 +66,12 @@ const ItemInfo = props => {
                 <p>
                     { category}
                 </p>
-                <Button >
+                <Divider />
+                <Button as={Link} to={`${currentPath}/edit`}>
                     Edit
+                </Button>
+                <Button loading={isDeleting} onClick={deleteItem}>
+                    Delete
                 </Button>
             </Segment>
         </Container>

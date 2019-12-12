@@ -1,7 +1,10 @@
 import React from 'react';
-import { fetchItemById } from "../../utils/api/item";
 import ItemInfo from '../menu/components/ItemInfo';
-import { Header } from 'semantic-ui-react';
+
+import ErrorMessage from '../../UI/errorMessage/ErrorMessage';
+import Header from '../../UI/header/Header';
+import { fetchItemById } from "../../utils/api/item";
+
 
 class ItemDetails extends React.Component {
     constructor (props) {

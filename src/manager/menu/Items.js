@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 
 
 import ItemCard from './components/ItemCard';
- 
+import ErrorMessage from '../../UI/errorMessage/ErrorMessage';
+import FlexContainer from '../../UI/flexContainer/FlexContainer';
 
 import { ITEM_BASE_URL } from '../../route/URLMap';
 import './styles/item.scss';
@@ -57,7 +58,7 @@ class Items extends React.Component {
 
         return (
             <React.Fragment>
-                {/* <ErrorMessage error={this.state.error} /> */}
+                <ErrorMessage error={this.state.error} />
                 <Header as="h2">
                     Dishes
                 </Header>
@@ -66,7 +67,7 @@ class Items extends React.Component {
                         Create a New Dish
                     </Button>
                     <Segment basic loading={this.state.isLoading} >
-                        {/* <FlexContainer justifyContentValue = "space-between"> */}
+                        <FlexContainer justifyContentValue = "space-between">
                             {this.state.items.map(item => (
                                 <ItemCard 
                                     productionName={item.productionName}
@@ -78,18 +79,18 @@ class Items extends React.Component {
                                     to={`${ITEM_BASE_URL}/${item.id}`}
                                 />
                             ))}
-                        {/* </FlexContainer> */}
+                        </FlexContainer>
                     </Segment>
                     {
                         this.state.pagination.page && (
-                            // <FlexContainer >
+                            <FlexContainer >
                                 <Pagination 
                                     activePage={this.state.pagination.page}
                                     disabled={this.state.isLoading}
                                     onPageChange={this.handlePageChange}
                                     totalPages={this.state.pagination.pages}
                                 />
-                            // </FlexContainer>
+                            </FlexContainer>
                         )
                     }
                 </Container>    

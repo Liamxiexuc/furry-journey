@@ -1,7 +1,8 @@
 import React from 'react';
 import { fetchUserById } from "../../utils/api/user";
-import UserInfo from '../menu/components/UserInfo';
-import { Header } from 'semantic-ui-react';
+import UserInfo from '../user/components/UserInfo';
+import ErrorMessage from '../../UI/errorMessage/ErrorMessage'
+import Header from '../../UI/header/Header';
 import { thisExpression } from '@babel/types';
 
 class UserDetails extends React.Component {
@@ -24,7 +25,7 @@ class UserDetails extends React.Component {
     }
 
     loadUser = userId => this.setState({ isLoading: true}, () => {
-        fetchItemById(userId)
+        fetchUserById(userId)
             .then(user => this.setState({ user, isLoading: false}))
             .catch(this.setErrorState);
     });

@@ -1,10 +1,12 @@
 import React from 'react';
-import { Button, Container, Pagination, Segment, Header } from 'semantic-ui-react';
+import { Button, Container, Pagination, Segment } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 import OrderCard from './components/OrderCard';
- 
+import ErrorMessage from '../../UI/errorMessage/ErrorMessage';
+import FlexContainer from '../../UI/flexContainer/FlexContainer'; 
 
+import Header from '../../UI/header/Header';
 import { ORDER_BASE_URL } from '../../route/URLMap';
 import { fetchOrders } from '../../utils/api/order';
 
@@ -49,7 +51,7 @@ class Orders extends React.Component {
 
         return(
             <React.Fragment>
-                {/* <ErrorMessage error={this.state.error} /> */}
+                <ErrorMessage error={this.state.error} />
                 <Header as="h2">
                     Orders
                 </Header>
@@ -58,7 +60,7 @@ class Orders extends React.Component {
                         Create New Order
                     </Button>
                     <Segment loading={this.state.isLoading}>
-                        {/* <FlexContainer > */}
+                        <FlexContainer >
                             {this.state.orders.map(order => (
                                 <OrderCard 
                                     receiverName={order.receiverName}
@@ -71,18 +73,18 @@ class Orders extends React.Component {
                                     to={`${ORDER_BASE_URL}/${order.id}`}
                                 />
                             ))}
-                        {/* </FlexContainer> */}
+                        </FlexContainer>
                     </Segment>
                     {
                         this.state.pagination.page && (
-                            // <FlexContainer >
+                            <FlexContainer >
                                 <Pagination 
                                     activePage={this.state.pagination.page}
                                     disabled={this.state.isLoading}
                                     onPageChange={this.handlePageChange}
                                     totalPages={this.state.pagination.pages}
                                 />
-                            // </FlexContainer>
+                            </FlexContainer>
                         )
                     }
                 </Container>
@@ -93,16 +95,5 @@ class Orders extends React.Component {
 
 };
 
-// const Orders = () => {
-//     return (
-//         <div> 
-//             <OrderCard />
-//             <OrderCard />
-//             <OrderCard />
-//         </div>
-
-//     )
-    
-// };
 
 export default Orders;

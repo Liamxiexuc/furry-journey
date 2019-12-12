@@ -12,6 +12,11 @@ import ItemNew from '../manager/menu/ItemNew';
 import ItemDetails from '../manager/menu/ItemDetails';
 import ItemEdit from '../manager/menu/ItemEdit';
 
+import Users from '../manager/user/Users';
+import UserNew from '../manager/user/UserNew';
+import UserDetails from '../manager/user/UserDetails';
+import UserEdit from '../manager/user/UserEdit';
+
 // import ProtectedRoute from './components/ProtectedRoute';
 
 import {
@@ -25,7 +30,7 @@ const Routes = () => {
     return (
         <Fragment>
             <Switch>
-                <Redirect exact from="/" to={ ITEM_BASE_URL } />
+                <Redirect exact from="/" to={ ORDER_BASE_URL } />
                 {/* <Route exact path={LOGIN_URL} component={Login} /> */}
                 < Route exact path={ ITEM_BASE_URL } component={ Items } />
                 < Route exact path={`${ ITEM_BASE_URL }/new`} component={ ItemNew } />
@@ -37,6 +42,11 @@ const Routes = () => {
                 < Route exact path={`${ ORDER_BASE_URL }/new`} component={ OrderNew }/>
                 < Route exact path={`${ ORDER_BASE_URL }/:id`} component={ OrderDetails } />
                 < Route exact path={`${ ORDER_BASE_URL }/:id/edit`} component={ OrderEdit } />
+
+                <Route exact path={ USER_BASE_URL } component={ Users } />
+                < Route exact path={`${ USER_BASE_URL }/new`} component={ UserNew }/>
+                < Route exact path={`${ USER_BASE_URL }/:id`} component={ UserDetails } />
+                < Route exact path={`${ USER_BASE_URL }/:id/edit`} component={ UserEdit } />
            
             </Switch>
         </Fragment>
