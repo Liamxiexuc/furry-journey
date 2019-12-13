@@ -13,3 +13,4 @@ export const SIGNUP_CLIENT_URL = "/signup";
 export const AFTER_SIGNUP_URL = "/signup-success";
 export const ABOUTUS_URL = "/aboutus";
 export const ERROR_URL = "/error";
+export const PROFILE_URL = '/profile';

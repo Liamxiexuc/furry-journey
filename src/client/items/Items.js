@@ -23,19 +23,21 @@ class Items extends React.Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.setState({ isLoading: true }, () => {
       fetchItems()
         .then(itemData => {
-          console.log(itemData);
           this.setState({
             isLoading: false,
             items: itemData.data
           });
         })
         .catch(error =>
-          this.setState({ error, isLoading: false }, error => {
-            this.props.history.push({ pathname: ERROR_URL, state: { error } });
+          this.setState({ error, isLoading: false }, () => {
+            this.props.history.push({
+              pathname: ERROR_URL,
+              state: { error: this.state.error }
+            });
           })
         );
     });
