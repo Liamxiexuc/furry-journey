@@ -7,6 +7,7 @@ import ItemCard from './components/ItemCard';
 import ErrorMessage from '../../UI/ErrorMessage/errorMessage';
 import FlexContainer from '../../UI/flexContainer/FlexContainer';
 
+import { ERROR_URL } from "../../route/URLMap";
 import { ITEM_BASE_URL } from '../../route/URLMap';
 import './styles/item.scss';
 import { fetchItems } from '../../utils/api/item';
@@ -26,30 +27,49 @@ class Items extends React.Component {
     }
 
     componentDidMount() {
-        this.loadItems();         
-    }
-
-    loadItems = (pageNum, pageSize) => {
-        this.setState({ isLoading: true, items: []}, ()=> {
-            fetchItems(pageNum, pageSize)
-                .then(this.updateItemData)
-                .catch(error => this.setState({error}));
-        });
+        //this.loadItems();    
+        this.setState({ isLoading: true}, () => {
+            fetchItems()
+                .then(itemData => {
+                    console.log(itemData);
+                    this.setState({
+                        isLoading: false,
+                        items: itemData
+                    });
+                })
+                // .catch(error =>
+                //     this.setState({error, isLoading: false}, error => {
+                //         this.props.history.push({ pathname: ERROR_URL, state: {error}});
+                //     }))
+            })
         
     }
 
-    updateItemData = itemData => {
-        this.setState({
-            items: itemData.items,
-            isLoading: false,
-            pagination: itemData.pagination,
-        })
+    // loadItems = (pageNum, pageSize) => {
+    //     this.setState({ isLoading: true, items: []}, ()=> {
+    //         fetchItems(pageNum, pageSize)
+    //             .then(this.updateItemData)
+    //             .catch(error => this.setState({error}));
+    //     });
         
-    }
+    // }
 
-    handlePageChange = (event, data) => {
-        this.loadItems(data.activePage);
-    }
+
+
+    // updateItemData = itemData => {
+    //     console.log(itemData);
+    //     this.setState({
+            
+    //         items: itemData.data,
+    //         isLoading: false,
+    //         pagination: itemData.pagination,
+    //     })
+        
+    // }
+
+    // handlePageChange = (event, data) => {
+    //     this.loadItems(data.activePage);
+    // }
 
     
 
@@ -81,7 +101,7 @@ class Items extends React.Component {
                             ))}
                         </FlexContainer>
                     </Segment>
-                    {
+                    {/* {
                         this.state.pagination.page && (
                             <FlexContainer >
                                 <Pagination 
@@ -92,7 +112,7 @@ class Items extends React.Component {
                                 />
                             </FlexContainer>
                         )
-                    }
+                    } */}
                 </Container>    
             </React.Fragment>
         );

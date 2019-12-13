@@ -3,3 +3,4 @@ export const ORDER_BASE_URL = '/orders';
 export const SHOP_BASE_URL = '/shop';
 export const USER_BASE_URL = '/user';
 export const LOGIN_URL = '/login';
+export const ERROR_URL = "/error";

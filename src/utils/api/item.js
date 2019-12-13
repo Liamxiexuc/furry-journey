@@ -5,7 +5,7 @@ const API_ITEM_URL = '/dishes';
 const mockImage = 'https://sdtimes.com/wp-content/uploads/2018/03/jW4dnFtA_400x400.jpg';
 const getApiItemUrlWithId = id => `${API_ITEM_URL}/${id}`;
 
-export const fetchItems = (query) => {
+export const fetchItems = () => {
     // const stringfield = queryString.stringify({
          
     //     query,
@@ -13,8 +13,12 @@ export const fetchItems = (query) => {
     // });
     const url = `${API_ITEM_URL}`;
 
-    return get(url).then(res => ({
-        items: res.data.data.map(item => ({ ...item, image: mockImage })),
+    return get(url)
+            .then(res => (
+                console.log(res),
+                {
+        
+        items: res.data.data.map(item => item),
         // pagination: res.data.pagination,
     }));
 };
