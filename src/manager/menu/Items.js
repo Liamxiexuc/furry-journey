@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 
 import ItemCard from './components/ItemCard';
-import ErrorMessage from '../../UI/errorMessage/ErrorMessage';
+import ErrorMessage from '../../UI/ErrorMessage/errorMessage';
 import FlexContainer from '../../UI/flexContainer/FlexContainer';
 
 import { ITEM_BASE_URL } from '../../route/URLMap';

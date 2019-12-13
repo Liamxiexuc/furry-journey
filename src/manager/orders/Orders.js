@@ -3,7 +3,7 @@ import { Button, Container, Pagination, Segment } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 import OrderCard from './components/OrderCard';
-import ErrorMessage from '../../UI/errorMessage/ErrorMessage';
+import ErrorMessage from '../../UI/ErrorMessage/errorMessage';
 import FlexContainer from '../../UI/flexContainer/FlexContainer'; 
 
 import Header from '../../UI/header/Header';

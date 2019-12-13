@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-const JWT_TOKEN_NAME = 'jwtToken-jr-pizza';
+const JWT_TOKEN_NAME = 'jwt';
 
 export const getToken = () => localStorage.getItem(JWT_TOKEN_NAME);
 

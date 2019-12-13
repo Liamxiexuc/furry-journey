@@ -1,7 +1,7 @@
 import React from 'react';
 import { fetchUserById } from "../../utils/api/user";
 import UserInfo from '../user/components/UserInfo';
-import ErrorMessage from '../../UI/errorMessage/ErrorMessage'
+import ErrorMessage from '../../UI/ErrorMessage/errorMessage'
 import Header from '../../UI/header/Header';
 import { thisExpression } from '@babel/types';
 

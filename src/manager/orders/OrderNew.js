@@ -2,7 +2,7 @@ import React from 'react';
 import { Segment} from 'semantic-ui-react';
 
 import OrderForm from '../orders/components/OrderForm';
-import ErrorMessage from '../../UI/errorMessage/ErrorMessage';
+import ErrorMessage from '../../UI/ErrorMessage/errorMessage';
 import Header from '../../UI/header/Header';
 import { ORDER_BASE_URL } from '../../route/URLMap';
 import { createOrder } from '../../utils/api/order';

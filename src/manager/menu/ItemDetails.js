@@ -1,7 +1,7 @@
 import React from 'react';
 import ItemInfo from '../menu/components/ItemInfo';
 
-import ErrorMessage from '../../UI/errorMessage/ErrorMessage';
+import ErrorMessage from '../../UI/ErrorMessage/errorMessage';
 import Header from '../../UI/header/Header';
 import { fetchItemById } from "../../utils/api/item";
 

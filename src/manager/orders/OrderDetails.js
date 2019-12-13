@@ -2,7 +2,7 @@ import React from 'react';
 import { Segment} from 'semantic-ui-react';
 
 import OrderInfo from '../orders/components/OrderInfo';
-import ErrorMessage from '../../UI/errorMessage/ErrorMessage';
+import ErrorMessage from '../../UI/ErrorMessage/errorMessage';
 import Header from '../../UI/header/Header';
 import { fetchOrderById } from '../../utils/api/order';
 

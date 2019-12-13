@@ -1,7 +1,7 @@
 import React from 'react';
 import {Segment} from 'semantic-ui-react';
 import UserForm from './components/UserForm';
-import ErrorMessage from '../../UI/errorMessage/ErrorMessage';
+import ErrorMessage from '../../UI/ErrorMessage/errorMessage';
 import Header from '../../UI/header/Header';
 import { USER_BASE_URL } from '../../route/URLMap';
 import {fetchUserById, saveUserById} from '../../utils/api/user';
