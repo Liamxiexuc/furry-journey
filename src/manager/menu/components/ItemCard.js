@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 const ItemCard = props => {
     
     return (
+
         <Card as={Link} to={props.to} >
             <Image  wrapped />
             <Card.Content>
@@ -14,13 +15,13 @@ const ItemCard = props => {
                     Dishes    
                 </Card.Header>
                 <Card.Description>
+                    Dish Number: {props._id}
+                </Card.Description>
+                <Card.Description>
                     Dish Name: {props.productName}
                 </Card.Description>
                 <Card.Description>
                     Dish Price: {props.price}
-                </Card.Description>
-                <Card.Description>
-                    Dish Type: {props.productType}
                 </Card.Description>
                 <Card.Description>
                     Dish Information: {props.productInfo}
@@ -30,6 +31,7 @@ const ItemCard = props => {
                 </Card.Description>
             </Card.Content>
         </Card>
+     
         
     );    
 };

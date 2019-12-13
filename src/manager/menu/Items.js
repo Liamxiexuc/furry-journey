@@ -34,13 +34,13 @@ class Items extends React.Component {
                     console.log(itemData);
                     this.setState({
                         isLoading: false,
-                        items: itemData
+                        items: itemData.data
                     });
                 })
-                // .catch(error =>
-                //     this.setState({error, isLoading: false}, error => {
-                //         this.props.history.push({ pathname: ERROR_URL, state: {error}});
-                //     }))
+                .catch(error =>
+                    this.setState({error, isLoading: false}, error => {
+                        this.props.history.push({ pathname: ERROR_URL, state: {error}});
+                    }))
             })
         
     }
@@ -90,12 +90,12 @@ class Items extends React.Component {
                         <FlexContainer justifyContentValue = "space-between">
                             {this.state.items.map(item => (
                                 <ItemCard 
-                                    productionName={item.productionName}
+                                    productName={item.productName}
                                     price={item.price}
                                     productType={item.productType}
                                     productInfo={item.productInfo}
                                     category={item.category}
-                                    key={item.id}
+                                    key={item._id}
                                     to={`${ITEM_BASE_URL}/${item.id}`}
                                 />
                             ))}

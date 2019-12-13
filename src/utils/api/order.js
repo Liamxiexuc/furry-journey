@@ -13,9 +13,11 @@ export const fetchOrders = (query) => {
     // });
     const url = `${API_ORDER_URL}`;
 
-    return get(url).then(res => ({
+    return get(url).then(res => (
+        console.log(res),
+        {
         orders: res.data.data.map(order => ({ ...order,  })),
-        pagination: res.data.pagination,
+        // pagination: res.data.pagination,
     }));
 };
 
