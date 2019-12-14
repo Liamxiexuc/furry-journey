@@ -16,15 +16,25 @@ export const fetchItems = (query) => {
     return get(API_ITEM_URL);
 };
 
-export const fetchItemById = itemId => {
-    return get(`${API_ITEM_URL}/${itemId}}`).then(res => ({
-        ...res.data.data,
+export const fetchItemById = id => {
+    const url = getApiItemUrlWithId(id);
+    return get(url).then(res => (
+        console.log(res.data),
+        { 
+            ...res.data
+        }));
 
-    }));
+    // return get(`${API_ITEM_URL}/${id}}`).then(res => (
+        
+    //     console.log(res),
+    //     {
+    //     ...res.data.data,
+
+    // }));
 };
 
-export const saveItemById = (itemId, item) => {
-    const url = getApiItemUrlWithId(itemId);
+export const saveItemById = (id, item) => {
+    const url = getApiItemUrlWithId(id);
     return put(url, item);
 };
 
@@ -32,17 +42,17 @@ export const createItem = item => {
     return post(API_ITEM_URL, item).then(res => res.data.data);
 }
 
-export const deleteItemById = itemId => {
-    const url = getApiItemUrlWithId(itemId);
+export const deleteItemById = id => {
+    const url = getApiItemUrlWithId(id);
     return del(url);
 };
 
-export const addItemToOrder = (itemId, orderId) => {
-    const url = `${API_ITEM_URL}/${itemId}/orders/${orderId}`;
+export const addItemToOrder = (id, orderId) => {
+    const url = `${API_ITEM_URL}/${id}/orders/${orderId}`;
     return post(url).then(res => res.data);
 };
 
-export const removeItemToOrder = (itemId, orderId) => {
-    const url = `${API_ITEM_URL}/${itemId}/orders/${orderId}`;
+export const removeItemToOrder = (id, orderId) => {
+    const url = `${API_ITEM_URL}/${id}/orders/${orderId}`;
     return del(url).then(res => res.data);
 };

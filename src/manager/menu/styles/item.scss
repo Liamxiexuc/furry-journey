@@ -1,3 +1,28 @@
-.item-card {
-    color: red;
+#root {
+    .App {
+        .ui.container {
+            
+        }
+    }
+    .item-table-card {
+        .item-table {
+            .item-table-hearder {
+               .header-label {
+                    text-align: left;
+                    padding: 0px 20px;
+                }
+    
+            }
+    
+            .item-table-body {
+                .item-table-row {
+                    .item-table-cell {
+    
+                    }
+                }
+            }
+        }
+    
+    }
 }
+

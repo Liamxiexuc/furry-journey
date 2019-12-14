@@ -42,13 +42,11 @@ class ItemDetails extends React.Component {
                     Dish Details
                 </Header>
                 <ItemInfo 
-                    itemId={this.state.item.id}
-                    productName={this.state.productName}
-                    price={this.state.price}
-                    productType={this.state.productType}
-                    productInfo={this.state.productInfo}
-                    photo={this.state.photo}
-                    category={this.state.category}
+                    itemId={this.state.item._id}
+                    productName={this.state.item.productName}
+                    price={this.state.item.price}
+                    productInfo={this.state.item.productInfo}
+                    category={this.state.item.category}
                     isLoading={this.state.isLoading}
                     photo={this.state.item.photo}
                     reloadPage={this.loadItem}

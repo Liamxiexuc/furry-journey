@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Segment, Pagination, Button, Header} from 'semantic-ui-react';
+import {Container, Segment, Pagination, Button, Header, Table} from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 
@@ -88,6 +88,15 @@ class Items extends React.Component {
                     </Button>
                     <Segment basic loading={this.state.isLoading} >
                         <FlexContainer justifyContentValue = "space-between">
+                        <Table.Header className="item-table">
+                            <Table.Row className="item-table-header">
+                               
+                                <Table.HeaderCell className="header-label">Dish Name</Table.HeaderCell>
+                                <Table.HeaderCell className="header-label">Dish Price</Table.HeaderCell>
+                                <Table.HeaderCell className="header-label">Dish Category</Table.HeaderCell>
+                                <Table.HeaderCell className="header-label">Dish Information</Table.HeaderCell>
+                            </Table.Row>
+                            </Table.Header>    
                             {this.state.items.map(item => (
                                 <ItemCard 
                                     productName={item.productName}
@@ -96,7 +105,7 @@ class Items extends React.Component {
                                     productInfo={item.productInfo}
                                     category={item.category}
                                     key={item._id}
-                                    to={`${ITEM_BASE_URL}/${item.id}`}
+                                    to={`${ITEM_BASE_URL}/${item._id}`}
                                 />
                             ))}
                         </FlexContainer>
