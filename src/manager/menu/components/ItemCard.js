@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Image, Table, Header } from 'semantic-ui-react';
+import { Card, Image, Table, Header, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 import '../styles/item.scss';
@@ -33,8 +33,8 @@ const ItemCard = props => {
         // //         </Card.Description>
         // //     </Card.Content>
         // </Card>
-        <Table celled padded className="item-table-card">
-        {/* <Table.Header>
+        // <Table celled padded className="item-table-card">
+        /* <Table.Header>
         <Table.Row>
             <Table.HeaderCell singleLine>Dish Number</Table.HeaderCell>
             <Table.HeaderCell>Dish Name</Table.HeaderCell>
@@ -42,15 +42,11 @@ const ItemCard = props => {
             <Table.HeaderCell>Dish Category</Table.HeaderCell>
             <Table.HeaderCell>Dish Information</Table.HeaderCell>
         </Table.Row>
-        </Table.Header> */}
+        </Table.Header> */
     
-        <Table.Body className="item-table-body">
-          <Table.Row  as={Link} to={props.to} className="item-table-row">
-            {/* <Table.Cell width="1">
-              
-              {props._id}
-              
-            </Table.Cell> */}
+        // <Table.Body className="item-table-body" >
+          <Table.Row  className="item-table-row"  >
+
             <Table.Cell className="item-table-cell">{props.productName}</Table.Cell>
             <Table.Cell>
                 {props.price}
@@ -62,10 +58,13 @@ const ItemCard = props => {
             <Table.Cell className="item-table-cell">
             {props.productInfo}
             </Table.Cell>
+            <Table.Cell className="item-table-cell">
+              <Button as={Link} to={props.to}> More</Button>
+            </Table.Cell>
           </Table.Row>
           
-        </Table.Body>
-      </Table>     
+        // </Table.Body>
+      // </Table>     
         
     );    
 };

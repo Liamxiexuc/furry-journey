@@ -88,6 +88,7 @@ class Items extends React.Component {
                     </Button>
                     <Segment basic loading={this.state.isLoading} >
                         <FlexContainer justifyContentValue = "space-between">
+                        <Table >
                         <Table.Header className="item-table">
                             <Table.Row className="item-table-header">
                                
@@ -95,8 +96,10 @@ class Items extends React.Component {
                                 <Table.HeaderCell className="header-label">Dish Price</Table.HeaderCell>
                                 <Table.HeaderCell className="header-label">Dish Category</Table.HeaderCell>
                                 <Table.HeaderCell className="header-label">Dish Information</Table.HeaderCell>
+                                <Table.HeaderCell className="header-label">More</Table.HeaderCell>
                             </Table.Row>
-                            </Table.Header>    
+                            </Table.Header>
+                            <Table.Body>
                             {this.state.items.map(item => (
                                 <ItemCard 
                                     productName={item.productName}
@@ -107,7 +110,11 @@ class Items extends React.Component {
                                     key={item._id}
                                     to={`${ITEM_BASE_URL}/${item._id}`}
                                 />
-                            ))}
+                            ))}                            
+                            </Table.Body>    
+
+                        </Table>
+
                         </FlexContainer>
                     </Segment>
                     {/* {
