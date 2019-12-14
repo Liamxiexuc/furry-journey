@@ -3,7 +3,7 @@ import {Container, Segment, Pagination, Button, Header, Table} from 'semantic-ui
 import { Link } from 'react-router-dom';
 
 
-import ItemCard from './components/ItemCard';
+import ItemRow from './components/ItemRow';
 import ErrorMessage from '../../UI/ErrorMessage/errorMessage';
 import FlexContainer from '../../UI/flexContainer/FlexContainer';
 
@@ -88,29 +88,29 @@ class Items extends React.Component {
                     </Button>
                     <Segment basic loading={this.state.isLoading} >
                         <FlexContainer justifyContentValue = "space-between">
-                        <Table >
-                        <Table.Header className="item-table">
-                            <Table.Row className="item-table-header">
-                               
-                                <Table.HeaderCell className="header-label">Dish Name</Table.HeaderCell>
-                                <Table.HeaderCell className="header-label">Dish Price</Table.HeaderCell>
-                                <Table.HeaderCell className="header-label">Dish Category</Table.HeaderCell>
-                                <Table.HeaderCell className="header-label">Dish Information</Table.HeaderCell>
-                                <Table.HeaderCell className="header-label">More</Table.HeaderCell>
-                            </Table.Row>
+                        <Table className="item-table-card" >
+                            <Table.Header className="item-table">
+                                <Table.Row className="item-table-header">
+                                
+                                    <Table.HeaderCell className="header-label">Dish Name</Table.HeaderCell>
+                                    <Table.HeaderCell className="header-label">Dish Price</Table.HeaderCell>
+                                    <Table.HeaderCell className="header-label">Dish Category</Table.HeaderCell>
+                                    <Table.HeaderCell className="header-label">Dish Information</Table.HeaderCell>
+                                    <Table.HeaderCell className="header-label">More</Table.HeaderCell>
+                                </Table.Row>
                             </Table.Header>
                             <Table.Body>
-                            {this.state.items.map(item => (
-                                <ItemCard 
-                                    productName={item.productName}
-                                    price={item.price}
-                                    productType={item.productType}
-                                    productInfo={item.productInfo}
-                                    category={item.category}
-                                    key={item._id}
-                                    to={`${ITEM_BASE_URL}/${item._id}`}
-                                />
-                            ))}                            
+                                {this.state.items.map(item => (
+                                    <ItemRow 
+                                        productName={item.productName}
+                                        price={item.price}
+                                        productType={item.productType}
+                                        productInfo={item.productInfo}
+                                        category={item.category}
+                                        key={item._id}
+                                        to={`${ITEM_BASE_URL}/${item._id}`}
+                                    />
+                                ))}                            
                             </Table.Body>    
 
                         </Table>

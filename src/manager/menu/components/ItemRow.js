@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import '../styles/item.scss';
 
-const ItemCard = props => {
+const ItemRow = props => {
     
     return (
 
@@ -69,4 +69,4 @@ const ItemCard = props => {
     );    
 };
 
-export default ItemCard;
+export default ItemRow;
