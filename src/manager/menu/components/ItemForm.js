@@ -1,57 +1,56 @@
 import React from 'react';
-import { Button, Container, Form, Image} from 'semantic-ui-react';
+import { Button, Container, Form, Image, Divider} from 'semantic-ui-react';
 
 const ItemForm = props => {
     return (
         <Container >
             <Form>
-                <Form.Group>
+
                     <Form.Field 
-                        label='Dish Form'
+                        control='input'
+                        label='Product Id'
+                        placeholder='Product id'
+                        onChange={props.handleChange}
+                        defaultValue={props._id}
+                
                     />
                     <Form.Field 
                         control='input'
                         label='Product Name'
                         placeholder='Product Name'
                         onChange={props.handleChange}
-                        value={props.productName}
+                        defaultValue={props.productName}  
+                        value={this.state.productName}
                     />
                     <Form.Field 
                         control='input'
                         label='Price'
                         placeholder='Price'
                         onChange={props.handleChange}
-                        value={props.price}
-                    />
-                    <Form.Field 
-                        control='input'
-                        label='Product Type'
-                        placeholder='Product Type'
-                        onChange={props.handleChange}
-                        value={props.productType}
+                        defaultValue={props.price}
                     />
                     <Form.Field 
                         control='input'
                         label='Product Info'
                         placeholder='Product Info'
                         onChange={props.handleChange}
-                        value={props.productInfo}
+                        defaultValue={props.productInfo}
                     />
                     <Form.Field 
                         control='input'
                         label='Photo'
                         placeholder='Photo'
                         onChange={props.handleChange}
-                        value={props.photo}
+                        defaultValue={props.photo}
                     />
                     <Form.Field 
                         control='input'
                         label='Product Category'
                         placeholder='Product Category'
                         onChange={props.handleChange}
-                        value={props.category}
+                        defaultValue={props.category}
                     />
-                </Form.Group>
+                 
                 <Button 
                     disabled={props.isButtonDisabled}
                     onClick={props.handleSubmit}

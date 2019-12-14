@@ -1,7 +1,7 @@
 import React, { useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import { withRouter } from 'react-router';
-import {Button, Container, Divider, Image, Label, Segment, Header} from 'semantic-ui-react';
+import {Button, Container, Divider, Image, List, Segment, Header} from 'semantic-ui-react';
 import { ITEM_BASE_URL } from '../../../route/URLMap';
 
 
@@ -45,10 +45,10 @@ const ItemInfo = props => {
         <Container >
             <Image />
             <Header >
-                {itemId}
+             
             </Header>
             <Segment loading={isLoading} >
-                <p>
+                {/* <p>
                     { productName }
                 </p>
                 <p>
@@ -65,7 +65,29 @@ const ItemInfo = props => {
                 </p>
                 <p>
                     { category}
-                </p>
+                </p> */}
+                
+                <List >
+                    <List.Item>
+                        Dish ID: { itemId }
+                    </List.Item>
+                    <List.Item>
+                        Dish Name: { productName }
+                    </List.Item>
+                    <List.Item>
+                        Dish Price: { price }
+                    </List.Item>
+                    <List.Item>
+                        Dish Information: {productInfo}
+                    </List.Item>
+                    <List.Item>
+                        Dish Information: {photo}
+                    </List.Item>
+                    <List.Item>
+                        Dish Category: { category}
+                    </List.Item>
+                </List>
+
                 <Divider />
                 <Button as={Link} to={`${currentPath}/edit`}>
                     Edit

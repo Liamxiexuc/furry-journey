@@ -91,7 +91,7 @@ class Items extends React.Component {
                         <Table className="item-table-card" >
                             <Table.Header className="item-table">
                                 <Table.Row className="item-table-header">
-                                
+                                <Table.HeaderCell className="header-label">Dish Reference</Table.HeaderCell>
                                     <Table.HeaderCell className="header-label">Dish Name</Table.HeaderCell>
                                     <Table.HeaderCell className="header-label">Dish Price</Table.HeaderCell>
                                     <Table.HeaderCell className="header-label">Dish Category</Table.HeaderCell>
@@ -107,7 +107,7 @@ class Items extends React.Component {
                                         productType={item.productType}
                                         productInfo={item.productInfo}
                                         category={item.category}
-                                        key={item._id}
+                                        id={item._id}
                                         to={`${ITEM_BASE_URL}/${item._id}`}
                                     />
                                 ))}                            

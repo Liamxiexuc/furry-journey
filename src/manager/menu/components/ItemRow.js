@@ -46,8 +46,13 @@ const ItemRow = props => {
     
         // <Table.Body className="item-table-body" >
           <Table.Row  className="item-table-row"  >
+            <Table.Cell className="item-table-cell">
+              {props.id}
+            </Table.Cell>      
 
-            <Table.Cell className="item-table-cell">{props.productName}</Table.Cell>
+            <Table.Cell className="item-table-cell">
+              {props.productName}
+            </Table.Cell>
             <Table.Cell>
                 {props.price}
             </Table.Cell>

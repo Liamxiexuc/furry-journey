@@ -18,7 +18,7 @@ class ItemEdit extends React.Component {
             error: null,
             productName: '',
             price: '',
-            productType: '',
+ 
             productInfo: '',
             photo: '',
             category: '',
@@ -30,35 +30,45 @@ class ItemEdit extends React.Component {
 
     componentDidMount() {
         const itemId = this.props.match.params.id;
+        console.log(itemId);
         this.setState( {isLoading: true}, () => {
             fetchItemById(itemId)
-                .then(item => this.setState ({
-                    id: item.id,
+                .then(item => this.setState (
+                    {
+                    id: itemId,
                     productName: item.productName,
                     price: item.price,
-                    productType: item.productType,
                     productInfo: item.productInfo,
                     photo: item.photo,
                     category: item.category,
                     isLoading: false,
                     isSaving: false,
-                }))
+                })
+                
+                )
                 .catch(error => this.setState({ error }));
         });
     }
 
-    handleChange = (event) => {
+    handleChange = (event, data) => {
         const key = event.target.name;
+        console.log(event.target.name);
+        console.log(event.target.value);
+   
+ 
         const value = event.target.value;
         this.setState({ [key]: value } );
     }
 
     handleSave = () => {
         const item = {...this.state};
+        console.log(item);
         const id = this.props.match.params.id;
         this.setState({ isSaving: true}, () => {
             saveItemById(id, item)
-                .then(() => this.props.history.push(`${ITEM_BASE_URL}/${id}`))
+                .then(
+                    console.log(item),
+                    () => this.props.history.push(`${ITEM_BASE_URL}/${id}`))
                 .catch(error => this.setState({ error }));
         });
     }
@@ -75,7 +85,6 @@ class ItemEdit extends React.Component {
                         id={this.state.id}
                         productName={this.state.productName}
                         price={this.state.price}
-                        productType={this.state.productType}
                         productInfo={this.state.productInfo}
                         photo={this.state.photo}
                         category={this.state.category}
