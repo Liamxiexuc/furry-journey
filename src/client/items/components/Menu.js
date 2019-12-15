@@ -2,6 +2,8 @@ import React from "react";
 import ItemCard from "./ItemCard";
 import "../styles/items.scss";
 
+import {ITEM_CLIENT_BASE_URL} from "../../../routes/URLMap";
+
 class Menu extends React.Component {
   constructor(props) {
     super(props);
@@ -48,6 +50,7 @@ class Menu extends React.Component {
                 itemPrice={item.price}
                 itemInfo={item.productInfo}
                 key={item._id}
+                to={`${ITEM_CLIENT_BASE_URL}/${item._id}`}
               />
             ))}
           </div>
@@ -61,6 +64,7 @@ class Menu extends React.Component {
                 itemPrice={item.price}
                 itemInfo={item.productInfo}
                 key={item._id}
+                to={`${ITEM_CLIENT_BASE_URL}/${item._id}`}
               />
             ))}
           </div>
@@ -74,6 +78,7 @@ class Menu extends React.Component {
                 itemPrice={item.price}
                 itemInfo={item.productInfo}
                 key={item._id}
+                to={`${ITEM_CLIENT_BASE_URL}/${item._id}`}
               />
             ))}
           </div>

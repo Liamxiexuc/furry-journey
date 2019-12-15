@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import {
   Button,
   Checkbox,
@@ -6,10 +6,14 @@ import {
   Header,
   Input,
   Popup,
-  Dropdown
+  Dropdown,
+  Segment,
+  Confirm
 } from "semantic-ui-react";
 import "../styles/Member.scss";
-
+import { Redirect, Route, Switch } from "react-router-dom";
+import { fetchUser, saveUserInfo } from "../../../utils/api/user";
+import { ERROR_URL } from "../../../routes/URLMap";
 
 const titleOptions = [
   { key: "mr", text: "Mr.", value: "Mr." },
@@ -28,6 +32,7 @@ class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: "",
       firstName: "",
       lastName: "",
       email: "",
@@ -37,11 +42,44 @@ class Profile extends React.Component {
       phone: "",
       birthDay: "",
       address: "",
-      isActive: false,
       isLoading: false,
-      error: null
+      error: null,
+      isSave: false
     };
   }
+
+  componentDidMount() {
+    this.loadUserInfo();
+  }
+
+  loadUserInfo = () => {
+    this.setState({ isLoading: true }, () => {
+      const userId = this.props.userId;
+      fetchUser(userId)
+        .then(userData => {
+          this.setState({
+            isLoading: false,
+            id: userData.data._id,
+            firstName: userData.data.firstName,
+            lastName: userData.data.lastName,
+            email: userData.data.email,
+            title: userData.data.title,
+            gender: userData.data.gender,
+            phone: userData.data.phone,
+            birthDay: userData.data.birthDay,
+            address: userData.data.address
+          });
+        })
+        .catch(error =>
+          this.setState({ error, isLoading: false }, () => {
+            this.props.history.push({
+              pathname: ERROR_URL,
+              state: { error: this.state.error }
+            });
+          })
+        );
+    });
+  };
 
   handleChange = event => {
     const key = event.target.name;
@@ -49,22 +87,16 @@ class Profile extends React.Component {
     this.setState({ [key]: value });
   };
 
-  handleCheck = (event, data) => {
-    const isActive = data.checked;
-    this.setState({ isActive });
-  };
-
   handleDropBox = (event, data) => {
     const key = data.name;
     const value = data.value;
     this.setState({ [key]: value });
   };
-/* 
-  handleSignup = () => {
+
+  handleSave = () => {
     this.setState({ isLoading: true }, () => {
-      signup(
-        this.state.email,
-        this.state.password,
+      saveUserInfo(
+        this.props.userId,
         this.state.title,
         this.state.firstName,
         this.state.lastName,
@@ -73,10 +105,17 @@ class Profile extends React.Component {
         this.state.birthDay,
         this.state.address
       )
-        .then(this.props.history.replace(AFTER_SIGNUP_URL))
+        .then(<Redirect to="/member" />)
+        .then(this.setState({ isLoading: false, isSave: false }))
         .catch(error => this.setState({ error, isLoading: false }));
     });
-  }; */
+  };
+
+  handleCancel = () => this.setState({ isSave: false });
+
+  show = () => {
+    this.setState({ isSave: true });
+  };
 
   render() {
     return (
@@ -99,26 +138,7 @@ class Profile extends React.Component {
               iconPosition="left"
               placeholder="E-mail address"
               type="email"
-            />
-          </Form.Field>
-          <Form.Field required>
-            <label>password</label>
-            <Popup
-              trigger={
-                <Input
-                  onChange={this.handleChange}
-                  name="password"
-                  value={this.state.password}
-                  icon="lock"
-                  iconPosition="left"
-                  placeholder="Password"
-                  type="password"
-                />
-              }
-              header="Enter Your Password"
-              content="Your password must be between 8 and 30 characters and contain at least one lowercase letter, one uppercase letter, one number digit and one special character (~!@&%#_)."
-              on="focus"
-              wide="very"
+              readOnly
             />
           </Form.Field>
           <Form.Group>
@@ -131,6 +151,7 @@ class Profile extends React.Component {
                 options={titleOptions}
                 onChange={this.handleDropBox}
                 name="title"
+                value={this.state.title}
               />
             </Form.Field>
             <Form.Field required>
@@ -142,6 +163,7 @@ class Profile extends React.Component {
                 icon="user"
                 iconPosition="left"
                 placeholder="First name"
+                required
               />
             </Form.Field>
             <Form.Field required>
@@ -153,6 +175,7 @@ class Profile extends React.Component {
                 icon="user"
                 iconPosition="left"
                 placeholder="Last name"
+                required
               />
             </Form.Field>
           </Form.Group>
@@ -167,6 +190,7 @@ class Profile extends React.Component {
                 icon="phone"
                 iconPosition="left"
                 type="number"
+                required
               />
             </Form.Field>
             <Form.Field required>
@@ -178,6 +202,8 @@ class Profile extends React.Component {
                 options={genderOptions}
                 onChange={this.handleDropBox}
                 name="gender"
+                required
+                value={this.state.gender}
               />
             </Form.Field>
           </Form.Group>
@@ -190,6 +216,7 @@ class Profile extends React.Component {
               icon="home"
               iconPosition="left"
               placeholder="Address"
+              valuedefault=""
             />
           </Form.Field>
           <Form.Field>
@@ -202,26 +229,26 @@ class Profile extends React.Component {
               iconPosition="left"
               placeholder="Birth day"
               type="date"
+              valuedefault=""
             />
           </Form.Field>
-          <Form.Field>
-            <Checkbox
-              name="checkBox"
-              checked={this.state.isActive}
-              onChange={this.handleCheck}
-              label="I agree to the Terms and Conditions"
-            />
-          </Form.Field>
+
           <Button
-            disabled={this.state.isActive === true ? false : true}
             type="submit"
             size="big"
-
             primary
             fluid
+            onClick={this.show}
+            loading={this.state.isLoading === true ? true : false}
           >
-            Submit
+            Save
           </Button>
+          <Confirm
+            open={this.state.isSave}
+            onCancel={this.handleCancel}
+            onConfirm={this.handleSave}
+            size="small"
+          />
         </Form>
       </div>
     );

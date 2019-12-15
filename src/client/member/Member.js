@@ -1,11 +1,24 @@
 import React, { Component } from "react";
 import { Grid, Menu, Segment } from "semantic-ui-react";
 
+import { getToken } from "../../utils/authentication";
+import jwt from "jsonwebtoken";
 import  Profile  from "./components/profile";
 import "./styles/Member.scss";
 
 class Member extends Component {
-  state = { activeItem: "profile" };
+  state = { activeItem: "profile", userId: "" };
+
+  componentDidMount() {
+    this.getUserId();
+  }
+
+  getUserId = () => {
+  const token = getToken();
+  const decodedToken = jwt.decode(token);
+  const userId = decodedToken.id;
+  this.setState({ userId });
+  }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
@@ -42,7 +55,7 @@ class Member extends Component {
 
           <Grid.Column stretched width={12}>
             <Segment>
-              <Profile />
+              <Profile userId={this.state.userId} />
             </Segment>
           </Grid.Column>
         </Grid>

@@ -12,13 +12,14 @@ import Basket from "../client/items/components/Basket";
 import ErrorMessage from "../UI/errorMessage/ErrorMessage";
 import {
   ITEM_CLIENT_BASE_URL,
+  USER_CLIENT_BASE_URL,
   SIGNUP_CLIENT_URL,
   AFTER_SIGNUP_URL,
   ABOUTUS_URL,
   ERROR_URL
 } from "./URLMap";
 
-import ProtectedRoute from './components/ProtectedRoute';
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const Routes = () => {
   return (
@@ -27,7 +28,7 @@ const Routes = () => {
         <Redirect exact from="/" to="/home" />
         <Route exact path="/home" component={Home} />
         <Route exact path="/items" component={Items} />
-        <ProtectedRoute exact path="/member" component={Member} />
+        <ProtectedRoute exact path={USER_CLIENT_BASE_URL} component={Member} />
         <Route exact path="/login" component={Login} />
         <Route exact path={SIGNUP_CLIENT_URL} component={Signup} />
         <Route exact path={AFTER_SIGNUP_URL} component={SignupSuccess} />
