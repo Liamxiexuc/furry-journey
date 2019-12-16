@@ -1,0 +1,53 @@
+table, th, td {
+    border: 1px solid rgb(202, 202, 202);
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.orders-table-th th {
+    text-align: center;
+    padding: 5px;
+    font-size: medium;
+    background-color: rgb(214, 213, 213);
+}
+
+.orders-table-tr td {
+    text-align: center;
+    padding: 2px 5px;
+}
+
+.orders-table-tr > .orders-col-items {
+        padding: 5px 10px;
+    }
+
+.orders-col-id {
+    width: 20%;
+}
+
+.orders-col-items {
+    width: 20%;
+}
+
+.orders-col-price {
+    width: 5%;
+}
+
+.orders-col-status {
+    width: 5%;
+}
+
+.orders-col-pay {
+    width: 5%;
+}
+
+.orders-col-delivery {
+    width: 15%;
+}
+
+.orders-col-time {
+    width: 12%;
+}
+
+.orders-col-comment {
+    width: 15%;
+}

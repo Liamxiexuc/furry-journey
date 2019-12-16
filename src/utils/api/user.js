@@ -28,3 +28,7 @@ export const saveUserInfo = (
 
   return put(`${API_USER_URL}/${userId}`, data);
 };
+
+export const fetchAllOrdersByUserId = userId => {
+  return get(`${API_USER_URL}/${userId}/orders`);
+};

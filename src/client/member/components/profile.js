@@ -1,13 +1,10 @@
 import React, { Component } from "react";
 import {
   Button,
-  Checkbox,
   Form,
   Header,
   Input,
-  Popup,
   Dropdown,
-  Segment,
   Confirm
 } from "semantic-ui-react";
 import "../styles/Member.scss";
@@ -28,7 +25,7 @@ const genderOptions = [
   { key: "o", text: "Others", value: "others" }
 ];
 
-class Profile extends React.Component {
+class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -247,6 +244,7 @@ class Profile extends React.Component {
             open={this.state.isSave}
             onCancel={this.handleCancel}
             onConfirm={this.handleSave}
+            header="Save Your Profile"
             size="small"
           />
         </Form>

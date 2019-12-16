@@ -3,22 +3,32 @@ import { Grid, Menu, Segment } from "semantic-ui-react";
 
 import { getToken } from "../../utils/authentication";
 import jwt from "jsonwebtoken";
-import  Profile  from "./components/profile";
+import Profile from "./components/Profile";
+import MyOrders from './components/MyOrders';
+import MyCoupons from './components/MyCoupons';
+import MessageBox from './components/MessageBox';
 import "./styles/Member.scss";
 
 class Member extends Component {
-  state = { activeItem: "profile", userId: "" };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      activeItem: "profile",
+      userId: ""
+    };
+  }
 
   componentDidMount() {
     this.getUserId();
   }
 
   getUserId = () => {
-  const token = getToken();
-  const decodedToken = jwt.decode(token);
-  const userId = decodedToken.id;
-  this.setState({ userId });
-  }
+    const token = getToken();
+    const decodedToken = jwt.decode(token);
+    const userId = decodedToken.id;
+    this.setState({ userId });
+  };
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
@@ -55,7 +65,18 @@ class Member extends Component {
 
           <Grid.Column stretched width={12}>
             <Segment>
-              <Profile userId={this.state.userId} />
+              {this.state.activeItem === "profile" && (
+                <Profile userId={this.state.userId} />
+              )}
+              {this.state.activeItem === "my orders" && (
+                <MyOrders userId={this.state.userId} />
+              )}
+              {this.state.activeItem === "my coupons" && (
+                <MyCoupons userId={this.state.userId} />
+              )}
+              {this.state.activeItem === "message box" && (
+                <MessageBox userId={this.state.userId} />
+              )}
             </Segment>
           </Grid.Column>
         </Grid>
