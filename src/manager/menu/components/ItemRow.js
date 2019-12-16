@@ -46,26 +46,26 @@ const ItemRow = props => {
     
         // <Table.Body className="item-table-body" >
           <Table.Row  className="item-table-row"  >
-            <Table.Cell className="item-table-cell">
+              <Table.Cell className="item-table-cell">
               {props.id}
-            </Table.Cell>      
+              </Table.Cell>      
 
-            <Table.Cell className="item-table-cell">
+              <Table.Cell className="item-table-cell">
               {props.productName}
-            </Table.Cell>
-            <Table.Cell>
+              </Table.Cell>
+              <Table.Cell>
                 {props.price}
-            </Table.Cell>
-            <Table.Cell className="item-table-cell">
-            {props.category}
+              </Table.Cell>
+              <Table.Cell className="item-table-cell">
+              {props.category}
                
-            </Table.Cell>
-            <Table.Cell className="item-table-cell">
-            {props.productInfo}
-            </Table.Cell>
-            <Table.Cell className="item-table-cell">
-              <Button as={Link} to={props.to}> More</Button>
-            </Table.Cell>
+              </Table.Cell>
+              <Table.Cell className="item-table-cell">
+              {props.productInfo}
+              </Table.Cell>
+              <Table.Cell className="item-table-cell">
+                <Button as={Link} to={props.to}> More</Button>
+              </Table.Cell>
           </Table.Row>
           
         // </Table.Body>

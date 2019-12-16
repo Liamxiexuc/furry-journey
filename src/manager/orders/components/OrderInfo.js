@@ -1,5 +1,5 @@
 import React, {useEffect, useState } from 'react';
-import { Button, Container, Divider, Image, Label, Segment, Header } from 'semantic-ui-react';
+import { Button, Container, Divider, Image, Label, Segment, Header, List } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 
@@ -19,6 +19,7 @@ const OrderInfo = props => {
         selectedItems = [],
         selectedUsers = [],
         orderId,
+        userId,
         orderStatus,
         orderTotalPrice,
         history,
@@ -27,6 +28,7 @@ const OrderInfo = props => {
         receiverAddress,
         receiverPhone,
         isLoading,
+        isSaving,
         location: {pathname: currentPath},
         reloadPage,
         setErrorState    
@@ -59,7 +61,7 @@ const OrderInfo = props => {
                 {orderId}
             </Header>
             <Segment loading={isLoading}>
-                <p>
+                {/* <p>
                     { orderStatus }
                 </p>
                 <p>
@@ -73,7 +75,30 @@ const OrderInfo = props => {
                 </p>
                 <p>
                     { receiverPhone }
-                </p>
+                </p> */}
+                <List >
+                    <List.item>
+                        Order ID: {orderId}
+                    </List.item>
+                    <List.item>
+                        Order Status: {orderStatus}
+                    </List.item>
+                    <List.item>
+                        Total Price: {orderTotalPrice }
+                    </List.item>
+                    <List.item>
+                        Pay Status: { payStatus } 
+                    </List.item>
+                    <List.item>
+                        User ID: {userId}
+                    </List.item>
+                    <List.item>
+                        User Address: {receiverAddress}
+                    </List.item>
+                    <List.item>
+                        User Phone: { receiverPhone }
+                    </List.item>
+                </List>
                 <div>
                     <span>Order Dish: </span>
                     {selectedItems.map(item => <Label key={item._id}>{item.productName}</Label>)}
@@ -94,6 +119,9 @@ const OrderInfo = props => {
                 </Button>
                 <Button loading={isDeleting} onClick={deleteOrder}>
                     Delete
+                </Button>
+                <Button as={Link} to="/orders">
+                    Back
                 </Button>
             </Segment>
         </Container>

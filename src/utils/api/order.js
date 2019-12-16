@@ -6,26 +6,16 @@ const API_ORDER_URL = '/orders';
 const getApiOrderUrlWithId = id => `${API_ORDER_URL}/${id}`;
 
 export const fetchOrders = (query) => {
-    // const stringfield = queryString.stringify({
-        
-    //     query,
-      
-    // });
-    const url = `${API_ORDER_URL}`;
-
-    return get(url).then(res => (
-        console.log(res),
-        {
-        orders: res.data.data.map(order => ({ ...order,  })),
-        // pagination: res.data.pagination,
-    }));
+    // const url = `${API_ORDER_URL}`;
+    console.log(API_ORDER_URL);
+    return get(API_ORDER_URL);
 };
 
 
 export const fetchOrderById = id => {
     const url = getApiOrderUrlWithId(id);
     return get(url).then(res => (
-        console.log(res.data),
+        console.log(res),
         {...res.data}));
 };
 
@@ -43,13 +33,13 @@ export const deleteOrderById = id => {
     return del(url);
 };
 
-export const addItemToOrder = (itemId, orderId) => {
-    const url = `${API_ORDER_URL}/${itemId}/orders/${orderId}`;
-    return post(url).then(res => res.data);
-};
+// export const addItemToOrder = (itemId, orderId) => {
+//     const url = `${API_ORDER_URL}/${itemId}/orders/${orderId}`;
+//     return post(url).then(res => res.data);
+// };
 
-export const removeItemToOrder = (itemId, orderId) => {
-    const url = `${API_ORDER_URL}/${itemId}/orders/${orderId}`;
-    return del(url).then(res => res.data);
-};
+// export const removeItemToOrder = (itemId, orderId) => {
+//     const url = `${API_ORDER_URL}/${itemId}/orders/${orderId}`;
+//     return del(url).then(res => res.data);
+// };
 

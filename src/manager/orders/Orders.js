@@ -1,13 +1,13 @@
 import React from 'react';
-import { Button, Container, Pagination, Segment } from 'semantic-ui-react';
+import { Button, Container, Pagination, Segment, Table } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
-import OrderCard from './components/OrderCard';
+import OrderRow from './components/OrderRow';
 import ErrorMessage from '../../UI/ErrorMessage/errorMessage';
 import FlexContainer from '../../UI/flexContainer/FlexContainer'; 
 
 import Header from '../../UI/header/Header';
-import { ORDER_BASE_URL } from '../../route/URLMap';
+import { ORDER_BASE_URL, ERROR_URL } from '../../route/URLMap';
 import { fetchOrders } from '../../utils/api/order';
 
 class Orders extends React.Component {
@@ -18,33 +18,56 @@ class Orders extends React.Component {
             orders: [],
             error: null,
             isLoading: false,
+            isSaving: false,
             pagination: {},
         };
     }
 
     componentDidMount() {
-        this.loadOrders();
-    }
+        // this.loadOrders();
 
-    loadOrders = (pageNum, pageSize) => {
-        this.setState({ isLoading: true, orders: []}, () => {
-            fetchOrders(pageNum, pageSize)
-                .then(this.updateOrderData)
-                .catch(error => this.setState({ error }));
+        this.setState({ isLoading: true}, () => {
+            fetchOrders()
+                .then(orderData => {
+                    this.setState({
+                        isLoading: false,
+                        order: orderData.data
+                    });
+                })
+                .catch(error => 
+                    this.setState({
+                        error, 
+                        isLoading: false
+                    },
+                    error => {
+                        this.props.history.push({
+                            pathname: ERROR_URL,
+                            state: {error}
+                        });
+                    }));
         });
+
     }
 
-    updateOrderData = orderData => {
-        this.setState({
-            orders: orderData.orders,
-            isLoading: false,
-            pagination: orderData.pagination,
-        })
-    }
+    // loadOrders = (pageNum, pageSize) => {
+    //     this.setState({ isLoading: true, orders: []}, () => {
+    //         fetchOrders(pageNum, pageSize)
+    //             .then(this.updateOrderData)
+    //             .catch(error => this.setState({ error }));
+    //     });
+    // }
 
-    handlePageChange = (event, data) => {
-        this.loadOrders(data.activePage);
-    }
+    // updateOrderData = orderData => {
+    //     this.setState({
+    //         orders: orderData.orders,
+    //         isLoading: false,
+    //         pagination: orderData.pagination,
+    //     })
+    // }
+
+    // handlePageChange = (event, data) => {
+    //     this.loadOrders(data.activePage);
+    // }
 
     render() {
         const currentPath = this.props.location.pathname;
@@ -56,26 +79,49 @@ class Orders extends React.Component {
                     Orders
                 </Header>
                 <Container>
-                    <Button as={Link} to={`${currentPath}/new`} >
+                    {/* <Button as={Link} to={`${currentPath}/new`} >
                         Create New Order
-                    </Button>
+                    </Button> */}
                     <Segment loading={this.state.isLoading}>
                         <FlexContainer >
-                            {this.state.orders.map(order => (
-                                <OrderCard 
-                                    receiverName={order.receiverName}
-                                    receiverPhone={order.receiverPhone}
-                                    receiverAddress={order.receiverAddress}
-                                    orderStatus={order.orderStatus}
-                                    totalPrice={order.totalPrice}
-                                    payStatus={order.payStatus}
-                                    key={order.id}
-                                    to={`${ORDER_BASE_URL}/${order.id}`}
-                                />
-                            ))}
+                            <Table className="item-table-card" >
+                                <Table.Header className="item-table">
+                                    <Table.Row className="item-table-header">
+                                        <Table.HeaderCell className="header-label">Order ID</Table.HeaderCell>
+                                        <Table.HeaderCell className="header-label">Order Status</Table.HeaderCell>
+                                        <Table.HeaderCell className="header-label">Total Price</Table.HeaderCell>
+                                        <Table.HeaderCell className="header-label">Order Status</Table.HeaderCell>
+                                        <Table.HeaderCell className="header-label">Pay Status</Table.HeaderCell>
+                                        <Table.HeaderCell className="header-label">User ID</Table.HeaderCell>
+                                        <Table.HeaderCell className="header-label">Receiver Name</Table.HeaderCell>
+                                        <Table.HeaderCell className="header-label">Receiver Phone</Table.HeaderCell>
+                                        <Table.HeaderCell className="header-label">Receiver Address</Table.HeaderCell>
+                                        <Table.HeaderCell className="header-label">Comment</Table.HeaderCell>
+                                        <Table.HeaderCell className="header-label">Dishes</Table.HeaderCell>
+                                        <Table.HeaderCell className="header-label">More</Table.HeaderCell>
+                                    </Table.Row>
+                                </Table.Header>
+                                <Table.Body>
+                                    {this.state.orders.map(order => (
+                                        <OrderRow 
+                                            receiverName={order.receiverName}
+                                            receiverPhone={order.receiverPhone}
+                                            receiverAddress={order.receiverAddress}
+                                            orderStatus={order.orderStatus}
+                                            totalPrice={order.orderTotalPrice}
+                                            payStatus={order.payStatus}
+                                            userId={order.userId}
+                                            comment={order.comment}
+                                            dishes={order.dishes}
+                                            id={order._id}
+                                            to={`${ORDER_BASE_URL}/${order._id}`}
+                                        />
+                                    ))}
+                                </Table.Body>
+                            </Table>
                         </FlexContainer>
                     </Segment>
-                    {
+                    {/* {
                         this.state.pagination.page && (
                             <FlexContainer >
                                 <Pagination 
@@ -86,7 +132,7 @@ class Orders extends React.Component {
                                 />
                             </FlexContainer>
                         )
-                    }
+                    } */}
                 </Container>
             </React.Fragment>
         );

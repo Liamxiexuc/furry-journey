@@ -37,10 +37,17 @@ class Items extends React.Component {
                     });
                 })
                 .catch(error =>
-                    this.setState({error, isLoading: false}, error => {
-                        this.props.history.push({ pathname: ERROR_URL, state: {error}});
-                    }))
-            })
+                    this.setState({
+                        error, 
+                        isLoading: false
+                    }, 
+                    error => {
+                        this.props.history.push({ 
+                            pathname: ERROR_URL, 
+                            state: {error}
+                        });
+                    }));
+            });
         
     }
 

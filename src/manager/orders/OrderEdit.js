@@ -21,8 +21,8 @@ class OrderEdit extends React.Component {
             receiverPhone: '',
             userId: '',
             comment: '',
+            dishes: '',
             error: null,
-            photo: '',
             isLoading: false,
             isSaving: false,
         };
@@ -33,7 +33,7 @@ class OrderEdit extends React.Component {
         this.setState({ isLoading: true }, () => {
             fetchOrderById(orderId)
                 .then(order => this.setState({
-                    id: order.id,
+                    id: orderId,
                     orderStatus: order.orderStatus,
                     orderTotalPrice: order.orderTotalPrice,
                     payStatus: order.payStatus,
@@ -41,8 +41,8 @@ class OrderEdit extends React.Component {
                     receiverName: order.receiverName,
                     receiverPhone: order.receiverPhone,
                     comment: order.comment,
-                    photo: order.photo,     
-                    image: order.image,
+                    userId: order.userId,
+                    dishes: order.dishes,
                     isLoading: false,
                     isSaving: false,
                    
@@ -62,8 +62,9 @@ class OrderEdit extends React.Component {
         const id = this.props.match.params.id;
         this.setState({ isSaving: true }, () => {
             saveOrderById(id, order)
-                .then(() => this.props.history.push(`${ORDER_BASE_URL}/${id}`))
-                .catch(error => this.setState({ error }));
+                .then(() => this.props.history
+                    .push(`${ORDER_BASE_URL}/${id}`))
+                        .catch(error => this.setState({ error }));
         });   
     }
 
@@ -84,10 +85,10 @@ class OrderEdit extends React.Component {
                         receiverName={this.state.receiverName}
                         receiverPhone={this.state.receiverPhone}
                         comment={this.state.comment}
-                        photo={this.state.photo}
+                        dishes={this.state.dishes}
+                        userId={this.state.userId}
                         handleChange={this.handleChange}
                         handleSubmit={this.handleSave}
-                        image={this.state.image}
                         submitButtonText="Save"
                     />
                 </Segment>

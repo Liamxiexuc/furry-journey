@@ -45,16 +45,15 @@ const UserRow = props => {
             <Table.Cell className="item-table-cell">
                 {props.firstName}
             </Table.Cell>
-            <Table.Cell>
+            <Table.Cell className="item-table-cell">
                 {props.lastName}
             </Table.Cell>
             <Table.Cell className="item-table-cell">
                 {props.title}
             </Table.Cell>
-            <Table.Cell>
+            <Table.Cell className="item-table-cell">
                 {props.email}
             </Table.Cell>
-
             <Table.Cell className="item-table-cell">
                 {props.gender}
             </Table.Cell>

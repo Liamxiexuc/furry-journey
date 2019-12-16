@@ -14,6 +14,7 @@ class OrderDetails extends React.Component {
             order: {},
             error: null,
             isLoading: false,
+            isLoading: false,
         };
     }
 
@@ -38,7 +39,7 @@ class OrderDetails extends React.Component {
                     Order Details
                 </Header>
                 <OrderInfo
-                    selectedItems={this.state.order.item}
+                    dishes={this.state.order.dishes}
                     orderId={this.state.order.id}
                     orderStatus={this.state.order.orderStatus}
                     orderTotalPrice={this.state.order.orderTotalPrice}
@@ -46,13 +47,13 @@ class OrderDetails extends React.Component {
                     receiverAddress={this.state.order.receiverAddress}
                     receiverName={this.state.order.receiverName}
                     receiverPhone={this.state.order.receiverPhone}
-               
-                    photo={this.state.order.photo}
+                    comment={this.state.comment}
+                    userId={this.state.order.userId}
                     isLoading={this.state.isLoading}
                     
                     reloadPage={this.loadOrder}
                     setErrorState={this.setErrorState}
-                    selectedUsers={this.state.order.users}
+                    
                 />
             </React.Fragment>
         );

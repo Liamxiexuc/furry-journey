@@ -14,8 +14,7 @@ class ItemDetails extends React.Component {
             isLoading: false,
             isEditing: false,
             error: null,
-            item: {},
-            error: null,  
+            item: {}, 
         };
     }
 
