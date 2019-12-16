@@ -16,12 +16,12 @@ class UserEdit extends React.Component {
             firstName: '',
             lastName: '',
             email: '',
-            password: '',
             title: '',
             gender: '',
             phone: '',
             birthDay: '',
             address: '',
+            userType: '',
             isLoading: false,
             isSaving: false,
             
@@ -32,16 +32,18 @@ class UserEdit extends React.Component {
         const userId = this.props.match.params.id;
         this.setState( {isLoading: true}, () => {
             fetchUserById(userId)
-                .then(user => this.setState ({
-                    id: user.id,
+                .then(user => this.setState (
+                    {
+                    id: userId,
                     firstName: user.firstName,
                     lastName: user.lastName,
-                    email: user.email,
                     title: user.title,
+                    email: user.email,
                     gender: user.gender,
                     phone: user.phone,
                     birthDay: user.birthDay,
                     address: user.address,
+                    userType: user.userType,
                     isLoading: false,
                     isSaving: false,
                 }))
@@ -57,11 +59,15 @@ class UserEdit extends React.Component {
 
     handleSave = () => {
         const user = {...this.state};
+        delete user.isLoading;
+        delete user.isSaving;
+        delete user.error;
         const id = this.props.match.params.id;
         this.setState({ isSaving: true}, () => {
             saveUserById(id, user)
-                .then(() => this.props.history.push(`${USER_BASE_URL}/${id}`))
-                .catch(error => this.setState({ error }));
+                .then(() => this.props.history
+                    .push(`${USER_BASE_URL}/${id}`))
+                        .catch(error => this.setState({ error }));
         });
     }
 
@@ -77,12 +83,13 @@ class UserEdit extends React.Component {
                         id={this.state.id}
                         firstName={this.state.firstName}
                         lastName={this.state.lastName}
-                        email={this.state.email}
                         title={this.state.title}
+                        email={this.state.email}
                         gender={this.state.gender}
                         phone={this.state.phone}
-                        birthDay={this.birthDay}
-                        address={this.address}
+                        birthDay={this.state.birthDay}
+                        address={this.state.address}
+                        userType={this.state.userType}
                         handleChange={this.handleChange}
                         handleSubmit={this.handleSave}
                         submitButtonText="Save"

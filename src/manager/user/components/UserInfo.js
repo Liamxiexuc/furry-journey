@@ -1,7 +1,7 @@
 import React, { useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import { withRouter } from 'react-router';
-import {Button, Container, Divider, Image, Label, Segment, Header} from 'semantic-ui-react';
+import {Button, Container, Divider, Image, Label, Segment, Header, List} from 'semantic-ui-react';
 import { USER_BASE_URL } from '../../../route/URLMap';
 
 
@@ -14,9 +14,9 @@ const UserInfo = props => {
         userId,
         firstName,
         lastName,
-        email,
         title,
         gender,
+        email,
         phone,
         birthDay,
         address,
@@ -52,39 +52,48 @@ const UserInfo = props => {
                 {userId}
             </Header>
             <Segment loading={isLoading} >
-                <p>
-                    { firstName }
-                </p>
-                <p>
-                    { lastName }
-                </p>
-                <p>
-                   { email} 
-                </p>
-                <p>
-                    { title }
-                </p>
-                <p>
-                    { gender}
-                </p>
-                <p>
-                    { phone }
-                </p>
-                <p>
-                    { userType }
-                </p>
-                <p>
-                    { birthDay }
-                </p>
-                <p>
-                    { address }
-                </p>
+
+                <List >
+                    <List.Item>
+                        User ID: { userId }
+                    </List.Item>
+                    <List.Item>
+                        First Name: { firstName }
+                    </List.Item>
+                    <List.Item>
+                        Last Name: { lastName }
+                    </List.Item>
+                    <List.Item>
+                        E-mail: { email }
+                    </List.Item>
+                    <List.Item>
+                        Price:  { title }
+                    </List.Item>
+                    <List.Item>
+                        Gender:  { gender}
+                    </List.Item>
+                    <List.Item>
+                        Phone:  { phone }
+                    </List.Item>
+                    <List.Item>
+                        User Type: { userType }
+                    </List.Item>
+                    <List.Item>
+                        Birthday: {  birthDay  }
+                    </List.Item>
+                    <List.Item>
+                        Address: { address }
+                    </List.Item>
+                </List>
                 <Divider />
                 <Button as={Link} to={`${currentPath}/edit`}>
                     Edit
                 </Button>
                 <Button loading={isDeleting} onClick={deleteUser}>
                     Delete
+                </Button>
+                <Button as={Link} to="/users">
+                    Back
                 </Button>
             </Segment>
         </Container>

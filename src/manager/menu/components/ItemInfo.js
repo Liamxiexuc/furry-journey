@@ -95,6 +95,9 @@ const ItemInfo = props => {
                 <Button loading={isDeleting} onClick={deleteItem}>
                     Delete
                 </Button>
+                <Button as={Link} to="/items">
+                    Back
+                </Button>
             </Segment>
         </Container>
     );

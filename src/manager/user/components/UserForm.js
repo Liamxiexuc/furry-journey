@@ -5,74 +5,88 @@ const UserForm = props => {
     return (
         <Container >
             <Form>
-                <Form.Group>
-                    <Form.Field 
-                        label='User Form'
+               
+                <Form.Field 
+                        control='input'
+                        label='User Id'
+                        placeholder='User Id'
+                        onChange={props.handleChange}
+                        value={props._id}
+                        name="id"
                     />
                     <Form.Field 
                         control='input'
                         label='First Name'
                         placeholder='First Name'
                         onChange={props.handleChange}
-                        value={props.firstName}
+                        defaultValue={props.firstName}
+                        name="firstName"
                     />
                     <Form.Field 
                         control='input'
                         label='Last Name'
                         placeholder='Last Name'
                         onChange={props.handleChange}
-                        value={props.lastName}
+                        defaultValue={props.lastName}
+                        name="lastName"
                     />
                     <Form.Field 
                         control='input'
                         label='E-mail'
-                        placeholder='E-mail'
-                        onChange={props.handleChange}
-                        value={props.productType}
+                        placeholder='Read only' 
+                        readOnly
+                        defaultValue={props.email}
+                        name="email"
                     />
                     <Form.Field 
                         control='input'
                         label='Title'
                         placeholder='Title'
                         onChange={props.handleChange}
-                        value={props.productInfo}
+                        defaultValue={props.title}
+                        name="title"
                     />
                     <Form.Field 
                         control='input'
                         label='Gender'
                         placeholder='Gender'
                         onChange={props.handleChange}
-                        value={props.photo}
+                        defaultValue={props.gender}
+                        name="gender"
                     />
                     <Form.Field 
                         control='input'
                         label='Phone'
                         placeholder='Phone'
                         onChange={props.handleChange}
-                        value={props.category}
+                        defaultValue={props.phone}
+                        name="phome"
                     />
                     <Form.Field 
                         control='input'
                         label='Birthday'
                         placeholder='Birthday'
                         onChange={props.handleChange}
-                        value={props.category}
+                        defaultValue={props.birthDay}
+                        name="birthDay"
                     />
                     <Form.Field 
                         control='input'
                         label='Address'
                         placeholder='Address'
                         onChange={props.handleChange}
-                        value={props.category}
+                        defaultValue={props.address}
+                        name="address"
                     />
                     <Form.Field 
                         control='input'
                         label='User Type'
                         placeholder='User Type'
                         onChange={props.handleChange}
-                        value={props.category}
+                        defaultValue={props.userType}
+                        name="userType"
                     />
-                </Form.Group>
+              
                 <Button 
                     disabled={props.isButtonDisabled}
                     onClick={props.handleSubmit}

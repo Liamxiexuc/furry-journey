@@ -6,24 +6,16 @@ const mockImage = 'https://sdtimes.com/wp-content/uploads/2018/03/jW4dnFtA_400x4
 const getApiUserUrlWithId = id => `${API_USER_URL}/${id}`;
 
 export const fetchUsers = (query) => {
-    // const stringfield = queryString.stringify({
-         
-    //     query,
-        
-    // });
-    const url = `${API_USER_URL}`;
-
-    return get(url).then(res => ({
-        users: res.data.data.map(user => ({ ...user, image: mockImage })),
-        // pagination: res.data.pagination,
-    }));
+    return get(API_USER_URL);
 };
 
-export const fetchUserById = userId => {
-    return get(`${API_USER_URL}/${userId}}`).then(res => ({
-        ...res.data.data,
-
-    }));
+export const fetchUserById = id => {
+    const url = getApiUserUrlWithId(id);
+    return get(url).then(res => (
+        console.log(res.data),
+        {... res.data}
+    ));
+ 
 };
 
 export const saveUserById = (id, user) => {
@@ -40,12 +32,12 @@ export const deleteUserById = id => {
     return del(url);
 };
 
-export const addUserToOrder = (userId, orderId) => {
-    const url = `${API_USER_URL}/${userId}/orders/${orderId}`;
+export const addUserToOrder = (id, orderId) => {
+    const url = `${API_USER_URL}/${id}/orders/${orderId}`;
     return post(url).then(res => res.data);
 };
 
-export const removeUserToOrder = (userId, orderId) => {
-    const url = `${API_USER_URL}/${userId}/orders/${orderId}`;
+export const removeUserToOrder = (id, orderId) => {
+    const url = `${API_USER_URL}/${id}/orders/${orderId}`;
     return del(url).then(res => res.data);
 };

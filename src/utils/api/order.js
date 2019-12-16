@@ -24,7 +24,9 @@ export const fetchOrders = (query) => {
 
 export const fetchOrderById = id => {
     const url = getApiOrderUrlWithId(id);
-    return get(url).then(res => ({...res.data.data}));
+    return get(url).then(res => (
+        console.log(res.data),
+        {...res.data}));
 };
 
 export const saveOrderById = (id, order) => {

@@ -1,13 +1,13 @@
 import React from 'react';
-import {Container, Segment, Pagination, Button, Header} from 'semantic-ui-react';
+import {Container, Segment, Pagination, Button, Header, Table} from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 
-import UserCard from './components/UserCard';
+import UserRow from './components/UserRow';
 import ErrorMessage from '../../UI/ErrorMessage/errorMessage';
 import FlexContainer from '../../UI/flexContainer/FlexContainer';
 
-import { USER_BASE_URL } from '../../route/URLMap';
+import { USER_BASE_URL, ERROR_URL } from '../../route/URLMap';
 // import './styles/user.scss';
 import { fetchUsers } from '../../utils/api/user';
 
@@ -26,30 +26,44 @@ class Users extends React.Component {
     }
 
     componentDidMount() {
-        this.loadUsers();         
+        // this.loadUsers();
+        this.setState({ isLoading: true}, () => {
+            fetchUsers()
+                .then(userData => {
+                    this.setState(
+                        {
+                            isLoading: false,
+                            users: userData.data
+                        });
+                })
+                .catch(error =>
+                    this.setState({error, isLoading: false}, error => {
+                        this.props.history.push({ pathname: ERROR_URL, state: {error}});
+                    }))
+        })         
     }
 
-    loadUsers = (pageNum, pageSize) => {
-        this.setState({ isLoading: true, users: []}, ()=> {
-            fetchUsers(pageNum, pageSize)
-                .then(this.updateItemData)
-                .catch(error => this.setState({error}));
-        });
+    // loadUsers = (pageNum, pageSize) => {
+    //     this.setState({ isLoading: true, users: []}, ()=> {
+    //         fetchUsers(pageNum, pageSize)
+    //             .then(this.updateItemData)
+    //             .catch(error => this.setState({error}));
+    //     });
         
-    }
+    // }
 
-    updateItemData = userData => {
-        this.setState({
-            users: userData.users,
-            isLoading: false,
-            pagination: userData.pagination,
-        })
+    // updateItemData = userData => {
+    //     this.setState({
+    //         users: userData.users,
+    //         isLoading: false,
+    //         pagination: userData.pagination,
+    //     })
         
-    }
+    // }
 
-    handlePageChange = (event, data) => {
-        this.loadUsers(data.activePage);
-    }
+    // handlePageChange = (event, data) => {
+    //     this.loadUsers(data.activePage);
+    // }
 
     
 
@@ -63,25 +77,48 @@ class Users extends React.Component {
                     Users
                 </Header>
                 <Container >
-                    <Button as={Link} to={`${currentPath}/new`} >
+                    {/* <Button as={Link} to={`${currentPath}/new`} >
                         Create a New User
-                    </Button>
+                    </Button> */}
                     <Segment basic loading={this.state.isLoading} >
                         <FlexContainer justifyContentValue = "space-between">
-                            {this.state.users.map(user => (
-                                <UserCard 
-                                firstName={user.firstName}
-                                lastName={user.lastName}
-                                email={user.email}
-                                title={user.title}
-                                gender={user.gender}
-                                    key={user.id}
-                                    to={`${USER_BASE_URL}/${user.id}`}
-                                />
-                            ))}
+                        <Table className="item-table-card" >
+                            <Table.Header className="item-table">
+                                <Table.Row className="item-table-header">
+                                <Table.HeaderCell className="header-label">User ID</Table.HeaderCell>
+                                    <Table.HeaderCell className="header-label">First Name</Table.HeaderCell>
+                                    <Table.HeaderCell className="header-label">Last Name</Table.HeaderCell>
+                                    <Table.HeaderCell className="header-label">Title</Table.HeaderCell>
+                                    <Table.HeaderCell className="header-label">E-mail</Table.HeaderCell>
+                                    <Table.HeaderCell className="header-label">Gender</Table.HeaderCell>
+                                    <Table.HeaderCell className="header-label">Address</Table.HeaderCell>
+                                    <Table.HeaderCell className="header-label">Birthday</Table.HeaderCell>
+                                    <Table.HeaderCell className="header-label">Phone</Table.HeaderCell>
+                                    <Table.HeaderCell className="header-label">User Type</Table.HeaderCell>
+                                    <Table.HeaderCell className="header-label">More</Table.HeaderCell>
+                                </Table.Row>
+                            </Table.Header>
+                            <Table.Body>
+                                {this.state.users.map(user => (
+                                    <UserRow 
+                                        firstName={user.firstName}
+                                        lastName={user.lastName}
+                                        title={user.title}
+                                        email={user.email}
+                                        gender={user.gender}
+                                        address={user.address}
+                                        birthDay={user.birthDay}
+                                        phone={user.phone}
+                                        userType={user.userType}
+                                        id={user._id}
+                                        to={`${USER_BASE_URL}/${user._id}`}
+                                    />
+                                ))}
+                            </Table.Body>
+                        </Table>
                         </FlexContainer>
                     </Segment>
-                    {
+                    {/* {
                         this.state.pagination.page && (
                             <FlexContainer >
                                 <Pagination 
@@ -92,7 +129,7 @@ class Users extends React.Component {
                                 />
                             </FlexContainer>
                         )
-                    }
+                    } */}
                 </Container>    
             </React.Fragment>
         );

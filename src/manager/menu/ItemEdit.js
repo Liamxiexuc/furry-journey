@@ -14,11 +14,9 @@ class ItemEdit extends React.Component {
         super(props);
 
         this.state = {
-            id: '',
-            
+            id: '',            
             productName: '',
             price: '',
- 
             productInfo: '',
             photo: '',
             category: '',
@@ -30,7 +28,6 @@ class ItemEdit extends React.Component {
 
     componentDidMount() {
         const itemId = this.props.match.params.id;
-        console.log(itemId);
         this.setState( {isLoading: true}, () => {
             fetchItemById(itemId)
                 .then(item => this.setState (
@@ -44,39 +41,30 @@ class ItemEdit extends React.Component {
                     isLoading: false,
                     isSaving: false,
                     
-                })
-                
-                )
+                }))
                 .catch(error => this.setState({ error }));
         });
     }
 
  
 
-    handleChange = (event, data) => {
+    handleChange = (event) => {
         const key = event.target.name;
-        console.log(event.target.name);
-        console.log(event.target.value);
-   
- 
         const value = event.target.value;
         this.setState({ [key]: value } );
     }
 
     handleSave = () => {
         const item = {...this.state};
-        console.log(item);
         delete item.isLoading;
         delete item.isSaving;
-        delete item.error;
-        
+        delete item.error;       
         const id = this.props.match.params.id;
         this.setState({ isSaving: true}, () => {
             saveItemById(id, item)
-                .then(
-                    console.log(item),
-                    () => this.props.history.push(`${ITEM_BASE_URL}/${id}`))
-                .catch(error => this.setState({ error }));
+                .then(() => this.props.history
+                    .push(`${ITEM_BASE_URL}/${id}`))
+                        .catch(error => this.setState({ error }));
         });
 
     }

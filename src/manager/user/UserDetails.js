@@ -13,7 +13,7 @@ class UserDetails extends React.Component {
             isLoading: false,
             isEditing: false,
             error: null,
-            user: null,
+            user: {},
             error: null,  
         };
     }
@@ -26,7 +26,8 @@ class UserDetails extends React.Component {
 
     loadUser = userId => this.setState({ isLoading: true}, () => {
         fetchUserById(userId)
-            .then(user => this.setState({ user, isLoading: false}))
+            .then(user => this.setState(
+                { user, isLoading: false}))
             .catch(this.setErrorState);
     });
 
@@ -41,17 +42,18 @@ class UserDetails extends React.Component {
                     Dish Details
                 </Header>
                 <UserInfo 
-                    userId={this.state.user.id}
-                    firstName={this.state.firstName}
-                    lastName={this.state.lastName}
-                    email={this.state.email}
-                    title={this.state.title}
-                    gender={this.state.gender}
-                    photo={this.state.photo}
-                    birthDay={this.state.birthDay}
-                    address={this.state.address}
+                    userId={this.state.user._id}
+                    firstName={this.state.user.firstName}
+                    lastName={this.state.user.lastName}
+                    title={this.state.user.title}
+                    email={this.state.user.email}
+                    gender={this.state.user.gender}
+                    phone={this.state.user.phone}
+                    userType={this.state.user.userType}
+                    birthDay={this.state.user.birthDay}
+                    address={this.state.user.address}
                     isLoading={this.state.isLoading}                
-                    reloadPage={this.loadItem}
+                    reloadPage={this.loadUser}
                     setErrorState={this.setErrorState}
                 />
             </React.Fragment>

@@ -31,7 +31,6 @@ class Items extends React.Component {
         this.setState({ isLoading: true}, () => {
             fetchItems()
                 .then(itemData => {
-                    console.log(itemData);
                     this.setState({
                         isLoading: false,
                         items: itemData.data
@@ -91,7 +90,7 @@ class Items extends React.Component {
                         <Table className="item-table-card" >
                             <Table.Header className="item-table">
                                 <Table.Row className="item-table-header">
-                                <Table.HeaderCell className="header-label">Dish Reference</Table.HeaderCell>
+                                    <Table.HeaderCell className="header-label">Dish Reference</Table.HeaderCell>
                                     <Table.HeaderCell className="header-label">Dish Name</Table.HeaderCell>
                                     <Table.HeaderCell className="header-label">Dish Price</Table.HeaderCell>
                                     <Table.HeaderCell className="header-label">Dish Category</Table.HeaderCell>

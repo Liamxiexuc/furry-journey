@@ -54,7 +54,6 @@ class UserNew extends React.Component {
                         id={this.state.id}
                         firstName={this.state.firstName}
                         lastName={this.state.lastName}
-                        email={this.state.email}
                         title={this.state.title}
                         gender={this.state.gender}
                         phone={this.state.phone}
