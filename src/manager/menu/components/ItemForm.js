@@ -12,7 +12,7 @@ const ItemForm = props => {
                         placeholder='Product id'
                         onChange={props.handleChange}
                         defaultValue={props._id}
-                
+                        name="id"
                     />
                     <Form.Field 
                         control='input'
@@ -20,7 +20,7 @@ const ItemForm = props => {
                         placeholder='Product Name'
                         onChange={props.handleChange}
                         defaultValue={props.productName}  
-                        value={this.state.productName}
+                        name="productName" 
                     />
                     <Form.Field 
                         control='input'
@@ -28,6 +28,7 @@ const ItemForm = props => {
                         placeholder='Price'
                         onChange={props.handleChange}
                         defaultValue={props.price}
+                        name="price"
                     />
                     <Form.Field 
                         control='input'
@@ -35,6 +36,8 @@ const ItemForm = props => {
                         placeholder='Product Info'
                         onChange={props.handleChange}
                         defaultValue={props.productInfo}
+                        name="productInfo"
+                        
                     />
                     <Form.Field 
                         control='input'
@@ -42,6 +45,7 @@ const ItemForm = props => {
                         placeholder='Photo'
                         onChange={props.handleChange}
                         defaultValue={props.photo}
+                        name="photo"
                     />
                     <Form.Field 
                         control='input'
@@ -49,6 +53,7 @@ const ItemForm = props => {
                         placeholder='Product Category'
                         onChange={props.handleChange}
                         defaultValue={props.category}
+                        name="category"
                     />
                  
                 <Button 

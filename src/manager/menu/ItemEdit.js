@@ -1,5 +1,5 @@
 import React from 'react';
-import { Segment } from 'semantic-ui-react';
+import { Segment, Container, Form, Button } from 'semantic-ui-react';
 
 import ItemForm from './components/ItemForm';
 import ErrorMessage from '../../UI/ErrorMessage/errorMessage';
@@ -15,7 +15,7 @@ class ItemEdit extends React.Component {
 
         this.state = {
             id: '',
-            error: null,
+            
             productName: '',
             price: '',
  
@@ -24,7 +24,7 @@ class ItemEdit extends React.Component {
             category: '',
             isLoading: false,
             isSaving: false,
-            
+            error: null,
         }
     }
 
@@ -43,12 +43,15 @@ class ItemEdit extends React.Component {
                     category: item.category,
                     isLoading: false,
                     isSaving: false,
+                    
                 })
                 
                 )
                 .catch(error => this.setState({ error }));
         });
     }
+
+ 
 
     handleChange = (event, data) => {
         const key = event.target.name;
@@ -63,6 +66,10 @@ class ItemEdit extends React.Component {
     handleSave = () => {
         const item = {...this.state};
         console.log(item);
+        delete item.isLoading;
+        delete item.isSaving;
+        delete item.error;
+        
         const id = this.props.match.params.id;
         this.setState({ isSaving: true}, () => {
             saveItemById(id, item)
@@ -71,6 +78,7 @@ class ItemEdit extends React.Component {
                     () => this.props.history.push(`${ITEM_BASE_URL}/${id}`))
                 .catch(error => this.setState({ error }));
         });
+
     }
 
     render() {
@@ -92,6 +100,63 @@ class ItemEdit extends React.Component {
                         handleSubmit={this.handleSave}
                         submitButtonText="Save"
                     />
+
+                    {/* <Container >
+                                <Form>
+
+                                        <Form.Field 
+                                            control='input'
+                                            label='Product Id'
+                                            placeholder='Product id'
+                                            handleChange={this.handleChange}
+                                            defaultValue={this.state.id}
+                                    
+                                        />
+                                        <Form.Field 
+                                            control='input'
+                                            label='Product Name'
+                                            placeholder='Product Name'
+                                            handleChange={this.handleChange}
+                                            productName={this.state.productName}
+                                        />
+                                        <Form.Field 
+                                            control='input'
+                                            label='Price'
+                                            placeholder='Price'
+                                            handleChange={this.handleChange}
+                                            price={this.state.price}
+                                        />
+                                        <Form.Field 
+                                            control='input'
+                                            label='Product Info'
+                                            placeholder='Product Info'
+                                            handleChange={this.handleChange}
+                                            productInfo={this.state.productInfo}
+                                        />
+                                        <Form.Field 
+                                            control='input'
+                                            label='Photo'
+                                            placeholder='Photo'
+                                            handleChange={this.handleChange}
+                                            photo={this.state.photo}
+                                        />
+                                        <Form.Field 
+                                            control='input'
+                                            label='Product Category'
+                                            placeholder='Product Category'
+                                            handleChange={this.handleChange}
+                                            category={this.state.category}
+                                        />
+                                    
+                                    <Button 
+                                        disabled={this.isButtonDisabled}
+                                        handleSubmit={this.handleSave}
+                                        submitButtonText="Save"
+                                        >
+                                             save
+                                    </Button>
+                                </Form>
+                            </Container>                     */}
                 </Segment>
             </React.Fragment>
         );
