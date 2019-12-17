@@ -71,6 +71,7 @@ const OrderRow = props => {
             <Table.Cell >
               {props.dishes.map(dish => (
                 <DishRow
+                dishID={dish.dishID}
                 productName={dish.productName}
                 price={dish.price}
                 quantity={dish.quantity}

@@ -96,10 +96,10 @@ const OrderInfo = props => {
                     </List.item>
 
                 </List>
-                {/* <div>
+                <div>
                     <span>Order Dish: </span>
-                    {selectedItems.map(item => <Label key={item._id}>{item.productName}</Label>)}
-                </div> */}
+                    {dishes.map(dish => <Label key={dish.dishID}>{dish.productName}</Label>)}
+                </div>
                 {/* <ItemManagement 
                     orderId={orderId}
                     reloadPage={reloadPage}
