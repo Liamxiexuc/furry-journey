@@ -18,7 +18,6 @@ class Orders extends React.Component {
             orders: [],
             error: null,
             isLoading: false,
-            isSaving: false,
             pagination: {},
         };
     }
@@ -29,9 +28,11 @@ class Orders extends React.Component {
         this.setState({ isLoading: true}, () => {
             fetchOrders()
                 .then(orderData => {
-                    this.setState({
+                    this.setState(
+                         
+                        {
                         isLoading: false,
-                        order: orderData.data
+                        orders: orderData.data
                     });
                 })
                 .catch(error => 
@@ -72,6 +73,7 @@ class Orders extends React.Component {
     render() {
         const currentPath = this.props.location.pathname;
 
+        console.log(this.state.orders);
         return(
             <React.Fragment>
                 <ErrorMessage error={this.state.error} />
@@ -89,8 +91,8 @@ class Orders extends React.Component {
                                     <Table.Row className="item-table-header">
                                         <Table.HeaderCell className="header-label">Order ID</Table.HeaderCell>
                                         <Table.HeaderCell className="header-label">Order Status</Table.HeaderCell>
+                                        <Table.HeaderCell className="header-label">Order Time</Table.HeaderCell>
                                         <Table.HeaderCell className="header-label">Total Price</Table.HeaderCell>
-                                        <Table.HeaderCell className="header-label">Order Status</Table.HeaderCell>
                                         <Table.HeaderCell className="header-label">Pay Status</Table.HeaderCell>
                                         <Table.HeaderCell className="header-label">User ID</Table.HeaderCell>
                                         <Table.HeaderCell className="header-label">Receiver Name</Table.HeaderCell>
@@ -104,16 +106,29 @@ class Orders extends React.Component {
                                 <Table.Body>
                                     {this.state.orders.map(order => (
                                         <OrderRow 
+                                            // receiverName={order.receiverName}
+                                            // receiverPhone={order.receiverPhone}
+                                            // receiverAddress={order.receiverAddress}
+                                            // orderStatus={order.orderStatus}
+                                            // totalPrice={order.orderTotalPrice}
+                                            // payStatus={order.payStatus}
+                                            // userId={order.userId}
+                                            // comment={order.comment}
+                                            // dishes={order.dishes}
+                                            // id={order._id}
+                                            // to={`${ORDER_BASE_URL}/${order._id}`}
+                                            id={order._id}
+                                            key={order._id}
+                                            userId={order.userId} 
+                                            orderTotalPrice={order.orderTotalPrice}
+                                            orderStatus={order.orderStatus}
+                                            payStatus={order.payStatus}
                                             receiverName={order.receiverName}
                                             receiverPhone={order.receiverPhone}
-                                            receiverAddress={order.receiverAddress}
-                                            orderStatus={order.orderStatus}
-                                            totalPrice={order.orderTotalPrice}
-                                            payStatus={order.payStatus}
-                                            userId={order.userId}
-                                            comment={order.comment}
                                             dishes={order.dishes}
-                                            id={order._id}
+                                            receiverAddress={order.receiverAddress}
+                                            createdAt={order.createdAt}
+                                            comment={order.comment}
                                             to={`${ORDER_BASE_URL}/${order._id}`}
                                         />
                                     ))}

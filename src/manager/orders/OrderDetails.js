@@ -25,7 +25,9 @@ class OrderDetails extends React.Component {
 
     loadOrder = orderId => this.setState({ isLoading: true }, () => {
         fetchOrderById(orderId)
-            .then(order => this.setState({ order, isLoading: false }))
+            .then(order => this.setState(
+                
+                { order, isLoading: false }))
             .catch(this.setErrorState);
     });
 
@@ -39,16 +41,17 @@ class OrderDetails extends React.Component {
                     Order Details
                 </Header>
                 <OrderInfo
-                    dishes={this.state.order.dishes}
-                    orderId={this.state.order.id}
+                    
+                    orderId={this.state.order._id}
                     orderStatus={this.state.order.orderStatus}
                     orderTotalPrice={this.state.order.orderTotalPrice}
                     payStatus={this.state.order.payStatus}
                     receiverAddress={this.state.order.receiverAddress}
                     receiverName={this.state.order.receiverName}
                     receiverPhone={this.state.order.receiverPhone}
-                    comment={this.state.comment}
+                    comment={this.state.order.comment}
                     userId={this.state.order.userId}
+                    dishes={this.state.order.dishes}
                     isLoading={this.state.isLoading}
                     
                     reloadPage={this.loadOrder}

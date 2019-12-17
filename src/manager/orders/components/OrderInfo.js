@@ -2,7 +2,7 @@ import React, {useEffect, useState } from 'react';
 import { Button, Container, Divider, Image, Label, Segment, Header, List } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
-
+import DishRow from "./DishRow";
 import ItemManagement from './ItemManagement';
 import UserManagement from './UserManagement';
 
@@ -16,8 +16,8 @@ const OrderInfo = props => {
     const [ isDeleting, setIsDeleting ] = useState(false);
 
     const {
-        selectedItems = [],
-        selectedUsers = [],
+        dishes = [],
+        user,
         orderId,
         userId,
         orderStatus,
@@ -55,10 +55,6 @@ const OrderInfo = props => {
         <Container>
             <Image  />
             <Header as="h3">
-                {receiverName}
-            </Header>
-            <Header as="h3">
-                {orderId}
             </Header>
             <Segment loading={isLoading}>
                 {/* <p>
@@ -98,21 +94,22 @@ const OrderInfo = props => {
                     <List.item>
                         User Phone: { receiverPhone }
                     </List.item>
+
                 </List>
-                <div>
+                {/* <div>
                     <span>Order Dish: </span>
                     {selectedItems.map(item => <Label key={item._id}>{item.productName}</Label>)}
-                </div>
-                <ItemManagement 
+                </div> */}
+                {/* <ItemManagement 
                     orderId={orderId}
                     reloadPage={reloadPage}
-                    selectedItems={selectedItems}
+                    dishes={dishes}
                 />
                 <UserManagement 
                     orderId={orderId}
                     reloadPage={reloadPage}
-                    selectedUsers={selectedUsers}
-                />
+                    user={user}
+                /> */}
                 <Divider />
                 <Button as={Link} to={`${currentPath}/edit`}>
                     Edit

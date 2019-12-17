@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Image, Table, Button } from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
+import DishRow from "./DishRow";
 
 const OrderRow = props => {
     
@@ -43,8 +44,12 @@ const OrderRow = props => {
               {props.orderStatus}
             </Table.Cell>
             <Table.Cell className="item-table-cell">
+              {props.createdAt}
+            </Table.Cell>
+            <Table.Cell className="item-table-cell">
               {props.orderTotalPrice}
             </Table.Cell>
+
             <Table.Cell className="item-table-cell">
               {props.payStatus}
             </Table.Cell>
@@ -63,8 +68,14 @@ const OrderRow = props => {
             <Table.Cell className="item-table-cell">
               {props.comment}
             </Table.Cell>
-            <Table.Cell className="item-table-cell">
-              {props.dishes}
+            <Table.Cell >
+              {props.dishes.map(dish => (
+                <DishRow
+                productName={dish.productName}
+                price={dish.price}
+                quantity={dish.quantity}
+                  />
+              ))}
             </Table.Cell>
             <Table.Cell className="item-table-cell">
                 <Button as={Link} to={props.to}> More</Button>
