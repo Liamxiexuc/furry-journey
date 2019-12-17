@@ -20,13 +20,14 @@ class OrderDetails extends React.Component {
 
     componentDidMount() {
         const orderId = this.props.match.params.id;
+ 
         this.loadOrder(orderId);
     }
 
     loadOrder = orderId => this.setState({ isLoading: true }, () => {
         fetchOrderById(orderId)
             .then(order => this.setState(
-                console.log(order),
+                
                 { order, isLoading: false }))
             .catch(this.setErrorState);
     });

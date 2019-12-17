@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, Image, Table, Button } from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 import DishRow from "./DishRow";
+import { ORDER_BASE_URL } from '../../../route/URLMap';
 
 const OrderRow = props => {
     
@@ -70,11 +71,13 @@ const OrderRow = props => {
             </Table.Cell>
             <Table.Cell >
               {props.dishes.map(dish => (
+                console.log(dish),
                 <DishRow
                 dishID={dish.dishID}
                 productName={dish.productName}
                 price={dish.price}
                 quantity={dish.quantity}
+                to={`${ORDER_BASE_URL}/${props.id}/${dish.dishID}`}
                   />
               ))}
             </Table.Cell>
@@ -82,35 +85,7 @@ const OrderRow = props => {
                 <Button as={Link} to={props.to}> More</Button>
             </Table.Cell>
           </Table.Row>
-        // <div className="order-card">
-        //     <div className="order-card--header">
-        //         <div className="order-receiver-name">
-        //             Client Name: {props.receiverName}
-        //         </div>
-        //         <div className="order-receiver-phone">
-        //             Phone Number: {props.receiverPhone}
-        //         </div>
-        //         <div className="order-receiver-address">
-        //             Address: {props.receiverAddress}
-        //         </div>
-        //     </div>
-        //     <div className="order-card--body">
-        //         <div className="order-status">
-        //             Order Status: {props.orderStatus}
-        //         </div>
-        //         <div className="order-total-price">
-        //             Total Price: {props.totalPrice}
-        //         </div>
-        //         <div className="order-pay-status">
-        //             Pay Status: {props.payStatus}
-        //         </div>
-        //     </div>
-        //     <div className="order-card-footer">
-        //         <div className="order-comment">
-        //             Comment: {props.orderComment}
-        //         </div>
-        //     </div>
-        // </div>
+
     )    
 };
 

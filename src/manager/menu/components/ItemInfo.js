@@ -48,25 +48,7 @@ const ItemInfo = props => {
              
             </Header>
             <Segment loading={isLoading} >
-                {/* <p>
-                    { productName }
-                </p>
-                <p>
-                    { price }
-                </p>
-                <p>
-                   {productType} 
-                </p>
-                <p>
-                    {productInfo}
-                </p>
-                <p>
-                    {photo}
-                </p>
-                <p>
-                    { category}
-                </p> */}
-                
+               
                 <List >
                     <List.Item>
                         Dish ID: { itemId }

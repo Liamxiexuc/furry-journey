@@ -14,7 +14,6 @@ class UserDetails extends React.Component {
             isEditing: false,
             error: null,
             user: {},
-            error: null,  
         };
     }
 

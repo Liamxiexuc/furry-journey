@@ -71,9 +71,7 @@ class Orders extends React.Component {
     // }
 
     render() {
-        const currentPath = this.props.location.pathname;
-
-        console.log(this.state.orders);
+        
         return(
             <React.Fragment>
                 <ErrorMessage error={this.state.error} />

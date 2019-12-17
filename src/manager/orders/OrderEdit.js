@@ -2,6 +2,7 @@ import React from 'react';
 import { Segment} from 'semantic-ui-react';
 
 import OrderForm from '../orders/components/OrderForm';
+
 import ErrorMessage from '../../UI/ErrorMessage/errorMessage';
 import Header from '../../UI/header/Header';
 import { ORDER_BASE_URL } from '../../route/URLMap';
@@ -32,7 +33,8 @@ class OrderEdit extends React.Component {
         const orderId = this.props.match.params.id;
         this.setState({ isLoading: true }, () => {
             fetchOrderById(orderId)
-                .then(order => this.setState({
+                .then(order => this.setState(
+                    {
                     id: orderId,
                     orderStatus: order.orderStatus,
                     orderTotalPrice: order.orderTotalPrice,

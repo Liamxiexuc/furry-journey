@@ -7,14 +7,14 @@ const getApiOrderUrlWithId = id => `${API_ORDER_URL}/${id}`;
 
 export const fetchOrders = (query) => {
     // const url = `${API_ORDER_URL}`;
-    console.log(API_ORDER_URL);
+ 
     return get(API_ORDER_URL);
 };
 
 
 export const fetchOrderById = id => {
     const url = getApiOrderUrlWithId(id);
-    console.log(url);
+ 
     return get(url).then(res => (
         
         {...res.data}));

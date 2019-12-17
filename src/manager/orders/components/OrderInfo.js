@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import DishRow from "./DishRow";
 import ItemManagement from './ItemManagement';
-import UserManagement from './UserManagement';
+// import UserManagement from './UserManagement';
 
 import { ORDER_BASE_URL } from '../../../route/URLMap';
 
@@ -18,6 +18,7 @@ const OrderInfo = props => {
     const {
         dishes = [],
         orderId,
+        user,
         userId,
         orderStatus,
         orderTotalPrice,
@@ -84,50 +85,64 @@ const OrderInfo = props => {
                     { receiverPhone }
                 </p> */}
                 <List >
-                    <List.item>
+                    <List.Item>
                         Order ID: {orderId}
-                    </List.item>
-                    <List.item>
+                    </List.Item>
+                    <List.Item>
                         Order Status: {orderStatus}
-                    </List.item>
-                    <List.item>
+                    </List.Item>
+                    <List.Item>
                         Total Price: {orderTotalPrice }
-                    </List.item>
-                    <List.item>
+                    </List.Item>
+                    <List.Item>
                         Pay Status: { payStatus } 
-                    </List.item>
-                    <List.item>
+                    </List.Item>
+                    <List.Item>
                         User ID: {userId}
-                    </List.item>
-                    <List.item>
+                    </List.Item>
+                    <List.Item>
                         User Address: {receiverAddress}
-                    </List.item>
-                    <List.item>
+                    </List.Item>
+                    <List.Item>
                         User Phone: { receiverPhone }
-                    </List.item>
+                    </List.Item>
+                    
 
                 </List>
                 <div>
-                    <span>Order Dish: </span>
-                    {dishes.map(dish => <Label key={dish.dishID}>{dish.productName}</Label>)}
-                </div>
-                {/* <ItemManagement 
-                    orderId={orderId}
-                    reloadPage={reloadPage}
-                    dishes={dishes}
-                />
-                <UserManagement 
-                    orderId={orderId}
-                    reloadPage={reloadPage}
-                    user={user}
-                /> */}
-                <Divider />
+                Order Dish:
+                        {dishes.map(dish => (
+                            <DishRow 
+                                dishID={dish.dishID}  
+                                productName={dish.productName}
+                                price={dish.price}
+                                quantity={dish.quantity} 
+                                to={`${ORDER_BASE_URL}/${orderId}/${dish.dishID}`}                              
+                            />    
+                        ))}
                 <Button as={Link} to={`${currentPath}/edit`}>
                     Edit
                 </Button>
                 <Button loading={isDeleting} onClick={deleteOrder}>
                     Delete
                 </Button>
+                </div>
+                {/* <div>
+                    <span>Order Dish: </span>
+                    {dishes.map(dish => <Label key={dish.dishID}>{dish.productName}</Label>)}
+                </div>
+                <ItemManagement 
+                    orderId={orderId}
+                    reloadPage={reloadPage}
+                    dishes={dishes}
+                /> */}
+                {/* <UserManagement 
+                    orderId={orderId}
+                    reloadPage={reloadPage}
+                    user={user}
+                /> */}
+                <Divider />
+
                 <Button as={Link} to="/orders">
                     Back
                 </Button>

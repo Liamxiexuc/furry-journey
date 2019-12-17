@@ -65,7 +65,7 @@ class UserManagement extends React.Component {
     render() {
         return (
             <Modal
-                trigger={<Button positive>Manage Dishes</Button>}
+                trigger={<Button positive>Manage User</Button>}
             >
                 <PersonManagement
                     error={this.state.error}
