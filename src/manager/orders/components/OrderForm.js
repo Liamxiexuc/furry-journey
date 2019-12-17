@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button, Container, Form, Image } from 'semantic-ui-react';
-import DishRow from "./DishRow";
+import DishRow from "./dishComponents/DishRow";
 
 const OrderForm = props => {
     return (

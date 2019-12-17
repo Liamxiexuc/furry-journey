@@ -2,7 +2,7 @@ import React, {useEffect, useState } from 'react';
 import { Button, Container, Divider, Image, Label, Segment, Header, List } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
-import DishRow from "./DishRow";
+import DishRow from "./dishComponents/DishRow";
 import ItemManagement from './ItemManagement';
 // import UserManagement from './UserManagement';
 

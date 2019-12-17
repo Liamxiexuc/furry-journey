@@ -34,13 +34,13 @@ export const deleteOrderById = id => {
     return del(url);
 };
 
-// export const addItemToOrder = (itemId, orderId) => {
-//     const url = `${API_ORDER_URL}/${itemId}/orders/${orderId}`;
-//     return post(url).then(res => res.data);
-// };
+export const addItemToOrder = (itemId, orderId) => {
+    const url = `${API_ORDER_URL}/${orderId}/${itemId}`;
+    return post(url).then(res => res.data);
+};
 
-// export const removeItemToOrder = (itemId, orderId) => {
-//     const url = `${API_ORDER_URL}/${itemId}/orders/${orderId}`;
-//     return del(url).then(res => res.data);
-// };
+export const removeItemToOrder = (itemId, orderId) => {
+    const url = `${API_ORDER_URL}/${orderId}/${itemId}`;
+    return del(url).then(res => res.data);
+};
 

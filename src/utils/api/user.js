@@ -32,12 +32,12 @@ export const deleteUserById = id => {
     return del(url);
 };
 
-export const addUserToOrder = (id, orderId) => {
-    const url = `${API_USER_URL}/${id}/orders/${orderId}`;
-    return post(url).then(res => res.data);
-};
+// export const addUserToOrder = (id, orderId) => {
+//     const url = `${API_USER_URL}/${id}/orders/${orderId}`;
+//     return post(url).then(res => res.data);
+// };
 
-export const removeUserToOrder = (id, orderId) => {
-    const url = `${API_USER_URL}/${id}/orders/${orderId}`;
-    return del(url).then(res => res.data);
-};
+// export const removeUserToOrder = (id, orderId) => {
+//     const url = `${API_USER_URL}/${id}/orders/${orderId}`;
+//     return del(url).then(res => res.data);
+// };

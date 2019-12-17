@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Image, Table, Button } from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
-import DishRow from "./DishRow";
+import DishRow from "./dishComponents/DishRow";
 import { ORDER_BASE_URL } from '../../../route/URLMap';
 
 const OrderRow = props => {
@@ -77,9 +77,10 @@ const OrderRow = props => {
                 productName={dish.productName}
                 price={dish.price}
                 quantity={dish.quantity}
-                to={`${ORDER_BASE_URL}/${props.id}/${dish.dishID}`}
+                
                   />
               ))}
+ 
             </Table.Cell>
             <Table.Cell className="item-table-cell">
                 <Button as={Link} to={props.to}> More</Button>

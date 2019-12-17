@@ -34,12 +34,12 @@ export const deleteItemById = id => {
     return del(url);
 };
 
-export const addItemToOrder = (id, orderId) => {
-    const url = `${API_ITEM_URL}/${id}/orders/${orderId}`;
-    return post(url).then(res => res.data);
-};
+// export const addItemToOrder = (id, orderId) => {
+//     const url = `${API_ITEM_URL}/${id}/orders/${orderId}`;
+//     return post(url).then(res => res.data);
+// };
 
-export const removeItemToOrder = (id, orderId) => {
-    const url = `${API_ITEM_URL}/${id}/orders/${orderId}`;
-    return del(url).then(res => res.data);
-};
+// export const removeItemToOrder = (id, orderId) => {
+//     const url = `${API_ITEM_URL}/${id}/orders/${orderId}`;
+//     return del(url).then(res => res.data);
+// };
