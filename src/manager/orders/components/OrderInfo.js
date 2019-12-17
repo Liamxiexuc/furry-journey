@@ -17,7 +17,6 @@ const OrderInfo = props => {
 
     const {
         dishes = [],
-        user,
         orderId,
         userId,
         orderStatus,
@@ -51,7 +50,19 @@ const OrderInfo = props => {
     };
 
     return (
+        console.log(
+            {dishes},
+            {orderId},
+            {userId},
+            {orderStatus},
+            {orderTotalPrice},
+            
+            {payStatus},
+            {receiverName},
+            {receiverAddress},
+            {receiverPhone},
 
+        ),
         <Container>
             <Image  />
             <Header as="h3">

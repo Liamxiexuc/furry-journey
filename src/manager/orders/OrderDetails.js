@@ -26,7 +26,7 @@ class OrderDetails extends React.Component {
     loadOrder = orderId => this.setState({ isLoading: true }, () => {
         fetchOrderById(orderId)
             .then(order => this.setState(
-                
+                console.log(order),
                 { order, isLoading: false }))
             .catch(this.setErrorState);
     });
@@ -50,6 +50,8 @@ class OrderDetails extends React.Component {
                     receiverName={this.state.order.receiverName}
                     receiverPhone={this.state.order.receiverPhone}
                     comment={this.state.order.comment}
+                    createdAt={this.state.order.createdAt}
+                                            
                     userId={this.state.order.userId}
                     dishes={this.state.order.dishes}
                     isLoading={this.state.isLoading}
