@@ -1,24 +1,13 @@
 #root {
     .App {
-        .ui.two.column.grid.admin-grid {            
-            padding: 20px 0px;
-
-            .ui.header.admin-header--item {
-                padding: 5px 0px 0px 0px;
- 
-            }
-            .ui.button.admin-header--create-button {
-                background-color: #00c5d9;
-                color: white;
-                font-weight: bold;
-                font-size: 16px;
-            }
-        }
-        .admin-item-container {
+        
+        .admin-order-container {
             .admin-item-container-inner{
                 .item-table-card{
+                    
                     .item-table-header {
                         background-color: #2ba6cb;
+                       
                         .item-table-header-col {
                             background-color: white;
                             border-width: 2px;
@@ -27,21 +16,50 @@
                                 color: white;
                                 padding: 16px;
                                 text-align: center;
+
+                                &:first-child {
+                                    display: none;
+                                }
+                                &:nth-child(6) {
+                                    display: none;
+                                }
+                                &:nth-child(10) {
+                                    display: none;
+                                }
+                                &:nth-child(11) {
+                                    white-space:nowrap;
+                                    overflow:hidden;
+                                }
                             }
+                            
                         }
                     }
                     .admin-table-body {
+                        
                         .item-table-row {
+                             
                             &:hover {
                                 background-color: #BDF2F2;
                             }
                             .item-table-cell {
+                              
                                 .item-more {
                                     background-color: #00c5d9;
                                     color: white;
                                     font-weight: bold;
                                 }
 
+                                 &:first-child {
+                                    display: none;
+                                }
+
+                                &:nth-child(6) {
+                                    display: none;
+                                }
+                                &:nth-child(10) {
+                                    display: none;
+                                }
+                              
                             }
                         }
                     }

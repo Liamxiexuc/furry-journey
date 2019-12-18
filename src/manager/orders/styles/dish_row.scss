@@ -1,0 +1,33 @@
+.item-table-order-cell {
+    .order-dish-table {
+        
+        .order-dish-table-header {
+  
+            .order-dish-table-header-row {
+                &:nth-child(2) {
+                    display: none;
+                }      
+                .order-item-label {
+                    &:nth-child(1), &:nth-child(3) {
+                        display: none;
+                    }
+                    
+                }
+            }
+        }
+    
+        .order-dish-table-body {
+            .order-dish-table-body-row {
+                .order-item-content {
+                    &:nth-child(1), &:nth-child(3) {
+                        display: none;
+                    }
+                    
+                }
+            }
+        }
+
+}
+
+
+}

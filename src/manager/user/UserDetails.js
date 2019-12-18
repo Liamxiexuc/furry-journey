@@ -38,7 +38,7 @@ class UserDetails extends React.Component {
             <React.Fragment>
                 <ErrorMessage error={this.state.error} />
                 <Header >
-                    Dish Details
+                    User Details
                 </Header>
                 <UserInfo 
                     userId={this.state.user._id}

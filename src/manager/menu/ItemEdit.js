@@ -76,7 +76,7 @@ class ItemEdit extends React.Component {
                 <Header >
                     Edit Dish
                 </Header>
-                <Segment loading={this.state.isLoading || this.state.isSaving} >
+                <Segment className="item-form-segment" loading={this.state.isLoading || this.state.isSaving} >
                     <ItemForm 
                         id={this.state.id}
                         productName={this.state.productName}

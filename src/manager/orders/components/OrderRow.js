@@ -69,7 +69,7 @@ const OrderRow = props => {
             <Table.Cell className="item-table-cell">
               {props.comment}
             </Table.Cell>
-            <Table.Cell >
+            <Table.Cell className="item-table-order-cell" >
               {props.dishes.map(dish => (
                 console.log(dish),
                 <DishRow
@@ -83,7 +83,7 @@ const OrderRow = props => {
  
             </Table.Cell>
             <Table.Cell className="item-table-cell">
-                <Button as={Link} to={props.to}> More</Button>
+                <Button className="item-more" as={Link} to={props.to}> More</Button>
             </Table.Cell>
           </Table.Row>
 

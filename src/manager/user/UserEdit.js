@@ -78,7 +78,7 @@ class UserEdit extends React.Component {
                 <Header >
                     Edit User
                 </Header>
-                <Segment loading={this.state.isLoading || this.state.isSaving} >
+                <Segment className="item-form-segment" loading={this.state.isLoading || this.state.isSaving} >
                     <UserForm 
                         id={this.state.id}
                         firstName={this.state.firstName}

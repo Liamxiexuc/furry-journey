@@ -8,7 +8,7 @@ import ErrorMessage from '../../UI/ErrorMessage/errorMessage';
 import FlexContainer from '../../UI/flexContainer/FlexContainer';
 
 import { USER_BASE_URL, ERROR_URL } from '../../route/URLMap';
-// import './styles/user.scss';
+import './styles/user.scss';
 import { fetchUsers } from '../../utils/api/user';
 
 class Users extends React.Component {
@@ -76,16 +76,13 @@ class Users extends React.Component {
                 <Header as="h2">
                     Users
                 </Header>
-                <Container >
-                    {/* <Button as={Link} to={`${currentPath}/new`} >
-                        Create a New User
-                    </Button> */}
-                    <Segment basic loading={this.state.isLoading} >
+                <Container className="admin-item-container" >
+                    <Segment className="admin-item-container-inner" basic loading={this.state.isLoading} >
                         <FlexContainer justifyContentValue = "space-between">
                         <Table className="item-table-card" >
-                            <Table.Header className="item-table">
-                                <Table.Row className="item-table-header">
-                                <Table.HeaderCell className="header-label">User ID</Table.HeaderCell>
+                            <Table.Header className="item-table-header">
+                                <Table.Row className="item-table-header-col">
+                                    <Table.HeaderCell className="header-label">User ID</Table.HeaderCell>
                                     <Table.HeaderCell className="header-label">First Name</Table.HeaderCell>
                                     <Table.HeaderCell className="header-label">Last Name</Table.HeaderCell>
                                     <Table.HeaderCell className="header-label">Title</Table.HeaderCell>
@@ -98,7 +95,7 @@ class Users extends React.Component {
                                     <Table.HeaderCell className="header-label">More</Table.HeaderCell>
                                 </Table.Row>
                             </Table.Header>
-                            <Table.Body>
+                            <Table.Body  className="admin-table-body">
                                 {this.state.users.map(user => (
                                     <UserRow 
                                         firstName={user.firstName}

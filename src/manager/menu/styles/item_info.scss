@@ -1,0 +1,52 @@
+#root {
+    .App {
+        .item-info-container {
+            width: 80%;
+            margin: 0 auto;
+            .item-info {
+                border-color: #00c5d9;
+                .item-info-detail {
+                    text-align: center;
+                    width: 80%;
+                    margin: 0 auto;
+                    .item-info-label {
+                        text-align: left;
+                        padding: 20px 0px 6px 0px;
+                        min-width: 320px;
+                        max-width: 900px;
+                        font-size: 16px;
+                        font-weight: bold;
+                    }
+                    .item-info-content {
+                        text-align: left;
+                        min-width: 320px;
+                        max-width: 900px;
+                        font-size: 14px;
+                    }                    
+                }
+                .item-info-edit {
+                    background-color: #00c5d9;
+                    font-size: 14px;
+                    color: white;
+                    padding: 12px 30px;
+                    margin-right: 10px;
+                }
+
+                .item-info-delete {
+                    background-color: red;
+                    font-size: 14px;
+                    color: white;
+                    padding: 12px 20px;
+                    margin-right: 10px;
+                }
+
+                .item-info-back {
+                    font-size: 14px;
+                    color: white;
+                    padding: 12px 20px;
+                    background-color: #54CC72;
+                }
+            }
+        }
+    }
+}

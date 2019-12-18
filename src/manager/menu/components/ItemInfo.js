@@ -1,9 +1,10 @@
 import React, { useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import { withRouter } from 'react-router';
-import {Button, Container, Divider, Image, List, Segment, Header} from 'semantic-ui-react';
+import {Button, Container, Divider, Image, List, Segment, Header, Grid } from 'semantic-ui-react';
 import { ITEM_BASE_URL } from '../../../route/URLMap';
 
+import '../styles/item_info.scss';
 
 import { deleteItemById } from '../../../utils/api/item';
 
@@ -42,42 +43,99 @@ const ItemInfo = props => {
     };
 
     return (
-        <Container >
-            <Image />
-            <Header >
-             
-            </Header>
-            <Segment loading={isLoading} >
-               
-                <List >
-                    <List.Item>
-                        Dish ID: { itemId }
+        <Container className="item-info-container" >
+            <Segment className="item-info" loading={isLoading} >               
+                <List className="item-info-detail">
+                    <List.Item className="item-info-label">
+                        Dish ID: 
                     </List.Item>
-                    <List.Item>
-                        Dish Name: { productName }
+                    <List.Item className="item-info-content">
+                       { itemId }
                     </List.Item>
-                    <List.Item>
-                        Dish Price: { price }
+                    <List.Item className="item-info-label">
+                        Dish Name:  
                     </List.Item>
-                    <List.Item>
-                        Dish Information: {productInfo}
+                    <List.Item className="item-info-content">
+                       { productName }
                     </List.Item>
-                    <List.Item>
-                        Dish Information: {photo}
+                    <List.Item className="item-info-label">
+                        Dish Price: 
                     </List.Item>
-                    <List.Item>
-                        Dish Category: { category}
+                    <List.Item className="item-info-content">
+                        { price }
+                    </List.Item>
+                    <List.Item className="item-info-label">
+                        Dish Information:  
+                    </List.Item>
+                    <List.Item className="item-info-content">
+                      {productInfo}
+                    </List.Item>
+                    <List.Item className="item-info-label">
+                        Dish Photo:  
+                    </List.Item>
+                    <List.Item className="item-info-content">
+                     {photo}
+                    </List.Item>
+                    <List.Item className="item-info-label">
+                        Dish Category:  
+                    </List.Item>
+                    <List.Item className="item-info-content">
+                        { category}
                     </List.Item>
                 </List>
 
+                {/* <Grid className="item-info-detail" columns={2}>
+                    <Grid.Column className="item-info-left" >
+                        <Grid.Row className="item-info-row">
+                        Dish ID
+                        </Grid.Row>
+                        <Grid.Row className="item-info-row">
+                        Dish Name
+                        </Grid.Row>
+                        <Grid.Row className="item-info-row">
+                        Dish Price
+                        </Grid.Row>
+                        <Grid.Row className="item-info-row">
+                        Dish Information
+                        </Grid.Row>
+                        <Grid.Row className="item-info-row">
+                        Dish Photo
+                        </Grid.Row>
+                        <Grid.Row className="item-info-row">
+                        Dish Category
+                        </Grid.Row>
+
+                    </Grid.Column>
+                    <Grid.Column className="item-info-right">
+                        <Grid.Row className="item-info-row">
+                        { itemId }
+                        </Grid.Row>
+                        <Grid.Row className="item-info-row">
+                        { productName }
+                        </Grid.Row>
+                        <Grid.Row className="item-info-row">
+                        { price }
+                        </Grid.Row>
+                        <Grid.Row className="item-info-row">
+                        {productInfo}
+                        </Grid.Row>
+                        <Grid.Row className="item-info-row">
+                        {photo}
+                        </Grid.Row>
+                        <Grid.Row className="item-info-row">
+                        { category}
+                        </Grid.Row>                        
+                    </Grid.Column>
+                </Grid> */}
+
                 <Divider />
-                <Button as={Link} to={`${currentPath}/edit`}>
+                <Button className="item-info-edit" as={Link} to={`${currentPath}/edit`}>
                     Edit
                 </Button>
-                <Button loading={isDeleting} onClick={deleteItem}>
+                <Button className="item-info-delete" loading={isDeleting} onClick={deleteItem}>
                     Delete
                 </Button>
-                <Button as={Link} to="/items">
+                <Button className="item-info-back" as={Link} to="/items">
                     Back
                 </Button>
             </Segment>

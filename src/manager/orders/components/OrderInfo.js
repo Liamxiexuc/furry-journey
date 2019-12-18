@@ -2,14 +2,14 @@ import React, {useEffect, useState } from 'react';
 import { Button, Container, Divider, Image, Label, Segment, Header, List } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
-import DishRow from "./dishComponents/DishRow";
-import ItemManagement from './ItemManagement';
+import DishDetail from "../components/dishComponents/DishDetail";
+// import ItemManagement from './ItemManagement';
 // import UserManagement from './UserManagement';
 
 import { ORDER_BASE_URL } from '../../../route/URLMap';
 
 import { deleteOrderById } from '../../../utils/api/order';
-
+import '../styles/order_info.scss';
 
 
 const OrderInfo = props => {
@@ -64,11 +64,8 @@ const OrderInfo = props => {
             {receiverPhone},
 
         ),
-        <Container>
-            <Image  />
-            <Header as="h3">
-            </Header>
-            <Segment loading={isLoading}>
+        <Container className="order-info-container">
+            <Segment className="item-info" loading={isLoading}>
                 {/* <p>
                     { orderStatus }
                 </p>
@@ -84,35 +81,54 @@ const OrderInfo = props => {
                 <p>
                     { receiverPhone }
                 </p> */}
-                <List >
-                    <List.Item>
-                        Order ID: {orderId}
+                <List className="item-info-detail">
+                    <List.Item className="item-info-label">
+                        Order ID:  
                     </List.Item>
-                    <List.Item>
-                        Order Status: {orderStatus}
+                    <List.Item className="item-info-content">
+                     {orderId}
                     </List.Item>
-                    <List.Item>
-                        Total Price: {orderTotalPrice }
+                    <List.Item className="item-info-label">
+                        Order Status: 
                     </List.Item>
-                    <List.Item>
-                        Pay Status: { payStatus } 
+                    <List.Item className="item-info-content">
+                    {orderStatus}
                     </List.Item>
-                    <List.Item>
-                        User ID: {userId}
+                    <List.Item className="item-info-label">
+                        Total Price: 
                     </List.Item>
-                    <List.Item>
-                        User Address: {receiverAddress}
+                    <List.Item className="item-info-content">
+                    {orderTotalPrice }
                     </List.Item>
-                    <List.Item>
-                        User Phone: { receiverPhone }
+                    <List.Item className="item-info-label">
+                        Pay Status:  
                     </List.Item>
-                    
-
+                    <List.Item className="item-info-content">
+                    { payStatus } 
+                    </List.Item>
+                    <List.Item className="item-info-label">
+                        User ID:  
+                    </List.Item>
+                    <List.Item className="item-info-content">
+                    {userId}
+                    </List.Item>
+                    <List.Item className="item-info-label">
+                        User Address: 
+                    </List.Item>
+                    <List.Item className="item-info-content">
+                   {receiverAddress}
+                    </List.Item>
+                    <List.Item className="item-info-label">
+                        User Phone:  
+                    </List.Item>
+                    <List.Item className="item-info-content">
+                   { receiverPhone }
+                    </List.Item>
                 </List>
                 <div>
                 Order Dish:
                         {dishes.map(dish => (
-                            <DishRow 
+                            <DishDetail 
                                 dishID={dish.dishID}  
                                 productName={dish.productName}
                                 price={dish.price}
@@ -120,12 +136,7 @@ const OrderInfo = props => {
                                 to={`${ORDER_BASE_URL}/${orderId}/${dish.dishID}`}                              
                             />    
                         ))}
-                <Button as={Link} to={`${currentPath}/edit`}>
-                    Edit
-                </Button>
-                <Button loading={isDeleting} onClick={deleteOrder}>
-                    Delete
-                </Button>
+
                 </div>
                 {/* <div>
                     <span>Order Dish: </span>

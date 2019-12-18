@@ -64,7 +64,7 @@ const ItemRow = props => {
               {props.productInfo}
               </Table.Cell>
               <Table.Cell className="item-table-cell">
-                <Button as={Link} to={props.to}> More</Button>
+                <Button className="item-more" as={Link} to={props.to}> More</Button>
               </Table.Cell>
           </Table.Row>
           

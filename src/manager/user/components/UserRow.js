@@ -1,6 +1,7 @@
 import React from 'react';
 import { Table, Image, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import '../styles/user.scss';
 
 const UserRow = props => {
     return (
@@ -70,7 +71,7 @@ const UserRow = props => {
                 {props.userType}
             </Table.Cell>
             <Table.Cell className="item-table-cell">
-                <Button as={Link} to={props.to}> More</Button>
+                <Button className="item-more" as={Link} to={props.to}> More</Button>
             </Table.Cell>
         </Table.Row>
     );

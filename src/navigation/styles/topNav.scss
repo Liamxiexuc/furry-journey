@@ -19,6 +19,10 @@
             padding: 36px 20px;
             text-align: center;
             color: white;
+            &:hover {
+                background-color: #0040ff;
+                transition: 0.4s;
+            }
         }
         
         .top-nav--active {

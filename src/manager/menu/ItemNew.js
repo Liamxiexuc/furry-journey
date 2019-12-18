@@ -47,7 +47,7 @@ class ItemNew extends React.Component {
                 <Header >
                     Create Dish
                 </Header>
-                <Segment loading={this.state.isCreating}>
+                <Segment className="item-form-segment" loading={this.state.isCreating}>
                     <ItemForm 
                         id={this.state.id}
                         productName={this.state.productName}

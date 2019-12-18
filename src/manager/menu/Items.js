@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Segment, Pagination, Button, Header, Table} from 'semantic-ui-react';
+import {Container, Segment, Pagination, Button, Header, Table, Grid} from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 
@@ -21,6 +21,7 @@ class Items extends React.Component {
             isLoading: false,
             error: null,
             pagination: {},
+            itemCategories: []
             
         };
         
@@ -30,11 +31,15 @@ class Items extends React.Component {
         //this.loadItems();    
         this.setState({ isLoading: true}, () => {
             fetchItems()
-                .then(itemData => {
-                    this.setState({
+                .then(itemData  => {
+                    this.setState(
+                       
+                        {
                         isLoading: false,
-                        items: itemData.data
-                    });
+                        items: itemData.data,
+                    },
+ 
+                    );
                 })
                 .catch(error =>
                     this.setState({
@@ -50,33 +55,6 @@ class Items extends React.Component {
             });
         
     }
-
-    // loadItems = (pageNum, pageSize) => {
-    //     this.setState({ isLoading: true, items: []}, ()=> {
-    //         fetchItems(pageNum, pageSize)
-    //             .then(this.updateItemData)
-    //             .catch(error => this.setState({error}));
-    //     });
-        
-    // }
-
-
-
-    // updateItemData = itemData => {
-    //     console.log(itemData);
-    //     this.setState({
-            
-    //         items: itemData.data,
-    //         isLoading: false,
-    //         pagination: itemData.pagination,
-    //     })
-        
-    // }
-
-    // handlePageChange = (event, data) => {
-    //     this.loadItems(data.activePage);
-    // }
-
     
 
     render() {
@@ -85,18 +63,26 @@ class Items extends React.Component {
         return (
             <React.Fragment>
                 <ErrorMessage error={this.state.error} />
-                <Header as="h2">
-                    Dishes
-                </Header>
-                <Container >
-                    <Button as={Link} to={`${currentPath}/new`} >
-                        Create a New Dish
-                    </Button>
-                    <Segment basic loading={this.state.isLoading} >
+                <Grid className="admin-grid" columns="two" >
+                    <Grid.Row >
+                        <Grid.Column>
+                            <Header className="admin-header--item" as="h1">
+                                Dishes
+                            </Header>
+                        </Grid.Column>
+                        <Grid.Column>
+                            <Button className="admin-header--create-button" as={Link} to={`${currentPath}/new`} >
+                            Create a New Dish
+                        </Button>
+                        </Grid.Column>
+                    </Grid.Row>
+                </Grid>
+                <Container className="admin-item-container">
+                    <Segment className="admin-item-container-inner" basic loading={this.state.isLoading} >
                         <FlexContainer justifyContentValue = "space-between">
                         <Table className="item-table-card" >
-                            <Table.Header className="item-table">
-                                <Table.Row className="item-table-header">
+                            <Table.Header className="item-table-header">
+                                <Table.Row className="item-table-header-col">
                                     <Table.HeaderCell className="header-label">Dish Reference</Table.HeaderCell>
                                     <Table.HeaderCell className="header-label">Dish Name</Table.HeaderCell>
                                     <Table.HeaderCell className="header-label">Dish Price</Table.HeaderCell>
@@ -105,7 +91,7 @@ class Items extends React.Component {
                                     <Table.HeaderCell className="header-label">More</Table.HeaderCell>
                                 </Table.Row>
                             </Table.Header>
-                            <Table.Body>
+                            <Table.Body className="admin-table-body">
                                 {this.state.items.map(item => (
                                     <ItemRow 
                                         productName={item.productName}

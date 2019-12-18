@@ -42,11 +42,11 @@ class Login extends React.Component {
     return (
       <FlexContainer justifyContentValue="center">
         <Form className="login-form" size="large">
-          <Header size="large" textAlign="center">
+          <Header className="login-form-header" size="large" textAlign="center">
             Pizza Ordering Management System
           </Header>
-          <Segment stacked loading={this.state.isLoading}>
-            <Form.Field>
+          <Segment className="login-form-body" stacked loading={this.state.isLoading}>
+            <Form.Field className="login-form-field" >
               <Input
                 onChange={this.handleChange}
                 name="email"
@@ -54,9 +54,10 @@ class Login extends React.Component {
                 icon="user"
                 iconPosition="left"
                 placeholder="E-mail address"
+                
               />
             </Form.Field>
-            <Form.Field>
+            <Form.Field className="login-form-field">
               <Input
                 onChange={this.handleChange}
                 name="password"
@@ -65,9 +66,10 @@ class Login extends React.Component {
                 iconPosition="left"
                 placeholder="Password"
                 type="password"
+               
               />
             </Form.Field>
-            <Button onClick={this.loginUser} size="large" fluid primary>
+            <Button className="login-button" onClick={this.loginUser} size="large" fluid primary>
               Login
             </Button>
           </Segment>

@@ -10,7 +10,7 @@ import { withRouter } from 'react-router';
 
 import '../../styles/dish_row.scss';
 
-const DishRow = props => {
+const DishDetail = props => {
     const [isDeleting, setIsDeleting] = useState(false);
     const { 
       dishes = [],
@@ -18,8 +18,9 @@ const DishRow = props => {
       productName, 
       price, 
       quantity,
- 
- 
+      location: {pathname: currentPath},
+      reloadPage,
+      setErrorState 
     } = props;
 
     const singleItemPrice = price * quantity;
@@ -31,7 +32,7 @@ const DishRow = props => {
         <Table className="order-dish-table">
           <Table.Header className="order-dish-table-header" >
             <Table.Row className="order-dish-table-header-row">
-              {/* <Table.HeaderCell className="order-item-label">
+              <Table.HeaderCell className="order-item-label">
               Dish ID
               </Table.HeaderCell>
               <Table.HeaderCell className="order-item-label">
@@ -42,10 +43,10 @@ const DishRow = props => {
               </Table.HeaderCell>
               <Table.HeaderCell className="order-item-label">
               Item Price
-              </Table.HeaderCell> */}
-              {/* <Table.HeaderCell className="order-item-label">
+              </Table.HeaderCell>
+              <Table.HeaderCell className="order-item-label">
               More
-              </Table.HeaderCell> */}
+              </Table.HeaderCell>
             </Table.Row>
           </Table.Header>
           <Table.Body className="order-dish-table-body">
@@ -62,18 +63,19 @@ const DishRow = props => {
               <Table.Cell className="order-item-content">
               {price * quantity}
               </Table.Cell>
-              {/* <Table.Cell className="order-item-content">
-                <Button as={Link} to={props.to}>
-                    More
+              <Table.Cell className="order-item-content">
+                <Button as={Link} to={`${currentPath}/edit`}>
+                    Edit
                 </Button>
-              </Table.Cell> */}
+                <Button loading={isDeleting} >
+                    Delete
+                </Button>
+              </Table.Cell>
             </Table.Row>
           </Table.Body>
         </Table>
- 
-
     </FlexContainer>
   )
 };
 
-export default withRouter(DishRow);
+export default withRouter(DishDetail);

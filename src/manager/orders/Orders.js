@@ -9,6 +9,7 @@ import FlexContainer from '../../UI/flexContainer/FlexContainer';
 import Header from '../../UI/header/Header';
 import { ORDER_BASE_URL, ERROR_URL } from '../../route/URLMap';
 import { fetchOrders } from '../../utils/api/order';
+import './styles/order.scss';
 
 class Orders extends React.Component {
     constructor(props) {
@@ -75,18 +76,15 @@ class Orders extends React.Component {
         return(
             <React.Fragment>
                 <ErrorMessage error={this.state.error} />
-                <Header as="h2">
+                <Header className="admin-header--order" as="h2">
                     Orders
                 </Header>
-                <Container>
-                    {/* <Button as={Link} to={`${currentPath}/new`} >
-                        Create New Order
-                    </Button> */}
-                    <Segment loading={this.state.isLoading}>
+                <Container className="admin-order-container">
+                    <Segment className="admin-item-container-inner" loading={this.state.isLoading}>
                         <FlexContainer >
                             <Table className="item-table-card" >
-                                <Table.Header className="item-table">
-                                    <Table.Row className="item-table-header">
+                                <Table.Header className="item-table-header">
+                                    <Table.Row className="item-table-header-col">
                                         <Table.HeaderCell className="header-label">Order ID</Table.HeaderCell>
                                         <Table.HeaderCell className="header-label">Order Status</Table.HeaderCell>
                                         <Table.HeaderCell className="header-label">Order Time</Table.HeaderCell>
@@ -97,11 +95,11 @@ class Orders extends React.Component {
                                         <Table.HeaderCell className="header-label">Receiver Phone</Table.HeaderCell>
                                         <Table.HeaderCell className="header-label">Receiver Address</Table.HeaderCell>
                                         <Table.HeaderCell className="header-label">Comment</Table.HeaderCell>
-                                        <Table.HeaderCell className="header-label">Dishes</Table.HeaderCell>
+                                        <Table.HeaderCell className="header-label">Product Name | Price</Table.HeaderCell>
                                         <Table.HeaderCell className="header-label">More</Table.HeaderCell>
                                     </Table.Row>
                                 </Table.Header>
-                                <Table.Body>
+                                <Table.Body className="admin-table-body">
                                     {this.state.orders.map(order => (
                                         <OrderRow 
                                             // receiverName={order.receiverName}

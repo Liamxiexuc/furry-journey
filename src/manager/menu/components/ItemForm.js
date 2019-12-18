@@ -1,10 +1,12 @@
 import React from 'react';
 import { Button, Container, Form, Image, Divider} from 'semantic-ui-react';
 
+import '../styles/item_form.scss';
+
 const ItemForm = props => {
     return (
-        <Container >
-            <Form>
+        <Container className="item-form-container">
+            <Form className="item-form-inner">
 
                     <Form.Field 
                         control='input'
