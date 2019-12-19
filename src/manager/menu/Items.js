@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Segment, Pagination, Button, Header, Table, Grid} from 'semantic-ui-react';
+import {Container, Segment, Pagination, Button, Header, Table, Grid, Icon} from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 
@@ -64,13 +64,14 @@ class Items extends React.Component {
             <React.Fragment>
                 <ErrorMessage error={this.state.error} />
                 <Grid className="admin-grid" columns="two" >
-                    <Grid.Row >
-                        <Grid.Column>
+                    <Grid.Row className="admin-grid-row">
+                        <Grid.Column className="admin-grid-col">
                             <Header className="admin-header--item" as="h1">
                                 Dishes
                             </Header>
                         </Grid.Column>
-                        <Grid.Column>
+                        <Grid.Column className="admin-header-button">
+                            
                             <Button className="admin-header--create-button" as={Link} to={`${currentPath}/new`} >
                             Create a New Dish
                         </Button>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Image, Table, Header, Button } from 'semantic-ui-react';
+import { Card, Image, Table, Header, Button, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 import '../styles/item.scss';
@@ -64,7 +64,8 @@ const ItemRow = props => {
               {props.productInfo}
               </Table.Cell>
               <Table.Cell className="item-table-cell">
-                <Button className="item-more" as={Link} to={props.to}> More</Button>
+                <Button className="item-more" as={Link} to={props.to}>More</Button>
+               
               </Table.Cell>
           </Table.Row>
           
