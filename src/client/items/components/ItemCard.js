@@ -1,7 +1,8 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import { Card, Icon, Button } from "semantic-ui-react";
+import { Card, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import PizzaA from '../../../assets/photo-pizzaA.jpg';
 
 const ItemCard = props => {
   const { history, itemName, itemPrice, itemInfo, to } = props;
@@ -18,7 +19,7 @@ const ItemCard = props => {
       <Card
         as={Link}
         to={to}
-        image={"photo-pizzaA.jpg"}
+        image={PizzaA}
         header={itemName}
         meta={`$ ${itemPrice}`}
         description={itemInfo}

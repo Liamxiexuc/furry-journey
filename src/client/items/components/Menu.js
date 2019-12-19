@@ -16,7 +16,7 @@ class Menu extends React.Component {
   }
 
   itemFilter = (items, filter) => {
-    const result = new Array();
+    const result = [];
     items.map(item => {
       if (item.category === filter) {
         result.push(item);
@@ -32,7 +32,7 @@ class Menu extends React.Component {
     const drinks = this.itemFilter(allItems, "drinks");
 
     return (
-      <div className="body-left">
+      <React.Fragment>
         <div className="body-left-block">
           <h1>Favorites</h1>
           <div className="body-item-container">
@@ -83,7 +83,7 @@ class Menu extends React.Component {
             ))}
           </div>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

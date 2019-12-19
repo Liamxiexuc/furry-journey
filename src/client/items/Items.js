@@ -1,29 +1,33 @@
 import React from "react";
-import ItemCard from "./components/ItemCard";
 import { fetchItems } from "../../utils/api/item";
-import { ErrorMessage } from "../../UI/errorMessage/ErrorMessage";
-import { Segment, Placeholder, Rail, Ref, Sticky } from "semantic-ui-react";
-
 import { ERROR_URL } from "../../routes/URLMap";
 import Menu from "./components/Menu";
 import Basket from "./components/Basket";
+import { getCart } from "../../utils/shoppingCart";
+import { fetchUserId } from "../../utils/authentication";
+import { addToCart } from "../../utils/shoppingCart";
+
 import "./styles/items.scss";
 
 class Items extends React.Component {
-  //    history 仅限于传给它的一级使用
-  // const { history } = props;
-  // history.push('/home');
   constructor(props) {
     super(props);
 
     this.state = {
       items: [],
       isLoading: false,
-      error: null
+      error: null,
+      shopCartItems: [],
+      orderTotalPrice: 0
     };
   }
 
   componentDidMount() {
+    this.loadingItems();
+    this.loadingBasket();
+  }
+
+  loadingItems = () => {
     this.setState({ isLoading: true }, () => {
       fetchItems()
         .then(itemData => {
@@ -41,15 +45,53 @@ class Items extends React.Component {
           })
         );
     });
-  }
+  };
+
+  loadingBasket = () => {
+    const userId = fetchUserId();
+    const userShopCart = getCart(userId);
+    if (userShopCart !== null) {
+      this.setState({ shopCartItems: userShopCart }, () => {
+        let orderTotalPrice = 0;
+        this.state.shopCartItems.forEach(item => {
+          const itemTotalPrice = item.itemPrice * item.quantity;
+          orderTotalPrice = orderTotalPrice + itemTotalPrice;
+        });
+        this.setState({ orderTotalPrice });
+      });
+    }
+  };
+
+  handleRemove = itemId => {
+    const userId = fetchUserId();
+    const userShopCart = getCart(userId);
+    userShopCart.splice(
+      userShopCart.findIndex(item => item.productId === this.itemID),
+      1
+    );
+    addToCart(userId, userShopCart);
+    this.setState({ shopCartItems: userShopCart }, () => {
+        let orderTotalPrice = 0;
+        this.state.shopCartItems.forEach(item => {
+          const itemTotalPrice = item.itemPrice * item.quantity;
+          orderTotalPrice = orderTotalPrice + itemTotalPrice;
+        });
+        this.setState({ orderTotalPrice })});
+  };
 
   render() {
     return (
       <div className="menu-body-container">
-        <Menu items={this.state.items} />
+        <div className="body-left">
+          <Menu items={this.state.items} />
+        </div>
         <div className="body-right">
           <div className="body-right-sticky">
-            <Basket items={this.state.items} />
+            <Basket
+              shopCartItems={this.state.shopCartItems}
+              handleRemove={this.handleRemove}
+              orderTotalPrice={this.state.orderTotalPrice}
+            />
           </div>
         </div>
       </div>

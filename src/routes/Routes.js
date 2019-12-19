@@ -2,6 +2,7 @@ import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 
 import Items from "../client/items/Items";
+import ItemDetails from "../client/items/ItemDetails";
 import Member from "../client/member/Member";
 import Home from "../client/home/Home";
 import Login from "../client/login/Login";
@@ -10,9 +11,12 @@ import SignupSuccess from "../client/signup/components/SignupSuccess";
 import AboutUs from "../client/aboutUs/AboutUs";
 import Basket from "../client/items/components/Basket";
 import ErrorMessage from "../UI/errorMessage/ErrorMessage";
+import Loaders from "../UI/loader/Loader";
 import {
+  HOME_CLIENT_BASE_URL,
   ITEM_CLIENT_BASE_URL,
   USER_CLIENT_BASE_URL,
+  LOGIN_CLIENT_URL,
   SIGNUP_CLIENT_URL,
   AFTER_SIGNUP_URL,
   ABOUTUS_URL,
@@ -25,15 +29,20 @@ const Routes = () => {
   return (
     <React.Fragment>
       <Switch>
-        <Redirect exact from="/" to="/home" />
-        <Route exact path="/home" component={Home} />
-        <Route exact path="/items" component={Items} />
+        <Redirect exact from="/" to={HOME_CLIENT_BASE_URL} />
+        <Route exact path={HOME_CLIENT_BASE_URL} component={Home} />
+        <Route exact path={ITEM_CLIENT_BASE_URL} component={Items} />
+        <Route
+          exact
+          path={`${ITEM_CLIENT_BASE_URL}/:id`}
+          component={ItemDetails}
+        />
         <ProtectedRoute exact path={USER_CLIENT_BASE_URL} component={Member} />
-        <Route exact path="/login" component={Login} />
+        <Route exact path={LOGIN_CLIENT_URL} component={Login} />
         <Route exact path={SIGNUP_CLIENT_URL} component={Signup} />
         <Route exact path={AFTER_SIGNUP_URL} component={SignupSuccess} />
         <Route exact path={ABOUTUS_URL} component={AboutUs} />
-        <Route exact path="/test" component={Basket} />
+        <Route exact path="/test" component={Loaders} />
         <Route exact path={ERROR_URL} component={ErrorMessage} />
       </Switch>
     </React.Fragment>

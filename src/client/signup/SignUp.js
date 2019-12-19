@@ -57,7 +57,6 @@ class Signup extends React.Component {
   };
 
   handleDropBox = (event, data) => {
-    console.log(data);
     const key = data.name;
     const value = data.value;
     this.setState({ [key]: value });

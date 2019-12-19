@@ -1,7 +1,8 @@
 import React from 'react';
 import { Feed } from 'semantic-ui-react'
+import laura from "../../../assets/laura.jpg";
 
-const image = "/laura.jpg";
+
 const date = "3 days ago";
 const summary = "Laura Faucet send a message";
 const extraText =
@@ -11,19 +12,19 @@ const MessageBox = () => {
     return (
       <Feed>
         <Feed.Event
-          image={image}
+          image={laura}
           date={date}
           summary={summary}
           extraText={extraText}
         />
 
         <Feed.Event>
-          <Feed.Label image={image} />
+          <Feed.Label image={laura} />
           <Feed.Content date={date} summary={summary} extraText={extraText} />
         </Feed.Event>
 
         <Feed.Event>
-          <Feed.Label image={image} />
+          <Feed.Label image={laura} />
           <Feed.Content>
             <Feed.Date content={date} />
             <Feed.Summary content={summary} />

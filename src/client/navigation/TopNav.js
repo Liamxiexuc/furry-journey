@@ -10,6 +10,7 @@ import {
   ITEM_CLIENT_BASE_URL,
   ABOUTUS_URL
 } from "../../routes/URLMap";
+import logo from '../../assets/logo.png';
 
 const logout = history => {
   deleteToken();
@@ -25,7 +26,7 @@ const TopNav = ({ history }) => {
     <nav className="nav-bar">
       <div className="nav-left">
         <a className="nav-left_logo" href={HOME_CLIENT_BASE_URL}>
-          <img src="logo.png" alt="logo" />
+          <img src={logo} alt="logo" />
         </a>
         <NavLink className="nav-left_brand" to={HOME_CLIENT_BASE_URL}>
           NewBee Pizza

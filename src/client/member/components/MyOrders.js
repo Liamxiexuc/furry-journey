@@ -25,7 +25,6 @@ class MyOrders extends Component {
     const userId = this.props.userId;
     fetchAllOrdersByUserId(userId)
       .then(userData => {
-        console.log(userData.data);
         this.setState({ orders: userData.data });
       })
       .catch(error =>

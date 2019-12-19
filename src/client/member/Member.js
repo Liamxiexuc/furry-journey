@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Grid, Menu, Segment } from "semantic-ui-react";
 
-import { getToken } from "../../utils/authentication";
-import jwt from "jsonwebtoken";
+import { fetchUserId } from "../../utils/authentication";
 import Profile from "./components/Profile";
 import MyOrders from './components/MyOrders';
 import MyCoupons from './components/MyCoupons';
@@ -24,9 +23,7 @@ class Member extends Component {
   }
 
   getUserId = () => {
-    const token = getToken();
-    const decodedToken = jwt.decode(token);
-    const userId = decodedToken.id;
+    const userId = fetchUserId();
     this.setState({ userId });
   };
 
