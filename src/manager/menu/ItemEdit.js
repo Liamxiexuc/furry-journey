@@ -54,6 +54,11 @@ class ItemEdit extends React.Component {
         this.setState({ [key]: value } );
     }
 
+    handleCategoryChange =(event, result) => {
+        const {name, value} = result  
+        this.setState({[name]: value});
+    };
+
     handleSave = () => {
         const item = {...this.state};
         delete item.isLoading;
@@ -85,6 +90,7 @@ class ItemEdit extends React.Component {
                         photo={this.state.photo}
                         category={this.state.category}
                         handleChange={this.handleChange}
+                        handleCategoryChange={this.handleCategoryChange}
                         handleSubmit={this.handleSave}
                         submitButtonText="Save"
                     />

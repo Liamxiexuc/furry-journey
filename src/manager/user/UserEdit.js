@@ -57,6 +57,11 @@ class UserEdit extends React.Component {
         this.setState({ [key]: value } );
     }
 
+    handleSelectChange =(event, result) => {
+        const {name, value} = result  
+        this.setState({[name]: value});
+    };
+
     handleSave = () => {
         const user = {...this.state};
         delete user.isLoading;
@@ -91,6 +96,7 @@ class UserEdit extends React.Component {
                         address={this.state.address}
                         userType={this.state.userType}
                         handleChange={this.handleChange}
+                        handleSelectChange={this.handleSelectChange}
                         handleSubmit={this.handleSave}
                         submitButtonText="Save"
                     />

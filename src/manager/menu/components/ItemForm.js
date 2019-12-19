@@ -1,7 +1,14 @@
 import React from 'react';
-import { Button, Container, Form, Image, Divider} from 'semantic-ui-react';
+import { Button, Container, Form, Image, Divider, Dropdown} from 'semantic-ui-react';
 
 import '../styles/item_form.scss';
+
+const category = [
+    {key: 'p', text: 'pizza', value: 'pizza'},
+    {key: 'd', text: 'drinks', value: 'drinks'},
+    {key: 's', text: 'sides', value: 'sides'}
+
+]
 
 const ItemForm = props => {
     return (
@@ -49,11 +56,12 @@ const ItemForm = props => {
                         defaultValue={props.photo}
                         name="photo"
                     />
-                    <Form.Field 
-                        control='input'
+                    <Form.Dropdown                       
                         label='Product Category'
                         placeholder='Product Category'
-                        onChange={props.handleChange}
+                        selection
+                        options={category}
+                        onChange={props.handleCategoryChange}
                         defaultValue={props.category}
                         name="category"
                     />

@@ -2,6 +2,26 @@ import React from 'react';
 import { Button, Container, Form, Image} from 'semantic-ui-react';
 import '../styles/user_form.scss';
 
+const gender = [
+    {key: 'm', text: 'Male', value: 'male'},
+    {key: 'f', text: 'Female', value: 'female'},
+    {key: 'o', text: 'Other', value: 'other'},
+
+]
+
+const title = [
+    {key: 'mr', text: 'Mr.', value: 'Mr.'},
+    {key: 'mrs', text: 'Mrs.', value: 'Mrs.'},
+    {key: 'miss', text: 'Miss.', value: 'Miss'},
+    {key: 'ms', text: 'Ms.', value: 'Ms.'},
+]
+
+const userType = [
+    {key: '1', text: '1', value: '1'},
+    {key: '0', text: '0', value: '0'}
+]
+
+
 const UserForm = props => {
     return (
         <Container className="item-form-container" >
@@ -39,19 +59,21 @@ const UserForm = props => {
                         defaultValue={props.email}
                         name="email"
                     />
-                    <Form.Field 
-                        control='input'
+                    <Form.Dropdown 
+                        selection
                         label='Title'
                         placeholder='Title'
-                        onChange={props.handleChange}
+                        options={title}
+                        onChange={props.handleSelectChange}
                         defaultValue={props.title}
                         name="title"
                     />
-                    <Form.Field 
-                        control='input'
+                    <Form.Dropdown 
+                        selection 
                         label='Gender'
                         placeholder='Gender'
-                        onChange={props.handleChange}
+                        options={gender}
+                        onChange={props.handleSelectChange}
                         defaultValue={props.gender}
                         name="gender"
                     />
@@ -79,13 +101,14 @@ const UserForm = props => {
                         defaultValue={props.address}
                         name="address"
                     />
-                    <Form.Field 
-                        control='input'
+                    <Form.Dropdown 
+                        selection
                         label='User Type'
                         placeholder='User Type'
-                        onChange={props.handleChange}
+                        onChange={props.handleSelectChange}
                         defaultValue={props.userType}
                         name="userType"
+                        options={userType}
                     />
               
                 <Button 
