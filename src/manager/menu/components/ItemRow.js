@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Image, Table, Header, Button, Icon } from 'semantic-ui-react';
+import { Card, Image, Table, Header, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 import '../styles/item.scss';

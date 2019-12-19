@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
+import {Button} from 'semantic-ui-react';
 
 import {
     ORDER_BASE_URL,
@@ -9,28 +10,34 @@ import {
     LOGIN_URL,
 } from '../route/URLMap';
 import { isLoggedIn, removeToken } from '../utils/authentication';
-
 import './styles/topNav.scss';
 
-const TopNav = () => {
+const logout = history => {
+    removeToken();
+    history.push(LOGIN_URL);
+}
+
+const TopNav = ({history}) => {
+    if(!isLoggedIn()) return null;
+
     return (
         <nav className="top-nav-manager">
             <ul className="top-nav-ul">
                 {/* <NavLink to="/" activeClassName="top-nav--active" > Menu </NavLink*/}
-                <NavLink to={ITEM_BASE_URL} className="nav-item" activeClassName="top-nav--active"> Dishes </NavLink>
+                <NavLink to={ITEM_BASE_URL} className="nav-item" > Dishes </NavLink>
                 {/* <NavLink to="/items/new" activeClassName="top-nav--active"> New Dish </NavLink> */}
                 
-                <NavLink to={ORDER_BASE_URL} className="nav-item" activeClassName="top-nav--active" > Orders </NavLink>
+                <NavLink to={ORDER_BASE_URL} className="nav-item"  > Orders </NavLink>
                 {/* <NavLink to="/orders/new" activeClassName="top-nav--active" > New Order </NavLink> */}
 
-                <NavLink to={USER_BASE_URL} className="nav-item" activeClassName="top-nav--active" > Users </NavLink>
+                <NavLink to={USER_BASE_URL} className="nav-item" > Users </NavLink>
             
-                <NavLink to={LOGIN_URL} className="nav-item" activeClassName="top-nav--active" > Login </NavLink> 
+                
             </ul>
-
+            <Button onClick={() => logout(history)} className="login-out-button" > Log out </Button> 
         </nav>
     )
 
 };
 
-export default TopNav;
+export default withRouter(TopNav);

@@ -6,7 +6,7 @@ import FlexContainer from "../../UI/flexContainer/FlexContainer";
 import "./styles/login.scss";
 import { login } from "../../utils/api/auth";
 import { setToken } from "../../utils/authentication";
-import { LOGIN_URL } from "../../route/URLMap";
+import { ITEM_BASE_URL } from "../../route/URLMap";
 
 class Login extends React.Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class Login extends React.Component {
     this.state = {
       email: "",
       password: "",
-      isLoading: false
+      isLoading: false,
     };
   }
 
@@ -32,7 +32,7 @@ class Login extends React.Component {
         this.setState({ isLoading: false });
         const locationState = this.props.location.state;
         const redirectTo =
-          (locationState && locationState.from) || LOGIN_URL;
+          (locationState && locationState.from) || ITEM_BASE_URL;
         this.props.history.replace(redirectTo);
       });
     });
