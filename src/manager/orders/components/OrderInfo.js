@@ -1,11 +1,8 @@
 import React, {useEffect, useState } from 'react';
-import { Button, Container, Divider, Image, Label, Segment, Header, List } from 'semantic-ui-react';
+import { Button, Container, Divider, Segment, List} from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import DishDetail from "../components/dishComponents/DishDetail";
-// import ItemManagement from './ItemManagement';
-// import UserManagement from './UserManagement';
-
 import { ORDER_BASE_URL } from '../../../route/URLMap';
 
 import { deleteOrderById } from '../../../utils/api/order';
@@ -18,7 +15,6 @@ const OrderInfo = props => {
     const {
         dishes = [],
         orderId,
-        user,
         userId,
         orderStatus,
         orderTotalPrice,
@@ -28,9 +24,7 @@ const OrderInfo = props => {
         receiverAddress,
         receiverPhone,
         isLoading,
-        isSaving,
         location: {pathname: currentPath},
-        reloadPage,
         setErrorState    
     } = props;
 
@@ -51,36 +45,8 @@ const OrderInfo = props => {
     };
 
     return (
-        console.log(
-            {dishes},
-            {orderId},
-            {userId},
-            {orderStatus},
-            {orderTotalPrice},
-            
-            {payStatus},
-            {receiverName},
-            {receiverAddress},
-            {receiverPhone},
-
-        ),
         <Container className="order-info-container">
             <Segment className="item-info" loading={isLoading}>
-                {/* <p>
-                    { orderStatus }
-                </p>
-                <p>
-                    {orderTotalPrice }
-                </p>
-                <p>
-                    { payStatus }
-                </p>
-                <p>
-                    {receiverAddress}
-                </p>
-                <p>
-                    { receiverPhone }
-                </p> */}
                 <List className="item-info-detail">
                     <List.Item className="item-info-label">
                         Order ID:  
@@ -113,6 +79,12 @@ const OrderInfo = props => {
                     {userId}
                     </List.Item>
                     <List.Item className="item-info-label">
+                        User Name: 
+                    </List.Item>
+                    <List.Item className="item-info-label">
+                        {receiverName}
+                    </List.Item>
+                    <List.Item className="item-info-label">
                         User Address: 
                     </List.Item>
                     <List.Item className="item-info-content">
@@ -138,20 +110,6 @@ const OrderInfo = props => {
                         ))}
 
                 </div>
-                {/* <div>
-                    <span>Order Dish: </span>
-                    {dishes.map(dish => <Label key={dish.dishID}>{dish.productName}</Label>)}
-                </div>
-                <ItemManagement 
-                    orderId={orderId}
-                    reloadPage={reloadPage}
-                    dishes={dishes}
-                /> */}
-                {/* <UserManagement 
-                    orderId={orderId}
-                    reloadPage={reloadPage}
-                    user={user}
-                /> */}
                 <Divider />
 
                 <Button as={Link} to="/orders">

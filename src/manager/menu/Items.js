@@ -1,44 +1,44 @@
 import React from 'react';
-import {Container, Segment, Pagination, Button, Header, Table, Grid, Icon} from 'semantic-ui-react';
+import {Container, Segment, Button, Header, Table, Grid} from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 
 import ItemRow from './components/ItemRow';
 import ErrorMessage from '../../UI/ErrorMessage/errorMessage';
 import FlexContainer from '../../UI/flexContainer/FlexContainer';
-
+import ItemSearch from './components/ItemSearch';
 import { ERROR_URL } from "../../route/URLMap";
 import { ITEM_BASE_URL } from '../../route/URLMap';
 import './styles/item.scss';
-import { fetchItems } from '../../utils/api/item';
+import { fetchItems, fetchItemById  } from '../../utils/api/item';
 
 class Items extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
             items: [],
             isLoading: false,
             error: null,
             pagination: {},
-            itemCategories: []
-            
-        };
-        
+            itemCategories: [],
+            itemSearch: '',            
+        };       
     }
 
     componentDidMount() {
-        //this.loadItems();    
+        const itemInput = this.props.match.params.itemSearch;   
         this.setState({ isLoading: true}, () => {
-            fetchItems()
+            if (itemInput) {
+                this.handleSearch();
+            }
+            if(!itemInput) { 
+                fetchItems()
                 .then(itemData  => {
-                    this.setState(
-                       
+                    this.setState(                                          
                         {
                         isLoading: false,
                         items: itemData.data,
                     },
- 
                     );
                 })
                 .catch(error =>
@@ -52,10 +52,26 @@ class Items extends React.Component {
                             state: {error}
                         });
                     }));
-            });
-        
+            } 
+
+            });    
+    }
+
+    handleInputChange = event => {
+        this.setState({itemSearch: event.target.value});
     }
     
+    handleSearch = () => {        
+        fetchItemById(this.state.itemSearch)
+            .then(itemData => this.setState (               
+                {
+                    isLoading: false,
+                    items: [itemData],
+            },
+            
+            ))
+            .catch(error => this.setState({ error }));
+    }
 
     render() {
         const currentPath = this.props.location.pathname;
@@ -72,10 +88,19 @@ class Items extends React.Component {
                         </Grid.Column>
                         <Grid.Column className="admin-header-button">
                             
-                            <Button className="admin-header--create-button" as={Link} to={`${currentPath}/new`} >
+                        <Button className="admin-header--create-button" as={Link} to={`${currentPath}/new`} >
                             Create a New Dish
                         </Button>
                         </Grid.Column>
+                    </Grid.Row>
+                </Grid>
+                <Grid className="admin-search" columns="1">
+                    <Grid.Row className="admin-search-row">
+                       <ItemSearch                           
+                            handleSearch={this.handleSearch}
+                            handleInputChange={this.handleInputChange}
+                            itemSearch={this.state.itemSearch}
+                       /> 
                     </Grid.Row>
                 </Grid>
                 <Container className="admin-item-container">
@@ -93,6 +118,7 @@ class Items extends React.Component {
                                 </Table.Row>
                             </Table.Header>
                             <Table.Body className="admin-table-body">
+ 
                                 {this.state.items.map(item => (
                                     <ItemRow 
                                         productName={item.productName}
@@ -105,23 +131,9 @@ class Items extends React.Component {
                                     />
                                 ))}                            
                             </Table.Body>    
-
                         </Table>
-
                         </FlexContainer>
                     </Segment>
-                    {/* {
-                        this.state.pagination.page && (
-                            <FlexContainer >
-                                <Pagination 
-                                    activePage={this.state.pagination.page}
-                                    disabled={this.state.isLoading}
-                                    onPageChange={this.handlePageChange}
-                                    totalPages={this.state.pagination.pages}
-                                />
-                            </FlexContainer>
-                        )
-                    } */}
                 </Container>    
             </React.Fragment>
         );

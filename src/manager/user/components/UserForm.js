@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Container, Form, Image} from 'semantic-ui-react';
+import { Button, Container, Form} from 'semantic-ui-react';
 import '../styles/user_form.scss';
 
 const gender = [

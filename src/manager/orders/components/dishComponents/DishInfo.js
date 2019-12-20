@@ -1,12 +1,11 @@
-import React, {useEffect, useState } from 'react';
-import { Button, Container, Divider, Image, Label, Segment, Header, List } from 'semantic-ui-react';
+import React from 'react';
+import { Button, Container, Segment } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router';
-import DishRow from "./dishComponents/DishRow";
+ 
 
 const DishInfo = props => {
     const {
-        dishId,
+        dishID,
         productName,
         quantity,
         singleItemPrice,
@@ -64,7 +63,6 @@ const DishInfo = props => {
                     </Table.Row>
                 </Table.Body>
                 </Table>
-
             </Segment>
         </Container>
     )

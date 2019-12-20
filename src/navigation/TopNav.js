@@ -23,16 +23,9 @@ const TopNav = ({history}) => {
     return (
         <nav className="top-nav-manager">
             <ul className="top-nav-ul">
-                {/* <NavLink to="/" activeClassName="top-nav--active" > Menu </NavLink*/}
-                <NavLink to={ITEM_BASE_URL} className="nav-item" > Dishes </NavLink>
-                {/* <NavLink to="/items/new" activeClassName="top-nav--active"> New Dish </NavLink> */}
-                
+                <NavLink to={ITEM_BASE_URL} className="nav-item" > Dishes </NavLink>                
                 <NavLink to={ORDER_BASE_URL} className="nav-item"  > Orders </NavLink>
-                {/* <NavLink to="/orders/new" activeClassName="top-nav--active" > New Order </NavLink> */}
-
-                <NavLink to={USER_BASE_URL} className="nav-item" > Users </NavLink>
-            
-                
+                <NavLink to={USER_BASE_URL} className="nav-item" > Users </NavLink>               
             </ul>
             <Button onClick={() => logout(history)} className="login-out-button" > Log out </Button> 
         </nav>

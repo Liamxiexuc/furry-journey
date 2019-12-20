@@ -1,19 +1,15 @@
-import queryString from 'querystring'
-import { del, get, put, post } from "./axios"
-
+import { del, get, put, post } from "./axios";
 const API_USER_URL = '/users';
-const mockImage = 'https://sdtimes.com/wp-content/uploads/2018/03/jW4dnFtA_400x400.jpg';
 const getApiUserUrlWithId = id => `${API_USER_URL}/${id}`;
 
-export const fetchUsers = (query) => {
+export const fetchUsers = () => {
     return get(API_USER_URL);
 };
 
 export const fetchUserById = id => {
     const url = getApiUserUrlWithId(id);
     return get(url).then(res => (
-        console.log(res.data),
-        {... res.data}
+        {...res.data}
     ));
  
 };
@@ -32,12 +28,3 @@ export const deleteUserById = id => {
     return del(url);
 };
 
-// export const addUserToOrder = (id, orderId) => {
-//     const url = `${API_USER_URL}/${id}/orders/${orderId}`;
-//     return post(url).then(res => res.data);
-// };
-
-// export const removeUserToOrder = (id, orderId) => {
-//     const url = `${API_USER_URL}/${id}/orders/${orderId}`;
-//     return del(url).then(res => res.data);
-// };

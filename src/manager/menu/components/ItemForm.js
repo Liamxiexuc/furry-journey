@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Container, Form, Image, Divider, Dropdown} from 'semantic-ui-react';
+import { Button, Container, Form } from 'semantic-ui-react';
 
 import '../styles/item_form.scss';
 

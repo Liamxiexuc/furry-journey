@@ -1,6 +1,4 @@
 import React from 'react';
-import { Segment} from 'semantic-ui-react';
-
 import OrderInfo from '../orders/components/OrderInfo';
 import ErrorMessage from '../../UI/ErrorMessage/errorMessage';
 import Header from '../../UI/header/Header';
@@ -41,8 +39,7 @@ class OrderDetails extends React.Component {
                 <Header as="h2" textAlign="center">
                     Order Details
                 </Header>
-                <OrderInfo
-                    
+                <OrderInfo                    
                     orderId={this.state.order._id}
                     orderStatus={this.state.order.orderStatus}
                     orderTotalPrice={this.state.order.orderTotalPrice}
@@ -51,15 +48,12 @@ class OrderDetails extends React.Component {
                     receiverName={this.state.order.receiverName}
                     receiverPhone={this.state.order.receiverPhone}
                     comment={this.state.order.comment}
-                    createdAt={this.state.order.createdAt}
-                                            
+                    createdAt={this.state.order.createdAt}                                            
                     userId={this.state.order.userId}
                     dishes={this.state.order.dishes}
-                    isLoading={this.state.isLoading}
-                    
+                    isLoading={this.state.isLoading}                   
                     reloadPage={this.loadOrder}
-                    setErrorState={this.setErrorState}
-                    
+                    setErrorState={this.setErrorState}                  
                 />
             </React.Fragment>
         );

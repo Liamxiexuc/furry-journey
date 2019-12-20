@@ -1,7 +1,7 @@
 import React, { useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import { withRouter } from 'react-router';
-import {Button, Container, Divider, Image, List, Segment, Header, Grid } from 'semantic-ui-react';
+import {Button, Container, Divider,  List, Segment } from 'semantic-ui-react';
 import { ITEM_BASE_URL } from '../../../route/URLMap';
 
 import '../styles/item_info.scss';
@@ -11,16 +11,13 @@ import { deleteItemById } from '../../../utils/api/item';
 const ItemInfo = props => {
     const [isDeleting, setIsDeleting] = useState(false);
     const {
-        items = [],
         itemId,
         productName,
         price,
-        productType,
         productInfo,
         photo,
         category,
         isLoading,
-        reloadPage,
         history,
         setErrorState,
         location: {pathname: currentPath}
@@ -83,51 +80,6 @@ const ItemInfo = props => {
                         { category}
                     </List.Item>
                 </List>
-
-                {/* <Grid className="item-info-detail" columns={2}>
-                    <Grid.Column className="item-info-left" >
-                        <Grid.Row className="item-info-row">
-                        Dish ID
-                        </Grid.Row>
-                        <Grid.Row className="item-info-row">
-                        Dish Name
-                        </Grid.Row>
-                        <Grid.Row className="item-info-row">
-                        Dish Price
-                        </Grid.Row>
-                        <Grid.Row className="item-info-row">
-                        Dish Information
-                        </Grid.Row>
-                        <Grid.Row className="item-info-row">
-                        Dish Photo
-                        </Grid.Row>
-                        <Grid.Row className="item-info-row">
-                        Dish Category
-                        </Grid.Row>
-
-                    </Grid.Column>
-                    <Grid.Column className="item-info-right">
-                        <Grid.Row className="item-info-row">
-                        { itemId }
-                        </Grid.Row>
-                        <Grid.Row className="item-info-row">
-                        { productName }
-                        </Grid.Row>
-                        <Grid.Row className="item-info-row">
-                        { price }
-                        </Grid.Row>
-                        <Grid.Row className="item-info-row">
-                        {productInfo}
-                        </Grid.Row>
-                        <Grid.Row className="item-info-row">
-                        {photo}
-                        </Grid.Row>
-                        <Grid.Row className="item-info-row">
-                        { category}
-                        </Grid.Row>                        
-                    </Grid.Column>
-                </Grid> */}
-
                 <Divider />
                 <Button className="item-info-edit" as={Link} to={`${currentPath}/edit`}>
                     Edit

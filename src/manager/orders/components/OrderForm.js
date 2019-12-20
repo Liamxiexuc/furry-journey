@@ -1,12 +1,11 @@
 import React from 'react';
-import {Button, Container, Form, Image } from 'semantic-ui-react';
-import DishRow from "./dishComponents/DishRow";
+import {Button, Container, Form } from 'semantic-ui-react';
+
 
 const OrderForm = props => {
     return (
         <Container>
             <Form>
-
                 <Form.Field 
                     control='input'
                     label='Order Status'
@@ -64,8 +63,6 @@ const OrderForm = props => {
                     defaultValue={props.dishes}
                     name="dishes"
                 />
-
-
                 <Form.Field 
                     control='input'
                     label='Comment'

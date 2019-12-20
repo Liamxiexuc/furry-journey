@@ -1,22 +1,15 @@
-import queryString from 'querystring';
 import { del, get, post, put} from './axios';
-
 
 const API_ORDER_URL = '/orders';
 const getApiOrderUrlWithId = id => `${API_ORDER_URL}/${id}`;
 
-export const fetchOrders = (query) => {
-    // const url = `${API_ORDER_URL}`;
- 
+export const fetchOrders = () => {
     return get(API_ORDER_URL);
 };
 
-
 export const fetchOrderById = id => {
     const url = getApiOrderUrlWithId(id);
- 
-    return get(url).then(res => (
-        
+    return get(url).then(res => (        
         {...res.data}));
 };
 

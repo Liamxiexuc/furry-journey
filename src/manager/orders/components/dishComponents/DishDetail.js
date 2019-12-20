@@ -1,31 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import FlexContainer from "../../../../UI/flexContainer/FlexContainer";
-import { Table, Button, List } from "semantic-ui-react";
+import { Table, Button} from "semantic-ui-react";
 import {Link} from 'react-router-dom';
 import { withRouter } from 'react-router';
-// import {ORDER_BASE_URL} from '../../../../route/URLMap';
-
-// import {addItemToOrder} from '../../../../utils/api/order';
-// import {removeItemToOrder } from '../../../../utils/api/order';
-
 import '../../styles/dish_row.scss';
 
 const DishDetail = props => {
-    const [isDeleting, setIsDeleting] = useState(false);
+    const [isDeleting] = useState(false);
     const { 
-      dishes = [],
-      dishID, 
-      productName, 
       price, 
       quantity,
       location: {pathname: currentPath},
-      reloadPage,
-      setErrorState 
     } = props;
-
-    const singleItemPrice = price * quantity;
-
-
 
   return (
     <FlexContainer justifyContentValue="space-between">

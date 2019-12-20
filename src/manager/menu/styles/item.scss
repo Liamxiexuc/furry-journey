@@ -24,6 +24,14 @@
 
 
         }
+        .ui.one.column.grid.admin-search {
+            width: 90%;
+            margin: 0 auto;
+            .row.admin-search-row {
+                width: 70% !important;
+                margin: 0 auto;
+            }
+        }
         .admin-item-container {
             .admin-item-container-inner{
                 .item-table-card{

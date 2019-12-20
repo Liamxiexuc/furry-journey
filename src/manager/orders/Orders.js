@@ -1,11 +1,8 @@
 import React from 'react';
-import { Button, Container, Pagination, Segment, Table } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
-
+import { Container, Segment, Table } from 'semantic-ui-react';
 import OrderRow from './components/OrderRow';
 import ErrorMessage from '../../UI/ErrorMessage/errorMessage';
 import FlexContainer from '../../UI/flexContainer/FlexContainer'; 
-
 import Header from '../../UI/header/Header';
 import { ORDER_BASE_URL, ERROR_URL } from '../../route/URLMap';
 import { fetchOrders } from '../../utils/api/order';
@@ -24,8 +21,6 @@ class Orders extends React.Component {
     }
 
     componentDidMount() {
-        // this.loadOrders();
-
         this.setState({ isLoading: true}, () => {
             fetchOrders()
                 .then(orderData => {
@@ -50,26 +45,6 @@ class Orders extends React.Component {
         });
 
     }
-
-    // loadOrders = (pageNum, pageSize) => {
-    //     this.setState({ isLoading: true, orders: []}, () => {
-    //         fetchOrders(pageNum, pageSize)
-    //             .then(this.updateOrderData)
-    //             .catch(error => this.setState({ error }));
-    //     });
-    // }
-
-    // updateOrderData = orderData => {
-    //     this.setState({
-    //         orders: orderData.orders,
-    //         isLoading: false,
-    //         pagination: orderData.pagination,
-    //     })
-    // }
-
-    // handlePageChange = (event, data) => {
-    //     this.loadOrders(data.activePage);
-    // }
 
     render() {
         
@@ -102,17 +77,6 @@ class Orders extends React.Component {
                                 <Table.Body className="admin-table-body">
                                     {this.state.orders.map(order => (
                                         <OrderRow 
-                                            // receiverName={order.receiverName}
-                                            // receiverPhone={order.receiverPhone}
-                                            // receiverAddress={order.receiverAddress}
-                                            // orderStatus={order.orderStatus}
-                                            // totalPrice={order.orderTotalPrice}
-                                            // payStatus={order.payStatus}
-                                            // userId={order.userId}
-                                            // comment={order.comment}
-                                            // dishes={order.dishes}
-                                            // id={order._id}
-                                            // to={`${ORDER_BASE_URL}/${order._id}`}
                                             id={order._id}
                                             key={order._id}
                                             userId={order.userId} 
@@ -132,18 +96,6 @@ class Orders extends React.Component {
                             </Table>
                         </FlexContainer>
                     </Segment>
-                    {/* {
-                        this.state.pagination.page && (
-                            <FlexContainer >
-                                <Pagination 
-                                    activePage={this.state.pagination.page}
-                                    disabled={this.state.isLoading}
-                                    onPageChange={this.handlePageChange}
-                                    totalPages={this.state.pagination.pages}
-                                />
-                            </FlexContainer>
-                        )
-                    } */}
                 </Container>
             </React.Fragment>
         );

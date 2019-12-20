@@ -1,51 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import FlexContainer from "../../../../UI/flexContainer/FlexContainer";
-import { Table, Button, List } from "semantic-ui-react";
-import {Link} from 'react-router-dom';
+import { Table} from "semantic-ui-react";
 import { withRouter } from 'react-router';
-// import {ORDER_BASE_URL} from '../../../../route/URLMap';
-
-// import {addItemToOrder} from '../../../../utils/api/order';
-// import {removeItemToOrder } from '../../../../utils/api/order';
-
 import '../../styles/dish_row.scss';
 
 const DishRow = props => {
-    const [isDeleting, setIsDeleting] = useState(false);
     const { 
-      dishes = [],
-      dishID, 
-      productName, 
       price, 
       quantity,
  
  
     } = props;
 
-    const singleItemPrice = price * quantity;
-
-
-
   return (
     <FlexContainer justifyContentValue="space-between">
         <Table className="order-dish-table">
           <Table.Header className="order-dish-table-header" >
             <Table.Row className="order-dish-table-header-row">
-              {/* <Table.HeaderCell className="order-item-label">
-              Dish ID
-              </Table.HeaderCell>
-              <Table.HeaderCell className="order-item-label">
-              Product Name
-              </Table.HeaderCell>
-              <Table.HeaderCell className="order-item-label">
-              Quantity 
-              </Table.HeaderCell>
-              <Table.HeaderCell className="order-item-label">
-              Item Price
-              </Table.HeaderCell> */}
-              {/* <Table.HeaderCell className="order-item-label">
-              More
-              </Table.HeaderCell> */}
             </Table.Row>
           </Table.Header>
           <Table.Body className="order-dish-table-body">
@@ -62,16 +33,9 @@ const DishRow = props => {
               <Table.Cell className="order-item-content">
               {price * quantity}
               </Table.Cell>
-              {/* <Table.Cell className="order-item-content">
-                <Button as={Link} to={props.to}>
-                    More
-                </Button>
-              </Table.Cell> */}
             </Table.Row>
           </Table.Body>
         </Table>
- 
-
     </FlexContainer>
   )
 };

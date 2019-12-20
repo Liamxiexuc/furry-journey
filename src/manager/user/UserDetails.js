@@ -3,7 +3,6 @@ import { fetchUserById } from "../../utils/api/user";
 import UserInfo from '../user/components/UserInfo';
 import ErrorMessage from '../../UI/ErrorMessage/errorMessage'
 import Header from '../../UI/header/Header';
-import { thisExpression } from '@babel/types';
 
 class UserDetails extends React.Component {
     constructor (props) {

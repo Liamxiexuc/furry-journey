@@ -16,7 +16,6 @@ const ProtectedRoute = ({ component: ProtectedComponent, ...rest }) => {
                         state: { from: routeProps.location.pathname },
                     }} />
                 );
-
                 return <ProtectedComponent {...routeProps} />
             }}
         />

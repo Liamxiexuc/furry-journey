@@ -1,13 +1,11 @@
 import React from 'react';
-import { Segment, Container, Form, Button } from 'semantic-ui-react';
+import { Segment} from 'semantic-ui-react';
 
 import ItemForm from './components/ItemForm';
 import ErrorMessage from '../../UI/ErrorMessage/errorMessage';
 import Header from '../../UI/header/Header';
 import { ITEM_BASE_URL } from '../../route/URLMap';
 import {fetchItemById, saveItemById} from '../../utils/api/item';
-
-import { throwStatement } from '@babel/types';
 
 class ItemEdit extends React.Component {
     constructor(props) {

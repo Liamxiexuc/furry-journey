@@ -1,8 +1,5 @@
 import React from 'react';
-import {Container, Segment, Pagination, Button, Header, Table} from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
-
-
+import {Container, Segment, Header, Table} from 'semantic-ui-react';
 import UserRow from './components/UserRow';
 import ErrorMessage from '../../UI/ErrorMessage/errorMessage';
 import FlexContainer from '../../UI/flexContainer/FlexContainer';
@@ -19,14 +16,12 @@ class Users extends React.Component {
             users: [],
             isLoading: false,
             error: null,
-            pagination: {},
-            
+            pagination: {},           
         };
         
     }
 
     componentDidMount() {
-        // this.loadUsers();
         this.setState({ isLoading: true}, () => {
             fetchUsers()
                 .then(userData => {
@@ -42,30 +37,7 @@ class Users extends React.Component {
                     }))
         })         
     }
-
-    // loadUsers = (pageNum, pageSize) => {
-    //     this.setState({ isLoading: true, users: []}, ()=> {
-    //         fetchUsers(pageNum, pageSize)
-    //             .then(this.updateItemData)
-    //             .catch(error => this.setState({error}));
-    //     });
-        
-    // }
-
-    // updateItemData = userData => {
-    //     this.setState({
-    //         users: userData.users,
-    //         isLoading: false,
-    //         pagination: userData.pagination,
-    //     })
-        
-    // }
-
-    // handlePageChange = (event, data) => {
-    //     this.loadUsers(data.activePage);
-    // }
-
-    
+  
 
     render() {
         const currentPath = this.props.location.pathname;
@@ -115,18 +87,6 @@ class Users extends React.Component {
                         </Table>
                         </FlexContainer>
                     </Segment>
-                    {/* {
-                        this.state.pagination.page && (
-                            <FlexContainer >
-                                <Pagination 
-                                    activePage={this.state.pagination.page}
-                                    disabled={this.state.isLoading}
-                                    onPageChange={this.handlePageChange}
-                                    totalPages={this.state.pagination.pages}
-                                />
-                            </FlexContainer>
-                        )
-                    } */}
                 </Container>    
             </React.Fragment>
         );

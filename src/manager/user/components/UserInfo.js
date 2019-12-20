@@ -1,7 +1,7 @@
 import React, { useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import { withRouter } from 'react-router';
-import {Button, Container, Divider, Image, Label, Segment, Header, List} from 'semantic-ui-react';
+import {Button, Container, Divider, Segment, List} from 'semantic-ui-react';
 import { USER_BASE_URL } from '../../../route/URLMap';
 import '../styles/user_info.scss';
 
@@ -10,7 +10,6 @@ import { deleteUserById } from '../../../utils/api/user';
 const UserInfo = props => {
     const [isDeleting, setIsDeleting] = useState(false);
     const {
-        users = [],
         userId,
         firstName,
         lastName,
@@ -22,7 +21,6 @@ const UserInfo = props => {
         address,
         userType,
         isLoading,
-        reloadPage,
         history,
         setErrorState,
         location: {pathname: currentPath}

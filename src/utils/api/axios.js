@@ -6,7 +6,6 @@ axios.defaults.baseURL = 'http://PizzaNodejs-env-1.tcerqmicmi.ap-southeast-2.ela
 const appendAuthToken = config => {
     const jwtToken = getToken();
     const Authorization = jwtToken && `Bearer ${jwtToken}`;
-
     return {...config, headers: {Authorization, ...config.header}};
 };
 
