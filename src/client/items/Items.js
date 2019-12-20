@@ -49,6 +49,9 @@ class Items extends React.Component {
 
   loadingBasket = () => {
     const userId = fetchUserId();
+    if (userId === null) {
+      return;
+    }
     const userShopCart = getCart(userId);
     if (userShopCart !== null) {
       this.setState({ shopCartItems: userShopCart }, () => {

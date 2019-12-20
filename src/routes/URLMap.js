@@ -14,3 +14,5 @@ export const AFTER_SIGNUP_URL = "/client/signup-success";
 export const ABOUTUS_URL = "/client/aboutus";
 export const ERROR_URL = "/client/error";
 export const PROFILE_URL = "/client/profile";
+export const CHECKOUT_URL = "/client/checkout";
+export const AFTER_CHECKOUT_URL = "/client/checkout-success";

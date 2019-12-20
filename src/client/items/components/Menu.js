@@ -17,7 +17,7 @@ class Menu extends React.Component {
 
   itemFilter = (items, filter) => {
     const result = [];
-    items.map(item => {
+    items.forEach(item => {
       if (item.category === filter) {
         result.push(item);
       }
@@ -33,14 +33,14 @@ class Menu extends React.Component {
 
     return (
       <React.Fragment>
-        <div className="body-left-block">
+        {/* <div className="body-left-block">
           <h1>Favorites</h1>
           <div className="body-item-container">
             <ItemCard />
             <ItemCard />
             <ItemCard />
           </div>
-        </div>
+        </div> */}
         <div className="body-left-block">
           <h1>Premium Pizzas</h1>
           <div className="body-item-container">

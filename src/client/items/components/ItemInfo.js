@@ -8,10 +8,7 @@ const ItemInfo = props => {
     itemName,
     itemPrice,
     itemInfo,
-    key,
-    isAdding,
     addToOrder,
-    location: { pathname: currentPath },
     quantity,
     handleQuantityChange,
   } = props;

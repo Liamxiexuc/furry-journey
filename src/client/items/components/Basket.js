@@ -3,6 +3,7 @@ import "../styles/Basket.scss";
 import { Button, Icon } from "semantic-ui-react";
 import OrderItemsRow from "./OrderItemsRow";
 import { toDecimal2 } from "../../../utils/shoppingCart";
+import { CHECKOUT_URL } from "../../../routes/URLMap";
 
 const Basket = props => {
   const { shopCartItems, handleRemove, orderTotalPrice } = props;
@@ -49,10 +50,12 @@ const Basket = props => {
           />
         </div>
         <div className="basket-checkout-container">
-          <Button basic color="blue" size="huge" fluid compact>
-            <Icon name="payment" />
-            Finish and Pay
-          </Button>
+          <a href={CHECKOUT_URL}>
+            <Button basic color="blue" size="huge" fluid compact>
+              <Icon name="payment" />
+              Finish and Pay
+            </Button>
+          </a>
         </div>
       </div>
     </div>

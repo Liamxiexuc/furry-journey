@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import PizzaA from '../../../assets/photo-pizzaA.jpg';
 
 const ItemCard = props => {
-  const { history, itemName, itemPrice, itemInfo, to } = props;
-  // history.push('/home');
+  const { itemName, itemPrice, itemInfo, to } = props;
+
 
   const extra = (
     <Button fluid color="red">

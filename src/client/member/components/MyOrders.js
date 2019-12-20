@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Header, Table } from "semantic-ui-react";
 
 import { fetchAllOrdersByUserId } from "../../../utils/api/user";
 import { ERROR_URL } from "../../../routes/URLMap";

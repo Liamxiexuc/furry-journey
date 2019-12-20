@@ -16,6 +16,7 @@ export const deleteToken = () => {
 
 export const fetchUserId = () => {
   const token = getToken();
+  if (token === null) return "visitor";
   const decodedToken = jwt.decode(token);
   return decodedToken.id;
 };

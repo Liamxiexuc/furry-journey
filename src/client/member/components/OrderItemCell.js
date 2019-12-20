@@ -1,6 +1,5 @@
 import React from "react";
 import FlexContainer from "../../../UI/flexContainer/FlexContainer";
-import { Table } from "semantic-ui-react";
 
 
 const OrderItemCell = props => {

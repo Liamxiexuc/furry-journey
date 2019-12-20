@@ -8,7 +8,7 @@ import {
   Confirm
 } from "semantic-ui-react";
 import "../styles/Member.scss";
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { fetchUser, saveUserInfo } from "../../../utils/api/user";
 import { ERROR_URL } from "../../../routes/URLMap";
 

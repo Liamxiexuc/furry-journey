@@ -1,0 +1,32 @@
+.pay-form-container {
+    width: 500px;
+
+    margin: 10px 0px 20px 80px;
+
+
+    & .pay-form-header {
+        margin: 0px 0px 30px;
+    }
+}
+
+.input-group {
+    margin-bottom: 1em;
+    display: block;
+    width: 100%;
+
+    &  input {
+        width: 100%;
+    }
+}
+
+.pay-form-body {
+    & label {
+        font-weight: bold;
+        font-size: 0.92857143em;
+        margin: 0px 0px 4px;
+    }
+}
+
+.checkout-btn {
+    margin: 20px 0px;
+}

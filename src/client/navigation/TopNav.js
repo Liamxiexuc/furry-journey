@@ -10,7 +10,7 @@ import {
   ITEM_CLIENT_BASE_URL,
   ABOUTUS_URL
 } from "../../routes/URLMap";
-import logo from '../../assets/logo.png';
+import logo from "../../assets/logo.png";
 
 const logout = history => {
   deleteToken();
@@ -25,48 +25,52 @@ const TopNav = ({ history }) => {
   return (
     <nav className="nav-bar">
       <div className="nav-left">
-        <a className="nav-left_logo" href={HOME_CLIENT_BASE_URL}>
+        <a href={HOME_CLIENT_BASE_URL}>
           <img src={logo} alt="logo" />
         </a>
         <NavLink className="nav-left_brand" to={HOME_CLIENT_BASE_URL}>
-          NewBee Pizza
+          <span>NewBee Pizza</span>
         </NavLink>
       </div>
-      <ul className="nav-item">
-        <NavLink className="nav-item" to={HOME_CLIENT_BASE_URL}>
-          Home
-        </NavLink>
-        <NavLink className="nav-item" to={USER_CLIENT_BASE_URL}>
-          Member
-        </NavLink>
-        <NavLink className="nav-item" to={ITEM_CLIENT_BASE_URL}>
-          Menu
-        </NavLink>
-        <NavLink className="nav-item" to={ABOUTUS_URL}>
-          About us
-        </NavLink>
-      </ul>
-      {isAuthenticated() ? (
-        <Button
-          size="huge"
-          compact
-          negative
-          onClick={() => logout(history)}
-          className="nav-logout"
-        >
-          SIGN OUT
-        </Button>
-      ) : (
-        <Button
-          size="huge"
-          compact
-          positive
-          onClick={() => login(history)}
-          className="nav-login"
-        >
-          MY ACCOUNT
-        </Button>
-      )}
+      <div className="nav-middle">
+        <ul className="nav-item">
+          <NavLink className="nav-item" to={HOME_CLIENT_BASE_URL}>
+            Home
+          </NavLink>
+          <NavLink className="nav-item" to={USER_CLIENT_BASE_URL}>
+            Member
+          </NavLink>
+          <NavLink className="nav-item" to={ITEM_CLIENT_BASE_URL}>
+            Menu
+          </NavLink>
+          <NavLink className="nav-item" to={ABOUTUS_URL}>
+            About us
+          </NavLink>
+        </ul>
+      </div>
+      <div className="nav-right">
+        {isAuthenticated() ? (
+          <Button
+            size="huge"
+            compact
+            negative
+            onClick={() => logout(history)}
+            className="nav-logout"
+          >
+            SIGN OUT
+          </Button>
+        ) : (
+          <Button
+            size="huge"
+            compact
+            positive
+            onClick={() => login(history)}
+            className="nav-login"
+          >
+            MY ACCOUNT
+          </Button>
+        )}
+      </div>
     </nav>
   );
 };

@@ -32,6 +32,7 @@ class ItemDetails extends React.Component {
 
   loadingBasket = () => {
     const userId = fetchUserId();
+
     const userShopCart = getCart(userId);
     if (userShopCart !== null) {
       this.setState({ shopCartItems: userShopCart }, () => {
@@ -66,7 +67,6 @@ class ItemDetails extends React.Component {
         // If shopping cart is empty
         let shoppingCart = [];
         shoppingCart.push(shopItem);
-        console.log(shoppingCart);
         addToCart(userId, shoppingCart);
         this.setState({ shopCartItems: shoppingCart }, () => {
           let orderTotalPrice = 0;
@@ -126,7 +126,7 @@ class ItemDetails extends React.Component {
       1
     );
 
-     addToCart(userId, userShopCart);
+    addToCart(userId, userShopCart);
     this.setState({ shopCartItems: userShopCart }, () => {
       let orderTotalPrice = 0;
       this.state.shopCartItems.forEach(item => {
@@ -134,7 +134,7 @@ class ItemDetails extends React.Component {
         orderTotalPrice = orderTotalPrice + itemTotalPrice;
       });
       this.setState({ orderTotalPrice });
-    }); 
+    });
   };
 
   render() {
