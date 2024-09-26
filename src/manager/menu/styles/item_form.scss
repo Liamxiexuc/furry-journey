@@ -1,0 +1,32 @@
+#root {
+    .App {
+        .ui.segment.item-form-segment {
+            width: 80%;
+            margin: 0 auto;
+            border-color: #00c5d9;
+            .ui.container.item-form-container {
+                .item-form-inner {
+                    width: 80%;
+                    margin: 0 auto;
+                    .field {
+                        label {
+                            text-align: left;
+                            font-size: 16px;
+                            padding: 20px 0px 6px 0px;
+                        }
+                        input {
+                            border-color: #00c5d9;
+                        }
+                    }
+
+                    .ui.button {
+                        padding: 16px 40px;
+                        color: white;
+                        background-color: #0040ff;
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+    }
+}

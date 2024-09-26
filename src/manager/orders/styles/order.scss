@@ -1,0 +1,74 @@
+#root {
+    .App {
+        
+        .admin-order-container {
+            .admin-item-container-inner{
+                .item-table-card{
+                    
+                    .item-table-header {
+                        background-color: #2ba6cb;
+                       
+                        .item-table-header-col {
+                            background-color: white;
+                            border-width: 2px;
+                            .header-label {
+                                background-color: #2ba6cb;
+                                color: white;
+                                padding: 16px;
+                                text-align: center;
+
+                                &:first-child {
+                                    display: none;
+                                }
+                                &:nth-child(6) {
+                                    display: none;
+                                }
+                                &:nth-child(10) {
+                                    display: none;
+                                }
+                                &:nth-child(11) {
+                                    white-space:nowrap;
+                                    overflow:hidden;
+                                }
+                            }
+                            
+                        }
+                    }
+                    .admin-table-body {
+                        
+                        .item-table-row {
+                             
+                            &:hover {
+                                background-color: #BDF2F2;
+                            }
+                            .item-table-cell {
+                              
+                                .item-more {
+                                    background-color: #00c5d9;
+                                    color: white;
+                                    font-weight: bold;
+                                }
+
+                                 &:first-child {
+                                    display: none;
+                                }
+
+                                &:nth-child(6) {
+                                    display: none;
+                                }
+                                &:nth-child(10) {
+                                    display: none;
+                                }
+                              
+                            }
+                        }
+                    }
+                }
+            }
+
+
+        }
+
+        
+    }
+}
